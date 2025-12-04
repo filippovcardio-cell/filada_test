@@ -1,0 +1,9 @@
+.App {
+  background: var(--body-bgc-black);
+  color: var(--body-text-white);
+}
+
+.App.light {
+  background: var(--body-bgc-white);
+  color: var(--body-text-black);
+}

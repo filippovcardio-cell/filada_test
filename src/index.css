@@ -1,0 +1,229 @@
+/* Felix titling font import */
+@font-face {
+  font-family: "Felix-R";
+  src: url("./assets/fonts/Felix-titling/felix-titling.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* .bingc-phone-button {
+  display: none !important; 
+  }
+   */
+
+/* Arial font import */
+@font-face {
+  font-family: "Arial-R";
+  src: url("./assets/fonts/arial/ARIAL.TTF");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Montserrat font import */
+@font-face {
+  font-family: "Montserrat-R";
+  src: url("./assets/fonts/Montserrat/static/Montserrat-Regular.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat-M";
+  src: url("./assets/fonts/Montserrat/static/Montserrat-Medium.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Montserrat-B";
+  src: url("./assets/fonts/Montserrat/static/Montserrat-Medium.ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Colors */
+:root {
+  --white: #fff;
+  --white-90: rgba(255, 255, 255, 0.9);
+  --brand-blue: #000a35;
+  --brand-gold: #d7b56d;
+  --body-text-white: rgba(255, 255, 255, 0.9);
+  --body-text-black: rgba(0, 0, 0, 0.9);
+  --body-bgc-black: #0c0c0c;
+  --body-bgc-white: #fff;
+  --color-toggle-light: #000a35;
+  --color-toggle-dark: #d7b56d;
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  border-radius: 1px solid red;
+}
+
+/* Body Styles */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  font-family: "Montserrat-R";
+}
+
+canvas {
+  box-sizing: border-box;
+}
+
+/* Image Styles */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Form Element Styles */
+input,
+button,
+select {
+  font: inherit;
+}
+
+/* Button Styles */
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration-line: none;
+}
+
+/*  Containers styles */
+
+.global__container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d7b56d;
+  border-radius: 5px;
+}
+
+/* Font Styles */
+
+.felix-r {
+  color: var(--brand-gold);
+  font-family: "Felix-R";
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.mont-r {
+  font-family: "Montserrat-R";
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.mont-m {
+  font-family: "Montserrat-M";
+  font-weight: 500;
+}
+
+.mont-b {
+  margin-top: 10px;
+  font-family: "Montserrat-B";
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.mont-b.f {
+margin-top: 0px;
+}
+
+.arial-r {
+  font-family: "Arial-R";
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 42px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.arial-r.light {
+  font-family: "Arial-R";
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 42px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.arial-r-seo {
+  font-family: "Arial-R";
+  font-size: 42px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.brand-gold {
+  color: var(--brand-gold);
+}
+
+
+@media (max-width: 1199px) {
+  body {
+    font-size: 14px;
+  }
+
+  .arial-r {
+    font-family: "Arial-R";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+
+  .arial-r-seo {
+    font-family: "Arial-R";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+
+  .arial-r.light {
+    font-family: "Arial-R";
+    color: rgba(0, 0, 0, 0.85);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+  }
+
+  .mont-b {
+    margin-top: 10px;
+    font-family: "Montserrat-B";
+    font-size: 14px;
+  }
+
+}

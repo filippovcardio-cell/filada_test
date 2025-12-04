@@ -1,0 +1,135 @@
+.seo__link {
+  color: var(--brand-gold);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.author-card-wrapper {
+  width: 1200px;
+  display: flex;
+  justify-content: start;
+}
+
+.author-card {
+  padding: 30px 50px 30px 30px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #00030f;
+}
+
+.author-card-image {
+  width: 150px;
+  height: 150px;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+
+.author-card.light {
+  border-radius: 20px;
+  border: 1px solid rgba(0, 10, 53, 0.15);
+  background: #ebf3ff;
+  color: black;
+}
+
+.author-card-name {
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.author-card-name-link {
+  color: var(--brand-gold);
+}
+
+.author-card-job {
+  margin-top: 13px;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.seo__blog-page-images {
+    width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+}
+
+.seo__blog-page-image {
+    width: 360px;
+    height: 360px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+@media (max-width: 1199px) {
+    .author-card-wrapper {
+        width: 320px;
+        display: flex;
+        justify-content: start;
+      }
+      
+      .author-card {
+        padding: 30px 20px 30px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        background: #00030f;
+      }
+
+      .author-card-image {
+        width: 150px;
+        height: 150px;
+        flex-shrink: 0;
+        aspect-ratio: 1/1;
+        border-radius: 50%;
+      }
+
+      .author-card-name {
+        width: 280px;
+text-align: center;
+font-size: 21px;
+font-style: normal;
+font-weight: 400;
+line-height: normal;
+      }
+
+      .author-card-name-link {
+        color: var(--brand-gold);
+        display: block;
+      }
+
+      .author-card-job {
+        margin-top: 10px;
+        width: 280px;
+        text-align: center;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+      
+      .seo__blog-page-images {
+        width: 320px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+    }
+      
+    .seo__blog-page-image {
+        width: 320px;
+        height: 320px;
+        object-fit: cover;
+        border-radius: 20px;
+    }
+    
+}

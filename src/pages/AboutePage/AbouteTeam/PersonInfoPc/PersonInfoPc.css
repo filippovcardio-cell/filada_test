@@ -1,0 +1,41 @@
+/* .person__info-pc {
+  width: 1200px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.person__info-pc-texts {
+  width: 540px;
+}
+
+.person__info-pc-name {
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.person__info-pc-name.light {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.person__info-pc-job {
+  margin-top: 5px;
+  color: var(--brand-gold);
+}
+
+.person__info-pc-description {
+  margin-top: 25px;
+}
+
+.person__info-pc-image {
+  width: 540px;
+  height: 458px;
+  flex-shrink: 0;
+  border-radius: 30px;
+  object-fit: cover;
+}
+
+@media (max-width: 1200px) {
+  .person__info-pc {
+    display: none;
+  }
+} */

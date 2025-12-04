@@ -1,0 +1,121 @@
+.doctors__page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.doctors__hub {
+  margin-top: 120px;
+  width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 45px;
+}
+
+.doctor__card {
+  position: relative;
+  width: 370px;
+  height: 312px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.doctor__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.3s;
+}
+
+.doctor__card:hover .doctor__photo {
+  transform: scale(1.05);
+}
+
+.doctor__card-text-wrapper {
+  width: 370px;
+  height: 85px;
+  flex-shrink: 0;
+  border-radius: 0 0 20px 20px;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding-left: 20px;
+}
+
+.doctor__card-name {
+  color: #fff;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.doctor__card-text {
+  color: #fff;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@media (max-width: 1200px) {
+    .doctors__hub {
+        margin-top: 80px;
+        width: 320px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 35px;
+      }
+
+      .doctor__card {
+        position: relative;
+        width: 320px;
+        height: 270px;
+        border-radius: 20px;
+        overflow: hidden;
+      }
+
+      .doctor__card-text-wrapper {
+        width: 320px;
+        height: 76px;
+        border-radius: 0 0 20px 20px;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 4px;
+        padding-left: 15px;
+      }
+
+      .doctor__card-name {
+        color: #FFF;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      .doctor__card-text {
+        color: #FFF;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+      
+      
+}

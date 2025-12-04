@@ -1,0 +1,107 @@
+.before__after-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.before__after-page-photos-wrapper {
+    margin-top: 120px;
+    width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px;
+}
+
+.before__after-page-photo-wrapper {
+    width: 1200px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left__before-after-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.before__after-page-photo {
+    width: 550px;
+height: 200px;
+object-fit: cover;
+border-radius: 15px;
+}
+
+.before__after-page-photo-text {
+    font-size: 24px;
+    color: rgba(255, 255, 255, 0.30);
+}
+
+.before__after-page-photo-text.light {
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.30);
+}
+
+.before__after-page-texts {
+    width: 1200px;
+    margin-top: 120px;
+}
+
+@media (max-width: 1199px) {
+    .before__after-page-photos-wrapper {
+        margin-top: 60px;
+        width: 320px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 35px;
+    }
+
+    .before__after-page-photo-wrapper {
+        width: 320px;
+        display: flex;
+        flex-direction: column;
+        justify-content: unset;
+        border-bottom: 1px solid var(--brand-gold);
+        padding-bottom: 25px;
+    }
+
+    .before__after-page-photo-wrapper.light {
+        border-bottom: 1px solid var(--brand-blue);
+    }
+
+    .before__after-page-photo-wrapper:last-child {
+        border: none;
+    }
+
+    .left__before-after-container {
+        margin-top: 15px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .before__after-page-photo {
+        width: 320px;
+        height: 116px;
+        flex-shrink: 0;
+    border-radius: 15px;
+    }
+
+    .before__after-page-photo-text {
+        font-size: 21px;
+        color: rgba(255, 255, 255, 0.30);
+    }
+
+    .before__after-page-photo-text.light {
+        color: rgba(0, 0, 0, 0.30);
+    }
+
+    .before__after-page-texts {
+        width: 320px;
+        margin-top: 60px;
+    }
+}

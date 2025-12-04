@@ -1,0 +1,118 @@
+.blog__page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blog__page-title {
+  margin-top: 120px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 42px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-transform: uppercase;
+}
+
+.blog__page-title.light {
+  color: black;
+}
+
+.blog__cards {
+  margin-top: 80px;
+  width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 60px;
+}
+
+.blog__card {
+  width: 360px;
+  height: 360px;
+  flex-shrink: 0;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.blog__card-image {
+  width: 360px;
+  height: 360px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  object-fit: cover;
+  transition: .3s;
+}
+
+.blog__card-image:hover {
+    transform: scale(1.05);
+}
+
+.blog__card-text {
+  position: absolute;
+  padding: 20px;
+  bottom: 0px;
+  left: 0px;
+  width: 360px;
+  color: #fff;
+  border-radius: 0 0 20px 20px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+  text-align: center;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+@media (max-width: 1199px) {
+  .blog__page-title {
+    width: 320px;
+    margin-top: 60px;
+    font-family: Arial;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  .blog__cards {
+    margin-top: 60px;
+    width: 320px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+
+  .blog__card {
+    width: 320px;
+    height: 320px;
+    flex-shrink: 0;
+    position: relative;
+    border-radius: 20px;
+  }
+
+  .blog__card-image {
+    width: 320px;
+    height: 320px;
+    flex-shrink: 0;
+    border-radius: 20px;
+  }
+
+  .blog__card-text {
+    position: absolute;
+    padding: 20px;
+    bottom: 0px;
+    left: 0px;
+    width: 320px;
+    color: #fff;
+    text-align: center;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}

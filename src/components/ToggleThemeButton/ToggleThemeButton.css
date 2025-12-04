@@ -1,0 +1,188 @@
+/* .theme__button {
+    width: 100px;
+    height: 40px;
+    cursor: pointer;
+  }
+  
+  .theme__button-wrapper {
+    display: flex;
+    background: #060606;
+    border-radius: 8px;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+  }
+  
+  .theme__button-wrapper.checked {
+    background: inherit;
+    border: 1px solid black;
+  }
+  
+  .theme__button-thumbler {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      left: 5px;
+      top: 5px;
+      background-color: white;
+      transition: .5s;
+  }
+  
+  .theme__button-thumbler.checked {
+      position: absolute;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      top: 5px;
+      left: unset;
+      transform: translateX(54px);
+      background-color: black;
+  }
+  
+  .theme__icon-wrapper {
+      width: 20px;
+      height: 20px;
+      position: relative;
+      z-index: 1;
+  }
+  
+
+   */
+
+   .container {
+    cursor: pointer;
+  }
+  
+  .container input {
+    display: none;
+  }
+  
+  .theme__button-wrapper {
+    display: flex;
+    background: inherit;
+    /* border: 1px solid black; */
+    border-radius: 8px;
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+    position: relative;
+  }
+  
+  .theme__button-wrapper:not(.checked) {
+    background: #060606;
+  }
+  
+  /* .theme__button-thumbler {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    left: 9px;
+    top: -5px;
+    background-color: rgb(170, 172, 173);
+    transition: .5s;
+  } */
+  
+  .theme__button-thumbler:not(.checked) {
+    transform: translateX(54px);
+    background-color: initial;
+  }
+  
+  .theme__icon-wrapper {
+    width: 20px;
+    height: 20px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  /* Анимации для переключателя */
+  .container input + div {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    position: relative;
+    box-shadow: inset 32px -32px 0 0 var(--color-toggle-dark);
+    transform: scale(0.5) rotate(0deg);
+    transition: transform 0.3s ease 0.1s, box-shadow 0.2s ease 0s;
+  }
+  
+  .container input + div::before {
+    /* background: var(--color-toggle-light); */
+    transition: background 0.3s ease 0.1s;
+  }
+  
+  .container input + div::after {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin: -4px 0 0 -4px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    box-shadow: 
+      0 -23px 0 var(--color-toggle-dark),  /* Лучи для солнца */
+      0 23px 0 var(--color-toggle-dark,),
+      23px 0 0 var(--color-toggle-dark,),
+      -23px 0 0 var(--color-toggle-dark,),
+      15px 15px 0 var(--color-toggle-dark,),
+      -15px 15px 0 var(--color-toggle-dark,),
+      15px -15px 0 var(--color-toggle-dark,),
+      -15px -15px 0 var(--color-toggle-dark,);
+    transform: scale(1.5);
+    transition: all 0.5s ease 0.1s;
+  }
+  
+  .container input:checked + div {
+    box-shadow: inset 14px -14px 0 0 var(--color-toggle-light,);
+    transform: scale(1) rotate(-2deg);
+    transition: box-shadow 0.5s ease 0s, transform 0.4s ease 0.1s;
+  }
+  
+  .container input:checked + div::before {
+    content: "";
+    width: inherit;
+    height: inherit;
+    border-radius: inherit;
+    position: absolute;
+    left: -1px;
+    top: -1px;
+    transition: background 0.3s ease;
+  }
+  
+  .container input:checked + div::after {
+    box-shadow: 
+      0 -23px 0 var(--color-toggle-light, ),  /* Тени для луны */
+      0 23px 0 var(--color-toggle-light, ),
+      23px 0 0 var(--color-toggle-light, ),
+      -23px 0 0 var(--color-toggle-light, ),
+      15px 15px 0 var(--color-toggle-light, ),
+      -15px 15px 0 var(--color-toggle-light, ),
+      15px -15px 0 var(--color-toggle-light, ),
+      -15px -15px 0 var(--color-toggle-light, );
+    transform: scale(0);
+    transition: all 0.3s ease;
+  }
+  
+  .toggle__header-button-wrapper {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .theme__button-thumbler:not(.checked) {
+    display: none;
+  }
+  

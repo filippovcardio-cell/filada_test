@@ -1,0 +1,138 @@
+.burger__menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  transition: 0.5s;
+  transform: translateX(110%);
+  margin-top: 80px;
+}
+
+.burger__menu.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.burger__overlay {
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 0, 0);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 15px;
+}
+
+.burger__overlay.light {
+  width: 100%;
+  height: 100%;
+  background: rgb(255, 255, 255);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 15px;
+}
+
+.burger__body {
+  width: 100%;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0px;
+  overflow-y: auto;
+}
+
+.burger__item-catalog, .burger__link, .burger__body-second-back  {
+  width: 100%;
+  padding: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  text-decoration: none;
+}
+
+.burger__item-catalog.light, .burger__link.light, .burger__body-second-back.light  {
+  width: 100%;
+  padding: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.20);
+  color: black;
+  text-decoration: none;
+}
+
+.burger__item-catalog, .burger__body-second-back, .burger__body-third-back, .burger__body-fourth-back {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.arrow__mobile {
+  width: 20px;
+  height: 10px;
+}
+
+.burger__body-second {
+  transform: translateX(110%);
+  transition: .5s;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  overflow-y: auto;
+}
+
+.burger__body-second.light {
+  transform: translateX(110%);
+  transition: .5s;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  overflow-y: auto;
+}
+
+.burger__body-second.active, .burger__body-third.active, .burger__body-fourth.active {
+  transform: translateX(0%);
+  display: flex;
+  flex-direction: column;
+  z-index: 6;
+  overflow-y: auto;
+  padding-bottom: 80px;
+}
+
+
+.burger__body-third.active {
+  z-index: 7;
+}
+
+.burger__body-fourth.active {
+  z-index: 8;
+}
+
+.burger__body-third-back, .burger__body-fourth-back, .burger__body-second-back {
+  position: sticky;
+  top: 0;
+  background-color: black;
+}
+
+.burger__body-third-back.light, .burger__body-fourth-back.light, .burger__body-second-back.light {
+  position: sticky;
+  top: 0;
+  background-color: white;
+}

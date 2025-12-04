@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /static/media/Правила%20перебування%20пацієнтів.56233052051dbb120e65.pdf
+Disallow: /static/media/1668.9619c7a4224b68052163.pdf
+
+Sitemap: https://www.filada.com.ua/sitemap.xml

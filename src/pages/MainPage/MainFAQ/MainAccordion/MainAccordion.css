@@ -1,0 +1,133 @@
+.accordion {
+    margin-top: 40px;
+    width: 1200px;
+    padding-inline-start:0px;
+}
+
+.accordion-item {
+    position: relative;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+    border-radius: 2px;
+    padding: 0px 0px 30px 0px;
+    list-style-type: none;
+    cursor: pointer;
+    width: 1200px;
+}
+
+.accordion-item.light {
+    border-bottom: 1px solid #000A35;
+}
+
+.accordion-item:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.20);
+    border-radius: 2px;
+}
+
+.accordion-item.light:first-child {
+    border-top: 1px solid #000A35;
+    border-radius: 2px;
+}
+
+.accordion-header {
+    background-color: inherit;
+    border: none;
+    padding-top: 30px;
+    width: 100%;
+    align-items: center;
+    text-align: left;
+    font-size: 24px;
+    color: white;
+}
+
+.accordion-header.light {
+    color: #000;
+}
+
+.accordion-body {
+    margin-top: 20px;
+    margin-left: 5px;
+    text-align: left;
+    width: 1034px;
+}
+
+.accordion-collapse {
+    height: 0px;
+    overflow: hidden;
+    transition: height .4s;
+    overflow: hidden;
+    -webkit-transition: height .4s; 
+    
+}
+
+.accordion-collapse.open {
+   height: auto;
+}
+
+.plus__icon {
+    width: 29px;
+    top: 29px;
+    position: absolute;
+    right: 0;
+    top: 30px;
+    transition: .4s ease-in-out;
+    -webkit-transition: .4s ease-in-out; 
+}
+
+.plus__icon.active {
+    width: 29px;
+    top: 29px;
+    position: absolute;
+    right: 0;
+    top: 30px;
+    transform: rotate(45deg);
+}
+
+@media (max-width: 1200px) {
+    .accordion {
+        margin-top: 40px;
+        width: 320px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-inline-start: 0px;
+
+    }
+
+    .accordion-item {
+        width: 320px;
+        padding: 0px 0px 20px 0px;
+    }
+
+    .accordion-header {
+        padding-top: 20px;
+        width: 250px;
+        font-size: 18px;
+        padding-inline: 0px;
+    }
+
+    .accordion-body {
+        margin-top: 10px;
+        margin-left: 0px;
+        text-align: left;
+        color: var(--white-80);
+        width: 300px;
+    }
+
+    .plus__icon {
+        width: 25px;
+        position: absolute;
+        right: 0;
+        top: 20px;
+        transition: .4s ease-in-out;
+        -webkit-transition: .4s ease-in-out; 
+    }
+
+    .plus__icon.active {
+        width: 25px;
+        position: absolute;
+        right: 0;
+        top: 20px;
+        transform: rotate(45deg);
+    }
+    
+}

@@ -1,0 +1,138 @@
+.accordion__service {
+    width: 100%;
+    padding: 0;
+}
+
+.accordion-service-item {
+    width: 1200px;
+    position: relative;
+    padding: 0px 0px 0px 0px;
+    list-style-type: none;
+}
+
+
+.accordion-service-header {
+    width: 100%;
+    background-color: inherit;
+    color: white;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    font-size: 24px;
+    height: 79px;
+    cursor: pointer;
+}
+
+.accordion-service-header.light {
+    color: rgba(0, 0, 0, 0.85);
+}
+
+.accordion-service-body {
+    height: 80px;
+    padding: 0px 20px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.20);
+    border-radius: 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.accordion-service-body:first-child {
+    border-top: 1px solid rgba(255, 255, 255, 0.20);
+}
+
+.accordion-service-body.light {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.50);
+}
+
+.accordion-service-body.light:first-child {
+    border-top: 1px solid rgba(0, 0, 0, 0.50);
+}
+.accordion-service-collapse {
+    height: 0px;
+    overflow: hidden;
+    transition: height .4s;
+    overflow: hidden;
+    -webkit-transition: height .4s; 
+    
+}
+
+.accordion-service-collapse.open {
+   height: auto;
+}
+
+@media (max-width: 1200px) {
+    .accordion__service {
+        margin-top: 0px;
+        width: 320px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-inline-start: 0px;
+
+    }
+
+    .accordion-service-item {
+        width: 320px;
+    }
+
+    .accordion-service-header {
+        width: 100%;
+        background-color: inherit;
+        color: white;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: left;
+        font-size: 21px;
+        height: 66px;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .accordion-service-body {
+        margin-top: 0px;
+        margin-left: 0px;
+        padding: 0px 5px;
+        text-align: left;
+        color: var(--white-80);
+        width: 320px;
+        justify-content: center;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .tirangle__prices-category {
+        margin-left: 8px;
+        transition: .3s;
+        display: flex;
+      
+      }
+      
+      .tirangle__prices-category--open {
+        margin-left: 8px;
+        transform: rotate(180deg);
+      }
+      
+      .tirangle__prices-subcategory {
+        margin-top: 4px;
+        margin-left: 8px;
+        transition: .3s;
+        display: flex;
+      }
+      
+      .tirangle__prices-subcategory--open {
+        margin-left: 8px;
+        transform: rotate(180deg);
+      }
+
+      .accordion-service-body-service {
+        width: 310px;
+      }
+    
+}

@@ -1,0 +1,126 @@
+.service__aboute {
+  width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 120px 0px;
+}
+
+.service__aboute-texts {
+  width: 511px;
+}
+
+.service-about-description {
+  margin-top: 21px;
+}
+
+.service__about-photos {
+  display: flex;
+  width: 564px;
+  display: flex;
+  gap: 25px;
+}
+
+.service__about-photos-small {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.service__about-image {
+  width: 288px;
+  height: 200px;
+  flex-shrink: 0;
+  border-radius: 20px;
+}
+
+.service__about-image-large {
+  width: 251px;
+  height: 425px;
+  flex-shrink: 0;
+  border-radius: 20px;
+}
+
+.service-about-doctor-link {
+  margin-top: 21px;
+  color: var(--brand-gold);
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--brand-gold);
+  display: inline-block;
+  cursor: pointer;
+}
+
+.service-about-doctor-link.light {
+  margin-top: 21px;
+  color: var(--brand-blue);
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--brand-blue);
+  display: inline-block;
+  cursor: pointer;
+}
+
+.service-about-doctor-text {
+  margin-top: 21px;
+}
+
+@media (max-width: 1200px) {
+  .service__aboute {
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: unset;
+    align-items: center;
+    padding: 60px 0px;
+    gap: 30px;
+  }
+
+  .service__aboute-texts {
+    width: 320px;
+  }
+
+  .service-about-description {
+    margin-top: 18px;
+  }
+
+  .service__about-photos {
+    display: flex;
+    width: 320px;
+    display: flex;
+    gap: 15px;
+  }
+
+  .service__about-photos-small {
+    gap: 15px;
+  }
+
+  .service__about-image {
+    width: 163px;
+    height: 113px;
+    flex-shrink: 0;
+    border-radius: 12px;
+  }
+
+  .service__about-image-large {
+    width: 142px;
+    height: 241px;
+    flex-shrink: 0;
+    border-radius: 12px;
+  }
+
+  .service-about-doctor-link {
+    margin-top: 18px;
+    color: var(--brand-gold);
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--brand-gold);
+    display: inline-block;
+  }
+  
+  .service-about-doctor-link.light {
+    margin-top: 18px;
+    color: var(--brand-blue);
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--brand-blue);
+    display: inline-block;
+  }
+  
+}
