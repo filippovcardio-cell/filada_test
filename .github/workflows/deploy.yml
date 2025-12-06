@@ -25,7 +25,7 @@ jobs:
         run: CI=false npm run build
 
       - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@4.3.4
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
           server: jt600211.ftp.tools
           username: ${{ secrets.FTP_USERNAME }}
@@ -34,3 +34,4 @@ jobs:
           port: 21
           local-dir: ./build
           server-dir: /home/jt600211/filada.com.ua/www
+
