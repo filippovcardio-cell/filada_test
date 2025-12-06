@@ -1,36 +1,35 @@
-name: 🚀 Deploy to Ukraine.com.ua
+name: Deploy to Ukraine.com.ua
 
 on:
   push:
     branches:
-      - main   # деплой при кожному push у гілку main
+      - main
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '18'
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
-      - name: Build project
+      - name: Build site
         run: npm run build
 
-      - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v3.1.0
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
+          server: ftp.filada.com.ua
+          username: ${{ secrets.FTP_LOGIN }}
           password: ${{ secrets.FTP_PASSWORD }}
-          port: 21
-          local-dir: build
+          local-dir: ./build
           server-dir: /home/jt600211/filada.com.ua/www
-          dangerous-clean-slate: true
+          protocol: ftp
