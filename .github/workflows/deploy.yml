@@ -32,6 +32,7 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftp
           port: 21
-          local-dir: ./build
-          server-dir: /home/jt600211/filada.com.ua/www
+          local-dir: ./build/
+          server-dir: /home/jt600211/filada.com.ua/www/
+
 
