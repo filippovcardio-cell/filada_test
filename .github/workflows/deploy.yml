@@ -25,10 +25,12 @@ jobs:
         run: CI=false npm run build
 
       - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@v3.1.0
+        uses: SamKirkland/FTP-Deploy-Action@4.3.4
         with:
-          ftp-server: ftp://jt600211.ftp.tools/filada.com.ua/www
-          ftp-username: ${{ secrets.FTP_USERNAME }}
-          ftp-password: ${{ secrets.FTP_PASSWORD }}
+          server: jt600211.ftp.tools
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp
+          port: 21
           local-dir: ./build
-          git-ftp-args: --insecure
+          server-dir: /home/jt600211/filada.com.ua/www
