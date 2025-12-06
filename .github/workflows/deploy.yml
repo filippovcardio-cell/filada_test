@@ -3,7 +3,7 @@ name: Deploy to Ukraine.com.ua
 on:
   push:
     branches:
-      - main      # запускати деплой при кожному push у гілку main
+      - main
 
 jobs:
   build-and-deploy:
@@ -27,8 +27,8 @@ jobs:
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v3.1.0
         with:
-          ftp-server: ftp://ftp.filada.com.ua/filada.com.ua/www
-          ftp-username: ${{ secrets.FTP_LOGIN }}
+          ftp-server: ftp://jt600211.ftp.tools/filada.com.ua/www
+          ftp-username: ${{ secrets.FTP_USERNAME }}
           ftp-password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./build
           git-ftp-args: --insecure
