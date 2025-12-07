@@ -1,35 +1,38 @@
-name: Deploy to Filada Hosting
+name: Deploy Filada to Hosting
 
 on:
   push:
     branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
-  build-deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Install Node
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
 
-    - name: Install dependencies
-      run: npm install
+      - name: Install dependencies
+        run: npm install
 
-    - name: Build project
-      run: npm run build
+      - name: Build React app (CI=false)
+        env:
+          CI: false
+        run: npm run build
 
-    - name: Deploy via SFTP
-      uses: appleboy/scp-action@v0.1.4
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        password: ${{ secrets.PASSWORD }}
-        port: ${{ secrets.PORT }}
-        source: "build/*"
-        target: "/home/jt600211/filada.com.ua/www/"
-
+      - name: Deploy build folder to hosting via SFTP
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          source: "build/*"
+          target: "/home/jt600211/filada.com.ua/www/"
