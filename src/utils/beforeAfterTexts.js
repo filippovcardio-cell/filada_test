@@ -1,4 +1,3 @@
-
 const scrollTo = "OKosenko";
 
 export const blepharoplastyBeforeAfterTexts = (
