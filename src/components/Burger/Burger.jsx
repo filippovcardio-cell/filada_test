@@ -58,7 +58,7 @@ const Burger = () => {
       <div className={`burger__overlay ${isDarkTheme ? "" : "light"}`}>
         <div className="burger__body">
           <div onClick={handleSecondLevelMenuOpen} className={`burger__item-catalog ${isDarkTheme ? "" : "light"} mont-r`}>
-            Послуги <img src={isDarkTheme ? arrowGold : arrowBlack} alt="перейти до каталогу товарів" className="arrow__mobile" />
+            Напрямки роботи <img src={isDarkTheme ? arrowGold : arrowBlack} alt="перейти до каталогу товарів" className="arrow__mobile" />
           </div>
           <Link onClick={handleBurgerClose} className={`burger__link ${isDarkTheme ? "" : "light"}  mont-r`} to={"/"}>
             Головна
