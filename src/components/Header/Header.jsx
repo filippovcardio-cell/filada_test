@@ -230,7 +230,7 @@ const Header = () => {
               to={ALL_SERVICES_ROUTE}
               className={`header__link ${isDarkTheme ? "" : "light"}`}
             >
-              Послуги
+              Напрямки роботи
             </Link>
             <div className={`triangle ${isMenuActive ? "active" : ""} `}>
               {" "}
