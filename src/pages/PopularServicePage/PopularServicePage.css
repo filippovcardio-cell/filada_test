@@ -1,0 +1,29 @@
+.popular-service-page {
+  width: 100%;
+}
+
+.popular-service-page-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.popular-service-page-title {
+  margin: 0 0 12px;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.popular-service-page-description {
+  margin: 0 0 24px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.popular-service-page-back {
+  margin-top: 16px;
+}
+
+.popular-service-page-back-link {
+  text-decoration: none;
+}
