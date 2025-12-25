@@ -18,6 +18,7 @@ const Footer = () => {
 
   const MOZLicenseUrl = `${process.env.PUBLIC_URL}/docs/1668.pdf`;
   const ClientRulesUrl = `${process.env.PUBLIC_URL}/docs/patient-rules.pdf`;
+  const OfferAgreementUrl = `${process.env.PUBLIC_URL}/docs/Договір-оферти-Filada.pdf`;
 
   const tgIconSrc = isDarkTheme ? tgicon : tgicondark;
   const ttIconSrc = isDarkTheme ? tticon : tticondark;
@@ -46,6 +47,15 @@ const Footer = () => {
             href={ClientRulesUrl}
           >
             Правила перебування пацієнтів
+          </a>
+
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
+            href={ClientRulesUrl}
+          >
+            Публічний договір-оферта про надання медичних послуг
           </a>
         </div>
 
@@ -193,6 +203,15 @@ const Footer = () => {
             href={ClientRulesUrl}
           >
             Правила перебування пацієнтів
+          </a>
+
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
+            href={ClientRulesUrl}
+          >
+            Публічний договір-оферта про надання медичних послуг
           </a>
         </div>
       </div>
