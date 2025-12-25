@@ -18,7 +18,12 @@ const Footer = () => {
 
   const MOZLicenseUrl = `${process.env.PUBLIC_URL}/docs/1668.pdf`;
   const ClientRulesUrl = `${process.env.PUBLIC_URL}/docs/patient-rules.pdf`;
-  const OfferAgreementUrl = `${process.env.PUBLIC_URL}/docs/Договір-оферти-Filada.pdf`;
+
+  // якщо назва файлу на сервері саме така:
+  const OfferAgreementFileName = "Договір-оферти-Filada.pdf";
+  const OfferAgreementUrl = `${process.env.PUBLIC_URL}/docs/${encodeURIComponent(
+    OfferAgreementFileName
+  )}`;
 
   const tgIconSrc = isDarkTheme ? tgicon : tgicondark;
   const ttIconSrc = isDarkTheme ? tticon : tticondark;
@@ -53,7 +58,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
-            href={ClientRulesUrl}
+            href={OfferAgreementUrl}
           >
             Публічний договір-оферта про надання медичних послуг
           </a>
@@ -209,7 +214,7 @@ const Footer = () => {
             target="_blank"
             rel="noopener noreferrer"
             className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
-            href={ClientRulesUrl}
+            href={OfferAgreementUrl}
           >
             Публічний договір-оферта про надання медичних послуг
           </a>
@@ -220,4 +225,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
 
