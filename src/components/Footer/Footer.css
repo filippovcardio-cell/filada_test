@@ -17,12 +17,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0 20px; /* трохи безпечніше, щоб не "роз’їжджалось" */
+    box-sizing: border-box;
 }
 
 .footer__logo {
     display: flex;
     align-items: center;
-    gap: 40px;
+    gap: 18px; /* було 40 */
 }
 
 .footer__logo-image {
@@ -42,6 +44,7 @@
 .footer__tel {
     color: white;
     font-size: 18px;
+    white-space: nowrap;
 }
 
 .footer__tel.light {
@@ -51,23 +54,23 @@
 .footer__contacts {
     display: flex;
     align-items: center;
-    gap: 60px;
+    gap: 24px; /* було 60 */
 }
 
 .footer__links {
     display: flex;
-    gap: 30px;
+    gap: 18px; /* було 30 */
 }
 
 .footer__link-icon {
-    width: 40px;
-    height: 40px;
+    width: 36px; /* було 40 */
+    height: 36px; /* було 40 */
     transition: .3s;
 }
 
 .footer__link-icon:hover {
     transition: .3s;
-    transform: scale(1.2);
+    transform: scale(1.15);
 }
 
 .logo-num-mobile {
@@ -80,36 +83,35 @@
 
 .footer__doc {
     color: #FFF;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: 21px; /* 116.667% */
-text-decoration-line: underline;
-text-decoration-style: solid;
-text-decoration-skip-ink: none;
-text-decoration-thickness: auto;
-text-underline-offset: auto;
-text-underline-position: from-font;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
 }
 
 .footer__doc.light {
     color: black;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: 21px; /* 116.667% */
-text-decoration-line: underline;
-text-decoration-style: solid;
-text-decoration-skip-ink: none;
-text-decoration-thickness: auto;
-text-underline-offset: auto;
-text-underline-position: from-font;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 21px;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: none;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
 }
 
 .footer__docs-mobile {
     display: none;
 }
-
 
 @media (max-width: 1199px) {
     .footer {
@@ -128,14 +130,18 @@ text-underline-position: from-font;
         flex-direction: column;
         align-items: unset;
         justify-content: unset;
+        padding: 0; /* як було */
     }
+
     .footer__logo {
         display: none;
     }
+
     .footer__logo-image {
         width: 50px;
         height: 50px;
     }
+
     .logo-num-mobile {
         margin-top: 20px;
         width: 100%;
@@ -144,9 +150,11 @@ text-underline-position: from-font;
         align-items: center;
         justify-content: space-between;
     }
+
     .footer__contacts {
         display: none;
     }
+
     .footer__links-mobile {
         padding: 0px 20px;
         margin-top: 20px;
@@ -169,5 +177,4 @@ text-underline-position: from-font;
         gap: 30px;
         padding-bottom: 40px;
     }
-
 }
