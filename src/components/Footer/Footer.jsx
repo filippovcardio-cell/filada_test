@@ -17,10 +17,10 @@ import fbicondark from "../../assets/icons/fbicon.png";
 const Footer = () => {
   const isDarkTheme = useSelector((state) => state.theme.isDarkTheme);
 
+  // /public/docs/*
   const MOZLicenseUrl = `${process.env.PUBLIC_URL}/docs/1668.pdf`;
   const ClientRulesUrl = `${process.env.PUBLIC_URL}/docs/patient-rules.pdf`;
 
-  // якщо назва файлу на сервері саме така:
   const OfferAgreementFileName = "Договір-оферти-Filada.pdf";
   const OfferAgreementUrl = `${process.env.PUBLIC_URL}/docs/${encodeURIComponent(
     OfferAgreementFileName
@@ -35,80 +35,77 @@ const Footer = () => {
   const legalRef = useRef(null);
 
   useEffect(() => {
-    const onDocClick = (e) => {
+    const onDocMouseDown = (e) => {
       if (!legalRef.current) return;
-      if (!legalRef.current.contains(e.target)) setIsLegalOpen(false);
+      if (!legalRef.current.contains(e.target)) {
+        setIsLegalOpen(false);
+      }
     };
 
-    const onEsc = (e) => {
-      if (e.key === "Escape") setIsLegalOpen(false);
-    };
-
-    document.addEventListener("mousedown", onDocClick);
-    document.addEventListener("keydown", onEsc);
-
-    return () => {
-      document.removeEventListener("mousedown", onDocClick);
-      document.removeEventListener("keydown", onEsc);
-    };
+    document.addEventListener("mousedown", onDocMouseDown);
+    return () => document.removeEventListener("mousedown", onDocMouseDown);
   }, []);
 
   const toggleLegal = () => setIsLegalOpen((v) => !v);
 
+  const closeLegal = () => setIsLegalOpen(false);
+
   return (
     <footer className={`footer ${isDarkTheme ? "" : "light"}`}>
       <div className="footer__wrapper">
-        {/* DESKTOP LEFT */}
+        {/* ===== Desktop left block ===== */}
         <div className="footer__logo">
           <img className="footer__logo-image" src={logo} alt="filada логотип" />
 
-          {/* Legal dropdown (desktop) */}
           <div className="footer__legal" ref={legalRef}>
             <button
               type="button"
+              className={`footer__legal-btn ${isDarkTheme ? "" : "light"}`}
               onClick={toggleLegal}
-              className={`footer__legal-btn ${isDarkTheme ? "" : "light"} mont-r`}
-              aria-haspopup="menu"
               aria-expanded={isLegalOpen}
+              aria-haspopup="menu"
             >
               Правова інформація
               <span className={`footer__chev ${isLegalOpen ? "open" : ""}`}>
-                ▼
+                ▾
               </span>
             </button>
 
             <div
-              className={`footer__legal-menu ${isDarkTheme ? "" : "light"} ${
-                isLegalOpen ? "open" : ""
-              }`}
+              className={`footer__legal-menu ${
+                isDarkTheme ? "" : "light"
+              } ${isLegalOpen ? "open" : ""}`}
               role="menu"
             >
               <a
                 role="menuitem"
-                target="_blank"
-                rel="noopener noreferrer"
                 className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
                 href={MOZLicenseUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeLegal}
               >
                 Ліцензія МОЗ
               </a>
 
               <a
                 role="menuitem"
-                target="_blank"
-                rel="noopener noreferrer"
                 className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
                 href={ClientRulesUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeLegal}
               >
                 Правила перебування пацієнтів
               </a>
 
               <a
                 role="menuitem"
-                target="_blank"
-                rel="noopener noreferrer"
                 className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
                 href={OfferAgreementUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeLegal}
               >
                 Публічний договір-оферта про надання медичних послуг
               </a>
@@ -116,7 +113,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* MOBILE TOP (logo + phone) */}
+        {/* ===== Mobile top row ===== */}
         <div className="logo-num-mobile">
           <img className="footer__logo-image" src={logo} alt="filada логотип" />
           <a
@@ -127,7 +124,7 @@ const Footer = () => {
           </a>
         </div>
 
-        {/* DESKTOP RIGHT */}
+        {/* ===== Desktop right block ===== */}
         <div className="footer__contacts">
           <a
             className={`footer__tel ${isDarkTheme ? "" : "light"} mont-r`}
@@ -191,7 +188,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* MOBILE social */}
+        {/* ===== Mobile social ===== */}
         <div className="footer__links-mobile">
           <a
             href="https://t.me/filada_clinic"
@@ -246,19 +243,19 @@ const Footer = () => {
           </a>
         </div>
 
-        {/* MOBILE legal dropdown */}
+        {/* ===== Mobile legal dropdown ===== */}
         <div className="footer__docs-mobile">
           <div className="footer__legal footer__legal--mobile">
             <button
               type="button"
+              className={`footer__legal-btn ${isDarkTheme ? "" : "light"}`}
               onClick={toggleLegal}
-              className={`footer__legal-btn ${isDarkTheme ? "" : "light"} mont-r`}
-              aria-haspopup="menu"
               aria-expanded={isLegalOpen}
+              aria-haspopup="menu"
             >
               Правова інформація
               <span className={`footer__chev ${isLegalOpen ? "open" : ""}`}>
-                ▼
+                ▾
               </span>
             </button>
 
@@ -270,30 +267,33 @@ const Footer = () => {
             >
               <a
                 role="menuitem"
-                target="_blank"
-                rel="noopener noreferrer"
                 className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
                 href={MOZLicenseUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeLegal}
               >
                 Ліцензія МОЗ
               </a>
 
               <a
                 role="menuitem"
-                target="_blank"
-                rel="noopener noreferrer"
                 className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
                 href={ClientRulesUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeLegal}
               >
                 Правила перебування пацієнтів
               </a>
 
               <a
                 role="menuitem"
-                target="_blank"
-                rel="noopener noreferrer"
                 className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
                 href={OfferAgreementUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeLegal}
               >
                 Публічний договір-оферта про надання медичних послуг
               </a>

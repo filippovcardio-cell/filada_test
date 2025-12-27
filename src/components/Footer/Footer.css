@@ -68,7 +68,6 @@
   position: relative;
   display: flex;
   align-items: center;
-  z-index: 5; /* важливо: щоб меню було вище сусідів */
 }
 
 .footer__legal-btn {
@@ -103,7 +102,7 @@
   transform: rotate(0deg);
 }
 
-/* Panel opens "bottom -> up": positioned above button and animated */
+/* Panel opens "bottom -> up" */
 .footer__legal-menu {
   position: absolute;
   left: 0;
@@ -124,7 +123,8 @@
 
   transition: opacity .22s ease, transform .22s ease;
 
-  z-index: 9999; /* критично для кліків на desktop */
+  /* ключове, щоб посилання точно клікались */
+  z-index: 9999;
 }
 
 .footer__legal-menu.light {
@@ -198,7 +198,7 @@
   .logo-num-mobile {
     margin-top: 20px;
     width: 100%;
-    padding: 0px 20px;
+    padding: 0 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -209,7 +209,7 @@
   }
 
   .footer__links-mobile {
-    padding: 0px 20px;
+    padding: 0 20px;
     margin-top: 18px;
     display: flex;
     width: 100%;
@@ -233,7 +233,6 @@
   .footer__legal--mobile {
     width: 100%;
     position: relative;
-    z-index: 5;
   }
 
   .footer__legal-menu--mobile {
@@ -249,9 +248,5 @@
     justify-content: space-between;
     padding: 10px 0;
   }
-
-  .footer__doc {
-    font-size: 16px;
-    line-height: 20px;
-  }
 }
+
