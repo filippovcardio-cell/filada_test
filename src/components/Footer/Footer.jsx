@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import "./Footer.css";
 
@@ -35,7 +35,7 @@ const Footer = () => {
   const legalRef = useRef(null);
 
   useEffect(() => {
-    const onClickOutside = (e) => {
+    const onDocClick = (e) => {
       if (!legalRef.current) return;
       if (!legalRef.current.contains(e.target)) setIsLegalOpen(false);
     };
@@ -44,14 +44,16 @@ const Footer = () => {
       if (e.key === "Escape") setIsLegalOpen(false);
     };
 
-    document.addEventListener("mousedown", onClickOutside);
+    document.addEventListener("mousedown", onDocClick);
     document.addEventListener("keydown", onEsc);
 
     return () => {
-      document.removeEventListener("mousedown", onClickOutside);
+      document.removeEventListener("mousedown", onDocClick);
       document.removeEventListener("keydown", onEsc);
     };
   }, []);
+
+  const toggleLegal = () => setIsLegalOpen((v) => !v);
 
   return (
     <footer className={`footer ${isDarkTheme ? "" : "light"}`}>
@@ -60,30 +62,29 @@ const Footer = () => {
         <div className="footer__logo">
           <img className="footer__logo-image" src={logo} alt="filada логотип" />
 
-          <div
-            className={`footer__legal ${isDarkTheme ? "" : "light"}`}
-            ref={legalRef}
-          >
+          {/* Legal dropdown (desktop) */}
+          <div className="footer__legal" ref={legalRef}>
             <button
               type="button"
+              onClick={toggleLegal}
               className={`footer__legal-btn ${isDarkTheme ? "" : "light"} mont-r`}
-              onClick={() => setIsLegalOpen((v) => !v)}
+              aria-haspopup="menu"
               aria-expanded={isLegalOpen}
-              aria-controls="footer-legal-menu"
             >
               Правова інформація
               <span className={`footer__chev ${isLegalOpen ? "open" : ""}`}>
-                ▴
+                ▼
               </span>
             </button>
 
             <div
-              id="footer-legal-menu"
-              className={`footer__legal-menu ${isLegalOpen ? "open" : ""} ${
-                isDarkTheme ? "" : "light"
+              className={`footer__legal-menu ${isDarkTheme ? "" : "light"} ${
+                isLegalOpen ? "open" : ""
               }`}
+              role="menu"
             >
               <a
+                role="menuitem"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
@@ -93,6 +94,7 @@ const Footer = () => {
               </a>
 
               <a
+                role="menuitem"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
@@ -102,6 +104,7 @@ const Footer = () => {
               </a>
 
               <a
+                role="menuitem"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
@@ -113,7 +116,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* MOBILE TOP ROW */}
+        {/* MOBILE TOP (logo + phone) */}
         <div className="logo-num-mobile">
           <img className="footer__logo-image" src={logo} alt="filada логотип" />
           <a
@@ -188,7 +191,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* MOBILE ICONS */}
+        {/* MOBILE social */}
         <div className="footer__links-mobile">
           <a
             href="https://t.me/filada_clinic"
@@ -243,34 +246,30 @@ const Footer = () => {
           </a>
         </div>
 
-        {/* MOBILE LEGAL DROPDOWN */}
+        {/* MOBILE legal dropdown */}
         <div className="footer__docs-mobile">
-          <div
-            className={`footer__legal footer__legal--mobile ${
-              isDarkTheme ? "" : "light"
-            }`}
-            ref={legalRef}
-          >
+          <div className="footer__legal footer__legal--mobile">
             <button
               type="button"
+              onClick={toggleLegal}
               className={`footer__legal-btn ${isDarkTheme ? "" : "light"} mont-r`}
-              onClick={() => setIsLegalOpen((v) => !v)}
+              aria-haspopup="menu"
               aria-expanded={isLegalOpen}
-              aria-controls="footer-legal-menu-mobile"
             >
               Правова інформація
               <span className={`footer__chev ${isLegalOpen ? "open" : ""}`}>
-                ▴
+                ▼
               </span>
             </button>
 
             <div
-              id="footer-legal-menu-mobile"
               className={`footer__legal-menu footer__legal-menu--mobile ${
-                isLegalOpen ? "open" : ""
-              } ${isDarkTheme ? "" : "light"}`}
+                isDarkTheme ? "" : "light"
+              } ${isLegalOpen ? "open" : ""}`}
+              role="menu"
             >
               <a
+                role="menuitem"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
@@ -280,6 +279,7 @@ const Footer = () => {
               </a>
 
               <a
+                role="menuitem"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
@@ -289,6 +289,7 @@ const Footer = () => {
               </a>
 
               <a
+                role="menuitem"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
@@ -305,3 +306,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
