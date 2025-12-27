@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import "./Footer.css";
 
@@ -17,7 +17,9 @@ import fbicondark from "../../assets/icons/fbicon.png";
 const Footer = () => {
   const isDarkTheme = useSelector((state) => state.theme.isDarkTheme);
 
-  // /public/docs/*
+  const [legalOpen, setLegalOpen] = useState(false);
+  const legalRef = useRef(null);
+
   const MOZLicenseUrl = `${process.env.PUBLIC_URL}/docs/1668.pdf`;
   const ClientRulesUrl = `${process.env.PUBLIC_URL}/docs/patient-rules.pdf`;
 
@@ -31,24 +33,39 @@ const Footer = () => {
   const instIconSrc = isDarkTheme ? insticon : insticondark;
   const fbIconSrc = isDarkTheme ? fbicon : fbicondark;
 
-  const [isLegalOpen, setIsLegalOpen] = useState(false);
-  const legalRef = useRef(null);
+  const legalItems = useMemo(
+    () => [
+      { href: MOZLicenseUrl, label: "Ліцензія МОЗ" },
+      { href: ClientRulesUrl, label: "Правила перебування пацієнтів" },
+      {
+        href: OfferAgreementUrl,
+        label: "Публічний договір-оферта про надання медичних послуг",
+      },
+    ],
+    [MOZLicenseUrl, ClientRulesUrl, OfferAgreementUrl]
+  );
 
+  // Close on outside click / Escape
   useEffect(() => {
     const onDocMouseDown = (e) => {
       if (!legalRef.current) return;
-      if (!legalRef.current.contains(e.target)) {
-        setIsLegalOpen(false);
-      }
+      if (!legalRef.current.contains(e.target)) setLegalOpen(false);
+    };
+
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") setLegalOpen(false);
     };
 
     document.addEventListener("mousedown", onDocMouseDown);
-    return () => document.removeEventListener("mousedown", onDocMouseDown);
+    document.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.removeEventListener("mousedown", onDocMouseDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
   }, []);
 
-  const toggleLegal = () => setIsLegalOpen((v) => !v);
-
-  const closeLegal = () => setIsLegalOpen(false);
+  const toggleLegal = () => setLegalOpen((v) => !v);
 
   return (
     <footer className={`footer ${isDarkTheme ? "" : "light"}`}>
@@ -60,60 +77,39 @@ const Footer = () => {
           <div className="footer__legal" ref={legalRef}>
             <button
               type="button"
-              className={`footer__legal-btn ${isDarkTheme ? "" : "light"}`}
+              className={`footer__legal-btn ${isDarkTheme ? "" : "light"} mont-r`}
               onClick={toggleLegal}
-              aria-expanded={isLegalOpen}
+              aria-expanded={legalOpen}
               aria-haspopup="menu"
             >
               Правова інформація
-              <span className={`footer__chev ${isLegalOpen ? "open" : ""}`}>
-                ▾
-              </span>
+              <span className={`footer__chev ${legalOpen ? "open" : ""}`}>▾</span>
             </button>
 
             <div
-              className={`footer__legal-menu ${
+              className={`footer__legal-menu ${legalOpen ? "open" : ""} ${
                 isDarkTheme ? "" : "light"
-              } ${isLegalOpen ? "open" : ""}`}
+              }`}
               role="menu"
             >
-              <a
-                role="menuitem"
-                className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
-                href={MOZLicenseUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={closeLegal}
-              >
-                Ліцензія МОЗ
-              </a>
-
-              <a
-                role="menuitem"
-                className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
-                href={ClientRulesUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={closeLegal}
-              >
-                Правила перебування пацієнтів
-              </a>
-
-              <a
-                role="menuitem"
-                className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
-                href={OfferAgreementUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={closeLegal}
-              >
-                Публічний договір-оферта про надання медичних послуг
-              </a>
+              {legalItems.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
+                  role="menuitem"
+                  onClick={() => setLegalOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* ===== Mobile top row ===== */}
+        {/* ===== Mobile top line ===== */}
         <div className="logo-num-mobile">
           <img className="footer__logo-image" src={logo} alt="filada логотип" />
           <a
@@ -188,7 +184,7 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* ===== Mobile social ===== */}
+        {/* ===== Mobile social row ===== */}
         <div className="footer__links-mobile">
           <a
             href="https://t.me/filada_clinic"
@@ -243,60 +239,41 @@ const Footer = () => {
           </a>
         </div>
 
-        {/* ===== Mobile legal dropdown ===== */}
+        {/* ===== Mobile docs area ===== */}
         <div className="footer__docs-mobile">
-          <div className="footer__legal footer__legal--mobile">
+          <div className="footer__legal footer__legal--mobile" ref={legalRef}>
             <button
               type="button"
-              className={`footer__legal-btn ${isDarkTheme ? "" : "light"}`}
+              className={`footer__legal-btn footer__legal-btn--mobile ${
+                isDarkTheme ? "" : "light"
+              } mont-r`}
               onClick={toggleLegal}
-              aria-expanded={isLegalOpen}
+              aria-expanded={legalOpen}
               aria-haspopup="menu"
             >
               Правова інформація
-              <span className={`footer__chev ${isLegalOpen ? "open" : ""}`}>
-                ▾
-              </span>
+              <span className={`footer__chev ${legalOpen ? "open" : ""}`}>▾</span>
             </button>
 
             <div
               className={`footer__legal-menu footer__legal-menu--mobile ${
-                isDarkTheme ? "" : "light"
-              } ${isLegalOpen ? "open" : ""}`}
+                legalOpen ? "open" : ""
+              } ${isDarkTheme ? "" : "light"}`}
               role="menu"
             >
-              <a
-                role="menuitem"
-                className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
-                href={MOZLicenseUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={closeLegal}
-              >
-                Ліцензія МОЗ
-              </a>
-
-              <a
-                role="menuitem"
-                className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
-                href={ClientRulesUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={closeLegal}
-              >
-                Правила перебування пацієнтів
-              </a>
-
-              <a
-                role="menuitem"
-                className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
-                href={OfferAgreementUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={closeLegal}
-              >
-                Публічний договір-оферта про надання медичних послуг
-              </a>
+              {legalItems.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
+                  role="menuitem"
+                  onClick={() => setLegalOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ))}
             </div>
           </div>
         </div>
