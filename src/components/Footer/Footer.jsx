@@ -18,7 +18,10 @@ const Footer = () => {
   const isDarkTheme = useSelector((state) => state.theme.isDarkTheme);
 
   const [legalOpen, setLegalOpen] = useState(false);
-  const legalRef = useRef(null);
+
+  const legalWrapRef = useRef(null);
+  const legalBtnRef = useRef(null);
+  const legalMenuRef = useRef(null);
 
   const MOZLicenseUrl = `${process.env.PUBLIC_URL}/docs/1668.pdf`;
   const ClientRulesUrl = `${process.env.PUBLIC_URL}/docs/patient-rules.pdf`;
@@ -33,7 +36,7 @@ const Footer = () => {
   const instIconSrc = isDarkTheme ? insticon : insticondark;
   const fbIconSrc = isDarkTheme ? fbicon : fbicondark;
 
-  const legalItems = useMemo(
+  const legalLinks = useMemo(
     () => [
       { href: MOZLicenseUrl, label: "Ліцензія МОЗ" },
       { href: ClientRulesUrl, label: "Правила перебування пацієнтів" },
@@ -45,71 +48,77 @@ const Footer = () => {
     [MOZLicenseUrl, ClientRulesUrl, OfferAgreementUrl]
   );
 
-  // Close on outside click / Escape
+  // Закриваємо dropdown по кліку ЗЗОВНІ (але НЕ ламаємо клік по лінках)
   useEffect(() => {
-    const onDocMouseDown = (e) => {
-      if (!legalRef.current) return;
-      if (!legalRef.current.contains(e.target)) setLegalOpen(false);
+    const onPointerDownCapture = (e) => {
+      if (!legalOpen) return;
+
+      const wrap = legalWrapRef.current;
+      if (!wrap) return;
+
+      // якщо клік всередині dropdown/кнопки — нічого не робимо
+      if (wrap.contains(e.target)) return;
+
+      setLegalOpen(false);
     };
 
-    const onKeyDown = (e) => {
-      if (e.key === "Escape") setLegalOpen(false);
-    };
-
-    document.addEventListener("mousedown", onDocMouseDown);
-    document.addEventListener("keydown", onKeyDown);
-
+    document.addEventListener("pointerdown", onPointerDownCapture, true);
     return () => {
-      document.removeEventListener("mousedown", onDocMouseDown);
-      document.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("pointerdown", onPointerDownCapture, true);
     };
-  }, []);
+  }, [legalOpen]);
 
   const toggleLegal = () => setLegalOpen((v) => !v);
+
+  const closeLegal = () => setLegalOpen(false);
 
   return (
     <footer className={`footer ${isDarkTheme ? "" : "light"}`}>
       <div className="footer__wrapper">
-        {/* ===== Desktop left block ===== */}
+        {/* DESKTOP LEFT */}
         <div className="footer__logo">
           <img className="footer__logo-image" src={logo} alt="filada логотип" />
 
-          <div className="footer__legal" ref={legalRef}>
+          <div className="footer__legal" ref={legalWrapRef}>
             <button
+              ref={legalBtnRef}
               type="button"
-              className={`footer__legal-btn ${isDarkTheme ? "" : "light"} mont-r`}
+              className={`footer__legal-btn ${isDarkTheme ? "" : "light"}`}
               onClick={toggleLegal}
-              aria-expanded={legalOpen}
-              aria-haspopup="menu"
+              aria-expanded={legalOpen ? "true" : "false"}
+              aria-controls="footer-legal-menu"
             >
               Правова інформація
-              <span className={`footer__chev ${legalOpen ? "open" : ""}`}>▾</span>
+              <span className={`footer__chev ${legalOpen ? "open" : ""}`}>⌃</span>
             </button>
 
             <div
+              ref={legalMenuRef}
+              id="footer-legal-menu"
               className={`footer__legal-menu ${legalOpen ? "open" : ""} ${
                 isDarkTheme ? "" : "light"
               }`}
               role="menu"
             >
-              {legalItems.map((item) => (
+              {legalLinks.map((l) => (
                 <a
-                  key={item.href}
-                  href={item.href}
+                  key={l.href}
+                  href={l.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
+                  className={`footer__doc ${isDarkTheme ? "" : "light"}`}
                   role="menuitem"
-                  onClick={() => setLegalOpen(false)}
+                  // Важливо: щоб клік по лінку не “з’їдався” логікою закриття
+                  onClick={closeLegal}
                 >
-                  {item.label}
+                  {l.label}
                 </a>
               ))}
             </div>
           </div>
         </div>
 
-        {/* ===== Mobile top line ===== */}
+        {/* MOBILE TOP ROW */}
         <div className="logo-num-mobile">
           <img className="footer__logo-image" src={logo} alt="filada логотип" />
           <a
@@ -120,7 +129,7 @@ const Footer = () => {
           </a>
         </div>
 
-        {/* ===== Desktop right block ===== */}
+        {/* DESKTOP RIGHT */}
         <div className="footer__contacts">
           <a
             className={`footer__tel ${isDarkTheme ? "" : "light"} mont-r`}
@@ -136,11 +145,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="footer__link"
             >
-              <img
-                src={tgIconSrc}
-                alt="посилання на телеграм"
-                className="footer__link-icon"
-              />
+              <img src={tgIconSrc} alt="посилання на телеграм" className="footer__link-icon" />
             </a>
 
             <a
@@ -149,11 +154,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="footer__link"
             >
-              <img
-                src={ttIconSrc}
-                alt="посилання на тікток"
-                className="footer__link-icon"
-              />
+              <img src={ttIconSrc} alt="посилання на тікток" className="footer__link-icon" />
             </a>
 
             <a
@@ -162,11 +163,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="footer__link"
             >
-              <img
-                src={instIconSrc}
-                alt="посилання на інстаграм"
-                className="footer__link-icon"
-              />
+              <img src={instIconSrc} alt="посилання на інстаграм" className="footer__link-icon" />
             </a>
 
             <a
@@ -175,16 +172,12 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="footer__link"
             >
-              <img
-                src={fbIconSrc}
-                alt="посилання на facebook"
-                className="footer__link-icon"
-              />
+              <img src={fbIconSrc} alt="посилання на facebook" className="footer__link-icon" />
             </a>
           </div>
         </div>
 
-        {/* ===== Mobile social row ===== */}
+        {/* MOBILE SOCIAL */}
         <div className="footer__links-mobile">
           <a
             href="https://t.me/filada_clinic"
@@ -192,11 +185,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="footer__link"
           >
-            <img
-              src={tgIconSrc}
-              alt="посилання на телеграм"
-              className="footer__link-icon"
-            />
+            <img src={tgIconSrc} alt="посилання на телеграм" className="footer__link-icon" />
           </a>
 
           <a
@@ -205,11 +194,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="footer__link"
           >
-            <img
-              src={ttIconSrc}
-              alt="посилання на тікток"
-              className="footer__link-icon"
-            />
+            <img src={ttIconSrc} alt="посилання на тікток" className="footer__link-icon" />
           </a>
 
           <a
@@ -218,11 +203,7 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="footer__link"
           >
-            <img
-              src={instIconSrc}
-              alt="посилання на інстаграм"
-              className="footer__link-icon"
-            />
+            <img src={instIconSrc} alt="посилання на інстаграм" className="footer__link-icon" />
           </a>
 
           <a
@@ -231,47 +212,46 @@ const Footer = () => {
             rel="noopener noreferrer"
             className="footer__link"
           >
-            <img
-              src={fbIconSrc}
-              alt="посилання на facebook"
-              className="footer__link-icon"
-            />
+            <img src={fbIconSrc} alt="посилання на facebook" className="footer__link-icon" />
           </a>
         </div>
 
-        {/* ===== Mobile docs area ===== */}
+        {/* MOBILE DOCS BUTTON (fixed dropdown) */}
         <div className="footer__docs-mobile">
-          <div className="footer__legal footer__legal--mobile" ref={legalRef}>
+          <div className="footer__legal footer__legal--mobile" ref={legalWrapRef}>
             <button
+              ref={legalBtnRef}
               type="button"
               className={`footer__legal-btn footer__legal-btn--mobile ${
                 isDarkTheme ? "" : "light"
-              } mont-r`}
+              }`}
               onClick={toggleLegal}
-              aria-expanded={legalOpen}
-              aria-haspopup="menu"
+              aria-expanded={legalOpen ? "true" : "false"}
+              aria-controls="footer-legal-menu-mobile"
             >
               Правова інформація
-              <span className={`footer__chev ${legalOpen ? "open" : ""}`}>▾</span>
+              <span className={`footer__chev ${legalOpen ? "open" : ""}`}>⌃</span>
             </button>
 
             <div
+              ref={legalMenuRef}
+              id="footer-legal-menu-mobile"
               className={`footer__legal-menu footer__legal-menu--mobile ${
                 legalOpen ? "open" : ""
               } ${isDarkTheme ? "" : "light"}`}
               role="menu"
             >
-              {legalItems.map((item) => (
+              {legalLinks.map((l) => (
                 <a
-                  key={item.href}
-                  href={item.href}
+                  key={l.href}
+                  href={l.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`footer__doc ${isDarkTheme ? "" : "light"} mont-r`}
+                  className={`footer__doc ${isDarkTheme ? "" : "light"}`}
                   role="menuitem"
-                  onClick={() => setLegalOpen(false)}
+                  onClick={closeLegal}
                 >
-                  {item.label}
+                  {l.label}
                 </a>
               ))}
             </div>
@@ -283,4 +263,5 @@ const Footer = () => {
 };
 
 export default Footer;
+
 

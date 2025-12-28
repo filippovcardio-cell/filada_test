@@ -25,7 +25,7 @@ export const blogArr = [
             name: "Олександр Косенко",
             job: "Пластичний хірург",
             image: oKosenkoAvatar,
-            link: "/oleksandr-kosenko",
+            link: "/doctors/oleksandr-kosenko",
         },
         hrefDetails: "/plastic-surgery/",
     },
