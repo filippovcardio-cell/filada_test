@@ -26,6 +26,18 @@
   display: flex;
   width: 1200px;
   justify-content: space-between;
+  gap: 120px;
+}
+
+.aboute-values-fullwidth {
+  width: 1200px;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.aboute__texts--full {
+  width: 100%;
 }
 
 @media (max-width: 1200px) {
@@ -45,7 +57,12 @@
     flex-direction: column-reverse;
     gap: 30px;
   }
-  
+
+  .aboute-values-fullwidth {
+    width: 320px;
+    gap: 30px;
+  }
+
   .aboute__texts {
     width: 320px;
     display: flex;
@@ -53,7 +70,7 @@
     justify-content: center;
     gap: 18px;
   }
-  
+
   .aboute__image {
     width: 320px;
     height: 280px;
@@ -61,3 +78,4 @@
     border-radius: 20px;
   }
 }
+
