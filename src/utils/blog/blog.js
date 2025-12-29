@@ -14,6 +14,11 @@ import { blogBreastAugmentationTop10QuestionsText } from "./blogBreastAugmentati
 import breastAugmentationPreview1 from "../../assets/images/blog/zbilshennya-grudei-1.webp";
 import breastAugmentationPreview2 from "../../assets/images/blog/zbilshennya-grudei-2.webp";
 import breastAugmentationPreview3 from "../../assets/images/blog/zbilshennya-grudei-3.webp";
+import { blogBreastImplantsChoiceText } from "./blogBreastImplantsChoiceText";
+import implantsPhoto1 from "../../assets/images/blog/vybir-grudnih-implantiv-1.webp";
+import implantsPhoto2 from "../../assets/images/blog/vybir-grudnih-implantiv-2.webp";
+import implantsPhoto3 from "../../assets/images/blog/vybir-grudnih-implantiv-3.webp";
+
 
 export const blogArr = [
   {
@@ -147,5 +152,37 @@ export const blogArr = [
     },
     hrefDetails: "/plastic-surgery/",
   },
+  {
+  path: "/vybir-grudnih-implantiv-krugli-vs-anatomichni/",
+  metaTitle:
+    "Вибір грудних імплантів: круглі чи анатомічні | Блог МЦ Filada",
+  metaDescription:
+    "Як обрати грудні імпланти: круглі чи анатомічні? Порівняння форм, переваг, ризиків і рекомендації пластичного хірурга.",
+  metaUrl:
+    "https://filada.com.ua/blog/vybir-grudnih-implantiv-krugli-vs-anatomichni/",
+  coverDescription: "Вибір грудних імплантів",
+  text: blogBreastImplantsChoiceText,
+  imagesArr: [
+    {
+      src: implantsPhoto1,
+      alt: "Вибір грудних імплантів",
+    },
+    {
+      src: implantsPhoto2,
+      alt: "Круглі та анатомічні грудні імпланти",
+    },
+    {
+      src: implantsPhoto3,
+      alt: "Порівняння грудних імплантів",
+    },
+  ],
+  author: {
+    name: "Олександр Косенко",
+    job: "Пластичний хірург",
+    image: oKosenkoAvatar,
+    link: "/doctors/oleksandr-kosenko",
+  },
+  hrefDetails: "/plastic-surgery/",
+},
 ];
 

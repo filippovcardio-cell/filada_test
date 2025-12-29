@@ -3,6 +3,7 @@ import septoPreview from "../../assets/images/blog/septoPreview.JPG";
 import howToChoosePlasticSurgerPreview from "../../assets/images/blog/howToChoosePlasticSurgerPreview.JPG";
 import howtolosebellyfatPreview from "../../assets/images/blog/howtolosebellyfatPreview.webp";
 import zbilshennyaGrudeiPreview from "../../assets/images/blog/zbilshennya-grudei-2.webp";
+import vybirGrudnihImplantivPreview from "../../assets/images/blog/vybir-grudnih-implantiv-1.webp";
 
 export const allBlogPagesArr = [
   {
@@ -30,4 +31,10 @@ export const allBlogPagesArr = [
     previewImage: zbilshennyaGrudeiPreview,
     title: "Збільшення грудей: топ-10 питань, які соромляться задати на консультації",
   },
+  {
+    path: "/vybir-grudnih-implantiv-krugli-vs-anatomichni/",
+    previewImage: vybirGrudnihImplantivPreview,
+    title: "Вибір грудних імплантів: круглі vs анатомічні – що підійде саме вам",
+  },
 ];
+
