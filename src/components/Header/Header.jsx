@@ -14,11 +14,11 @@ import {
   setIsClose,
 } from "../../redux/ModalSlice/ModalSlice";
 import {
-  ABOUTE_ROUTE,
   ALL_SERVICES_ROUTE,
   BEFORE_AFTER_BLEPHAROPLASTY_ROUTE,
   BLOG_ROUTE,
   CONTACTS_ROUTE,
+  POPULAR_SERVICES_HUB_ROUTE,
   PRICES_ROUTE,
   SERVICE_COSMETOLOGY_ROUTE,
   SERVICE_DERMATOLOGY_ROUTE,
@@ -99,6 +99,7 @@ const Header = () => {
             className="header__logo"
           />
         </Link>
+
         <nav className="header__nav">
           <div className="header__link-first" onMouseOver={handleMenuOpen}>
             <div
@@ -204,7 +205,7 @@ const Header = () => {
                   isDarkTheme ? "" : "light"
                 } mont-r`}
               >
-               Ортопедія та травматологія
+                Ортопедія та травматологія
               </Link>
               <Link
                 onClick={handleScrollToTop}
@@ -213,7 +214,7 @@ const Header = () => {
                   isDarkTheme ? "" : "light"
                 } mont-r`}
               >
-               УЗ діагностика
+                УЗ діагностика
               </Link>
               <Link
                 onClick={handleScrollToTop}
@@ -225,6 +226,7 @@ const Header = () => {
                 Судинна хірургія
               </Link>
             </div>
+
             <Link
               onClick={handleScrollToTop}
               to={ALL_SERVICES_ROUTE}
@@ -232,18 +234,21 @@ const Header = () => {
             >
               Напрямки роботи
             </Link>
+
             <div className={`triangle ${isMenuActive ? "active" : ""} `}>
-              {" "}
               <Triangle isActive={isMenuActive} />
             </div>
           </div>
+
+          {/* ✅ Замість "Про нас" тепер HUB "Популярні послуги" */}
           <Link
             onClick={handleScrollToTop}
             className={`header__link ${isDarkTheme ? "" : "light"}`}
-            to={ABOUTE_ROUTE}
+            to={POPULAR_SERVICES_HUB_ROUTE}
           >
-            Про нас
+            Популярні послуги
           </Link>
+
           <Link
             onClick={handleScrollToTop}
             className={`header__link ${isDarkTheme ? "" : "light"}`}
@@ -251,6 +256,7 @@ const Header = () => {
           >
             Лікарі
           </Link>
+
           <Link
             onClick={handleScrollToTop}
             className={`header__link ${isDarkTheme ? "" : "light"}`}
@@ -258,14 +264,18 @@ const Header = () => {
           >
             Ціни
           </Link>
-          <div onMouseOver={handleBeforeAfterMenuOpen} className="before__after-header-wrapper">
+
           <div
+            onMouseOver={handleBeforeAfterMenuOpen}
+            className="before__after-header-wrapper"
+          >
+            <div
               onMouseLeave={handleBeforeAfterMenuClose}
-              className={`header__before-after-menu ${isDarkTheme ? "" : "light"} ${
-                isBeforeAfterMenuActive ? "active" : ""
-              }`}
+              className={`header__before-after-menu ${
+                isDarkTheme ? "" : "light"
+              } ${isBeforeAfterMenuActive ? "active" : ""}`}
             >
-               <Link
+              <Link
                 onClick={handleScrollToTop}
                 to={BEFORE_AFTER_BLEPHAROPLASTY_ROUTE}
                 className={`header__menu-link ${
@@ -275,12 +285,16 @@ const Header = () => {
                 Блефаропластика
               </Link>
             </div>
-            <p className={`header__link large ${isDarkTheme ? "" : "light"}`}>До/після</p>
+
+            <p className={`header__link large ${isDarkTheme ? "" : "light"}`}>
+              До/після
+            </p>
+
             <div className={`triangle ${isBeforeAfterMenuActive ? "active" : ""} `}>
-              {" "}
               <Triangle isActive={isBeforeAfterMenuActive} />
             </div>
           </div>
+
           <Link
             onClick={handleScrollToTop}
             className={`header__link ${isDarkTheme ? "" : "light"}`}
@@ -288,6 +302,7 @@ const Header = () => {
           >
             Контакти
           </Link>
+
           <Link
             onClick={handleScrollToTop}
             className={`header__link ${isDarkTheme ? "" : "light"}`}
@@ -295,6 +310,7 @@ const Header = () => {
           >
             Блог
           </Link>
+
           <a
             onClick={handleMenuClose}
             target={"_blank"}
@@ -305,28 +321,29 @@ const Header = () => {
             Відгуки
           </a>
         </nav>
+
         <div className="header__buttons">
-          <div
-            // onClick={handleToggleTheme}
-            className="toggle__header-button-wrapper"
-          >
+          <div className="toggle__header-button-wrapper">
             <ToggleThemeButton
               onChange={handleToggleTheme}
               isChecked={!isChecked}
             />
           </div>
+
           <a
             className={`header__call-button ${isDarkTheme ? "" : "light"}`}
             href="tel:+38(063)503-04-72"
           >
             +38(063)503-04-72
           </a>
+
           <button
             onClick={handleModalOpen}
             className={`header__taget-button ${isDarkTheme ? "" : "light"}`}
           >
             Консультація
           </button>
+
           <div className="burger__button">
             <Hamburger
               size={28}

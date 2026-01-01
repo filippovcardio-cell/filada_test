@@ -11,11 +11,16 @@ import {
   BLOG_ROUTE,
   CONTACTS_ROUTE,
   PRICES_ROUTE,
+  POPULAR_SERVICES_HUB_ROUTE,
+  POPULAR_SERVICES_ROUTE,
 } from "./utils/routes";
 import AboutePage from "./pages/AboutePage/AboutePage";
 import ContactsPage from "./pages/ContactsPage/ContactsPage";
 import { useDispatch, useSelector } from "react-redux";
-import { setDarkTheme, setLightTheme } from "./redux/ToggleThemeSlice/ToggleThemeSlice";
+import {
+  setDarkTheme,
+  setLightTheme,
+} from "./redux/ToggleThemeSlice/ToggleThemeSlice";
 import PricesPage from "./pages/PricesPage/PricesPage";
 import { HelmetProvider } from "react-helmet-async";
 import AllServicesPage from "./pages/AllServicesPage/AllServicesPage";
@@ -79,14 +84,30 @@ function App() {
               <Route index element={<MainPage />} />
               <Route path={ABOUTE_ROUTE} element={<AboutePage />} />
               <Route path={CONTACTS_ROUTE} element={<ContactsPage />} />
-              <Route path={PRICES_ROUTE} element={<PricesPage serviceArr={servicePageArr} />} />
+              <Route
+                path={PRICES_ROUTE}
+                element={<PricesPage serviceArr={servicePageArr} />}
+              />
               <Route path={ALL_SERVICES_ROUTE} element={<AllServicesPage />} />
 
-              <Route path={BLOG_ROUTE} element={<BlogPage blogArr={allBlogPagesArr} />} />
-              <Route path={"/doctors/"} element={<DoctorsHubPage doctorsArr={teamArr} />} />
+              <Route
+                path={BLOG_ROUTE}
+                element={<BlogPage blogArr={allBlogPagesArr} />}
+              />
+              <Route
+                path={"/doctors/"}
+                element={<DoctorsHubPage doctorsArr={teamArr} />}
+              />
 
-              <Route path="/popular-services" element={<PopularServicesHubPage />} />
-              <Route path="/services/:slug" element={<PopularServicePage />} />
+              {/* ✅ Popular Services */}
+              <Route
+                path={POPULAR_SERVICES_HUB_ROUTE}
+                element={<PopularServicesHubPage />}
+              />
+              <Route
+                path={`${POPULAR_SERVICES_ROUTE}:slug`}
+                element={<PopularServicePage />}
+              />
 
               {servicePageArr.map((page, idx) => {
                 return (
@@ -154,7 +175,11 @@ function App() {
 
               {teamArr.map((page, idx) => {
                 return (
-                  <Route key={idx} path={page.path} element={<DoctorPage doctor={page} />} />
+                  <Route
+                    key={idx}
+                    path={page.path}
+                    element={<DoctorPage doctor={page} />}
+                  />
                 );
               })}
 
@@ -178,5 +203,3 @@ function App() {
 }
 
 export default App;
-
-

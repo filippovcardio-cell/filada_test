@@ -1,6 +1,4 @@
 import smasCover1 from "../../assets/images/popularservices/smas-face1.webp";
-
-// ✅ правильний шлях згідно твого проєкту:
 import  SmasLiftingText  from "../popularServicesText/SmasLiftingText";
 
 const smasLiftingJsonLd = `{
