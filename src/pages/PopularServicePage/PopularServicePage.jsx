@@ -1,60 +1,288 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { Helmet } from "react-helmet-async";
-import Cover from "../../components/Cover/Cover";
-import { popularServicesPagesArr } from "../../utils/popularServicesPagesArr";
+import React, { useMemo, useState } from "react";
 import "./PopularServicePage.css";
+import Cover from "../../components/Cover/Cover";
+import { Helmet } from "react-helmet-async";
+import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { InputMask } from "@react-input/mask";
 
-const PopularServicesPage = () => {
+import { popularServicesPagesArr } from "../../utils/popularServicesPagesArr";
+import { useTelegramMessage } from "../../utils/request";
+import { setSelectedDoctor } from "../../redux/ModalSlice/ModalSlice";
+
+const PopularServicePage = () => {
+  const { slug } = useParams();
+  const dispatch = useDispatch();
   const isDarkTheme = useSelector((state) => state.theme.isDarkTheme);
 
-  const scrollToTop = () => window.scrollTo(0, 0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [userName, setUserName] = useState("");
+  const [userPhone, setUserPhone] = useState("");
+  const [phoneError, setPhoneError] = useState(false);
+  const [nameError, setNameError] = useState(false);
+
+  const { sendTelegramMessage } = useTelegramMessage();
+
+  const pageData = useMemo(() => {
+    return popularServicesPagesArr.find((p) => p.slug === slug);
+  }, [slug]);
+
+  const selectedDoctor = useMemo(() => {
+    if (!pageData) return "";
+    return (
+      pageData.serviceFormName ||
+      pageData.doctorName ||
+      pageData.pageTitle ||
+      pageData.coverDescription ||
+      pageData.metaTitle ||
+      ""
+    );
+  }, [pageData]);
+
+  const metaTitle =
+    pageData?.metaTitle ||
+    pageData?.pageTitle ||
+    pageData?.coverDescription ||
+    "Послуга | Filada";
+
+  const metaDescription =
+    pageData?.metaDescription || "Детальна інформація про послугу Filada.";
+
+  const canonicalUrl =
+    pageData?.metaUrl || `https://filada.com.ua/services/${slug}/`;
+
+  const coverDescription =
+    pageData?.coverDescription || pageData?.pageTitle || "Послуга";
+
+  const titleH1 =
+    pageData?.pageTitle || pageData?.serviceTitle || pageData?.coverDescription;
+
+  const photosArr =
+    pageData?.photos ||
+    pageData?.servicePhotos ||
+    pageData?.imagesArr ||
+    pageData?.images ||
+    [];
+
+  const textCandidate =
+    pageData?.text ||
+    pageData?.serviceTexts ||
+    pageData?.content ||
+    pageData?.description ||
+    pageData?.seoText ||
+    pageData?.textArr ||
+    pageData?.blocks ||
+    null;
+
+  const textParagraphs = useMemo(() => {
+    if (!textCandidate) return [];
+
+    if (Array.isArray(textCandidate)) {
+      return textCandidate
+        .filter(Boolean)
+        .map((x) => (typeof x === "string" ? x : x?.text || x?.value || ""))
+        .filter(Boolean);
+    }
+
+    if (typeof textCandidate === "string") {
+      return textCandidate
+        .split("\n")
+        .map((s) => s.trim())
+        .filter(Boolean);
+    }
+
+    return [];
+  }, [textCandidate]);
+
+  const isJsxText =
+    textCandidate && React.isValidElement(textCandidate);
+
+  const handleNameChange = (e) => {
+    setUserName(e.target.value);
+    setNameError(false);
+  };
+
+  const handlePhoneNumberChange = (e) => {
+    setUserPhone(e.target.value);
+    setPhoneError(false);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+
+    let nameErrorFlag = false;
+    let phoneErrorFlag = false;
+
+    if (userName.length < 1) {
+      setNameError(true);
+      nameErrorFlag = true;
+    } else {
+      setNameError(false);
+    }
+
+    if (userPhone && !userPhone.includes("_")) {
+      setPhoneError(false);
+    } else {
+      setPhoneError(true);
+      phoneErrorFlag = true;
+    }
+
+    if (nameErrorFlag || phoneErrorFlag) {
+      setIsSubmitting(false);
+      return;
+    }
+
+    const message = `\u{1F3D8}Заявка з сайту\u{1F3D8}\nІм'я: ${userName}\nНомер телефону: ${userPhone}\nОбрана послуга: ${
+      selectedDoctor ? selectedDoctor : "Не обрано"
+    }`;
+
+    await sendTelegramMessage({ userName, userPhone, message });
+
+    setUserName("");
+    setUserPhone("");
+    dispatch(setSelectedDoctor(null));
+    setIsSubmitting(false);
+  };
+
+  if (!pageData) {
+    return (
+      <div className="popular-service-page">
+        <Cover coverDescription="Послуга" />
+        <div className={`popular-service-page-wrapper ${isDarkTheme ? "" : "light"}`}>
+          <h1 className={`popular-service-page-title ${isDarkTheme ? "" : "light"} arial-r`}>
+            Сторінку не знайдено
+          </h1>
+          <div className="popular-service-page-content">
+            <p className={`popular-service-page-text ${isDarkTheme ? "" : "light"} mont-r-21`}>
+              Послуга не знайдена у масиві popularServicesPagesArr (перевір slug).
+            </p>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className="popular-services-page">
+    <div className="popular-service-page">
       <Helmet>
-        <title>Популярні послуги | Filada</title>
-        <meta
-          name="description"
-          content="Популярні послуги медичного центру Filada: сторінки послуг для швидкого вибору та запису."
-        />
-        <link rel="canonical" href="https://filada.com.ua/services/" />
+        <title>{metaTitle}</title>
+        <meta name="description" content={metaDescription} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:url" content={canonicalUrl} />
+
+        {pageData?.jsonLd && (
+          <script type="application/ld+json">
+            {JSON.stringify(pageData.jsonLd)}
+          </script>
+        )}
       </Helmet>
 
-      <Cover coverDescription="Популярні послуги" />
+      <Cover coverDescription={coverDescription} />
 
-      <div className={`popular-services-wrapper ${isDarkTheme ? "" : "light"}`}>
-        <h1 className={`popular-services-title ${isDarkTheme ? "" : "light"} arial-r`}>
-          Популярні послуги
+      <div className={`popular-service-page-wrapper ${isDarkTheme ? "" : "light"}`}>
+        <h1 className={`popular-service-page-title ${isDarkTheme ? "" : "light"} arial-r`}>
+          {titleH1}
         </h1>
 
-        <div className="popular-services-grid">
-          {popularServicesPagesArr.map((p) => (
-            <Link
-              key={p.slug}
-              to={`/services/${p.slug}`}
-              onClick={scrollToTop}
-              className={`popular-services-card ${isDarkTheme ? "" : "light"}`}
-            >
-              <div className="popular-services-card-top">
-                <h2 className="popular-services-card-title mont-m">
-                  {p.pageTitle || p.coverDescription}
-                </h2>
-                <p className="popular-services-card-desc mont-r">
-                  {p.metaDescription || "Детальніше про послугу"}
-                </p>
-              </div>
+        <div className="popular-service-page-content">
+          {isJsxText ? (
+            textCandidate
+          ) : textParagraphs.length > 0 ? (
+            textParagraphs.map((t, idx) => (
+              <p
+                key={idx}
+                className={`popular-service-page-text ${isDarkTheme ? "" : "light"} mont-r-21`}
+              >
+                {t}
+              </p>
+            ))
+          ) : (
+            <p className={`popular-service-page-text ${isDarkTheme ? "" : "light"} mont-r-21`}>
+              Текст для цієї сторінки не знайдено у popularServicesPagesArr (перевір ключі поля).
+            </p>
+          )}
+        </div>
 
-              <div className="popular-services-card-bottom mont-r">
-                Перейти →
-              </div>
-            </Link>
-          ))}
+        {Array.isArray(photosArr) && photosArr.length > 0 && (
+          <div className="popular-service-page-photos">
+            {photosArr.map((img, idx) => (
+              <img
+                key={idx}
+                src={img}
+                alt={titleH1}
+                className="popular-service-page-photo"
+                loading="lazy"
+              />
+            ))}
+          </div>
+        )}
+
+        <div className={`doctor__page-form-wrapper ${isDarkTheme ? "" : "light"}`}>
+          <h3 className={`doctor__page-form-title ${isDarkTheme ? "" : "light"} mont-m`}>
+            Записатись до лікаря
+          </h3>
+          <p className={`doctor__page-form-text ${isDarkTheme ? "" : "light"} mont-r-21`}>
+            Заповніть форму і ми зв’яжемось з Вами найближчим часом
+          </p>
+
+          <form onSubmit={handleSubmit} className="doctor__page-form-form">
+            <input
+              placeholder="Ім’я"
+              value={userName}
+              onChange={handleNameChange}
+              className={`doctor__page-input ${isDarkTheme ? "" : "light"} ${
+                nameError ? "error" : ""
+              } mont-r-21`}
+              type="text"
+            />
+
+            <InputMask
+              mask="+38 (___) ___-__-__"
+              replacement={{ _: /\d/ }}
+              showMask={true}
+              onFocus={(e) => {
+                if (e.target.value.length < 5) {
+                  e.target.value = "+38 (___) ___-__-__";
+                } else if (e.target.value.length > 5) {
+                  return;
+                }
+              }}
+              onBlur={(e) => {
+                if (e.target.value === "+38 (___) ___-__-__") {
+                  setUserPhone("");
+                }
+              }}
+              value={userPhone}
+              onChange={handlePhoneNumberChange}
+              placeholder="Номер телефону"
+              className={`doctor__page-input ${isDarkTheme ? "" : "light"} ${
+                phoneError ? "error" : ""
+              } mont-r-21`}
+              type="phone"
+            />
+
+            <button
+              className={`doctor__page-button ${isDarkTheme ? "" : "light"} mont-r`}
+              type="submit"
+            >
+              {isSubmitting ? "Відправка..." : "Відправити"}
+            </button>
+          </form>
         </div>
       </div>
     </div>
   );
 };
 
-export default PopularServicesPage;
+export default PopularServicePage;
+
+
+
+
+
+
+
+

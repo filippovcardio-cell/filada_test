@@ -15,7 +15,6 @@
 }
 
 .popular-service-page-wrapper.light {
-  /* якщо треба — можна додати відмінності фону/тексту саме для wrapper */
 }
 
 /* заголовки/тексти */
@@ -27,15 +26,50 @@
   color: black;
 }
 
+/* ✅ Контент (типографіка для JSX-тексту) */
 .popular-service-page-content {
-  margin-top: 25px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px; /* ✅ відстань між абзацами */
 }
 
+/* якщо у вас десь ще рендеряться p з класом */
 .popular-service-page-text {
-  margin-top: 14px;
-  line-height: 21px;
+  margin-top: 0;
+  line-height: 26px;
 }
 
+/* ✅ Впливає на JSX-розмітку всередині SmasLiftingText */
+.popular-service-page-content p {
+  margin: 0;
+  line-height: 26px;
+}
+
+.popular-service-page-content h2,
+.popular-service-page-content h3,
+.popular-service-page-content h4 {
+  margin: 34px 0 14px; /* ✅ відступ зверху + між заголовком і текстом */
+}
+
+.popular-service-page-content h2:first-child,
+.popular-service-page-content h3:first-child,
+.popular-service-page-content h4:first-child {
+  margin-top: 0;
+}
+
+.popular-service-page-content ul,
+.popular-service-page-content ol {
+  margin: 6px 0 0;
+  padding-left: 22px;
+}
+
+.popular-service-page-content li {
+  margin-top: 10px;
+  line-height: 24px;
+}
+
+/* сабтайтли (якщо десь використовуються окремо) */
 .popular-service-page-subtitle {
   margin-top: 28px;
   margin-bottom: 10px;
@@ -56,17 +90,13 @@
   height: 260px;
 }
 
-/* блок "Запис на прийом" — стилізуємо як doctor__page-form-wrapper */
+/* блок "Запис на прийом" */
 .popular-service-page-appointment {
   width: 100%;
   margin-top: 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.popular-service-page-subtitle {
-  /* загальний сабтайтл вже є вище; залишаємо для сумісності */
 }
 
 .popular-service-page-appointment-box {
@@ -164,13 +194,31 @@
   }
 
   .popular-service-page-content {
-    margin-top: 18px;
+    margin-top: 20px;
+    gap: 14px; /* ✅ відстані на мобільній */
   }
 
-  .popular-service-page-text {
-    margin-top: 12px;
+  .popular-service-page-content p {
     font-size: 14px;
-    line-height: 18px;
+    line-height: 20px;
+  }
+
+  .popular-service-page-content h2,
+  .popular-service-page-content h3,
+  .popular-service-page-content h4 {
+    margin: 24px 0 10px; /* ✅ заголовок/текст на мобільній */
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .popular-service-page-content ul,
+  .popular-service-page-content ol {
+    padding-left: 18px;
+  }
+
+  .popular-service-page-content li {
+    margin-top: 8px;
+    line-height: 20px;
   }
 
   .popular-service-page-subtitle {
@@ -234,5 +282,7 @@
     padding: 0;
   }
 }
+
+
 
 
