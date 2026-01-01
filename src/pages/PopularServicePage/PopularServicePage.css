@@ -1,29 +1,238 @@
+/* PopularServicePage.css */
+/* Зроблено на основі ServicePage.css, але під класи PopularServicePage.jsx */
+
 .popular-service-page {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
 }
 
+/* контейнер сторінки (аналог page__seo-texts) */
 .popular-service-page-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 24px 16px 48px;
+  width: 1200px;
 }
 
+.popular-service-page-wrapper.light {
+  /* якщо треба — можна додати відмінності фону/тексту саме для wrapper */
+}
+
+/* заголовки/тексти */
 .popular-service-page-title {
-  margin: 0 0 12px;
-  font-size: 28px;
-  line-height: 1.2;
+  margin-top: 40px;
 }
 
-.popular-service-page-description {
-  margin: 0 0 24px;
-  font-size: 16px;
-  line-height: 1.6;
+.popular-service-page-title.light {
+  color: black;
 }
 
-.popular-service-page-back {
-  margin-top: 16px;
+.popular-service-page-content {
+  margin-top: 25px;
 }
 
-.popular-service-page-back-link {
+.popular-service-page-text {
+  margin-top: 14px;
+  line-height: 21px;
+}
+
+.popular-service-page-subtitle {
+  margin-top: 28px;
+  margin-bottom: 10px;
+}
+
+/* фотоблок */
+.popular-service-page-photos {
+  margin-top: 35px;
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.popular-service-page-photo {
+  width: calc((1200px - 40px) / 3);
+  border-radius: 18px;
+  object-fit: cover;
+  height: 260px;
+}
+
+/* блок "Запис на прийом" — стилізуємо як doctor__page-form-wrapper */
+.popular-service-page-appointment {
+  width: 100%;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.popular-service-page-subtitle {
+  /* загальний сабтайтл вже є вище; залишаємо для сумісності */
+}
+
+.popular-service-page-appointment-box {
+  width: 1200px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #00030f;
+  margin-top: 25px;
+  padding: 60px 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+.popular-service-page-wrapper.light .popular-service-page-appointment-box {
+  border: 1px solid rgba(0, 10, 53, 0.15);
+  background: #ebf3ff;
+}
+
+.popular-service-page-appointment-actions {
+  display: flex;
+  gap: 50px;
+}
+
+.popular-service-page-link {
+  width: 240px;
+  height: 59px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: #d7b56d;
+  color: #fff;
 }
+
+.popular-service-page-wrapper.light .popular-service-page-link {
+  background: #000a35;
+  border: none;
+  color: #fff;
+}
+
+/* FAQ */
+.popular-service-page-faq {
+  margin-top: 80px;
+}
+
+.popular-service-page-faq-list {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.popular-service-page-faq-item {
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 20px;
+}
+
+.popular-service-page-wrapper.light .popular-service-page-faq-item {
+  border: 1px solid rgba(0, 10, 53, 0.15);
+}
+
+/* Корисні посилання */
+.popular-service-page-links {
+  margin-top: 80px;
+  margin-bottom: 120px;
+}
+
+.popular-service-page-links-list {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.popular-service-page-links-list .popular-service-page-link {
+  width: auto;
+  padding: 0 22px;
+}
+
+/* Mobile */
+@media (max-width: 1200px) {
+  .popular-service-page-wrapper {
+    width: 320px;
+  }
+
+  .popular-service-page-title {
+    margin-top: 25px;
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .popular-service-page-content {
+    margin-top: 18px;
+  }
+
+  .popular-service-page-text {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  .popular-service-page-subtitle {
+    margin-top: 22px;
+    margin-bottom: 8px;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .popular-service-page-photos {
+    margin-top: 25px;
+    gap: 12px;
+  }
+
+  .popular-service-page-photo {
+    width: 320px;
+    height: 210px;
+    border-radius: 18px;
+  }
+
+  .popular-service-page-appointment {
+    margin-top: 60px;
+  }
+
+  .popular-service-page-appointment-box {
+    width: 320px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: #00030f;
+    margin-top: 20px;
+    padding: 30px 20px;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .popular-service-page-appointment-actions {
+    width: 100%;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .popular-service-page-link {
+    width: 280px;
+    height: 50px;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 19px;
+  }
+
+  .popular-service-page-faq {
+    margin-top: 60px;
+  }
+
+  .popular-service-page-links {
+    margin-top: 60px;
+    margin-bottom: 90px;
+  }
+
+  .popular-service-page-links-list .popular-service-page-link {
+    width: 280px;
+    padding: 0;
+  }
+}
+
+
