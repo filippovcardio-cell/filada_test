@@ -21,8 +21,6 @@ const PopularServicePage = () => {
   const [phoneError, setPhoneError] = useState(false);
   const [nameError, setNameError] = useState(false);
 
-  const [openFaqIndex, setOpenFaqIndex] = useState(null);
-
   const { sendTelegramMessage } = useTelegramMessage();
 
   const pageData = useMemo(() => {
@@ -59,6 +57,7 @@ const PopularServicePage = () => {
   const titleH1 =
     pageData?.pageTitle || pageData?.serviceTitle || pageData?.coverDescription;
 
+  // ✅ ФОТО беремо з photos (як у твоєму popularServicesPagesArr)
   const photosArr =
     pageData?.photos ||
     pageData?.servicePhotos ||
@@ -66,6 +65,7 @@ const PopularServicePage = () => {
     pageData?.images ||
     [];
 
+  // ✅ ТЕКСТ: або JSX (SmasLiftingText), або рядок/масив рядків
   const textCandidate =
     pageData?.text ||
     pageData?.serviceTexts ||
@@ -75,6 +75,8 @@ const PopularServicePage = () => {
     pageData?.textArr ||
     pageData?.blocks ||
     null;
+
+  const isJsxText = textCandidate && React.isValidElement(textCandidate);
 
   const textParagraphs = useMemo(() => {
     if (!textCandidate) return [];
@@ -96,7 +98,13 @@ const PopularServicePage = () => {
     return [];
   }, [textCandidate]);
 
-  const isJsxText = textCandidate && React.isValidElement(textCandidate);
+  // ✅ FAQ (якщо є в масиві)
+  const faqArr = Array.isArray(pageData?.faq) ? pageData.faq : [];
+  const [openFaqIndex, setOpenFaqIndex] = useState(-1);
+
+  const toggleFaq = (idx) => {
+    setOpenFaqIndex((prev) => (prev === idx ? -1 : idx));
+  };
 
   const handleNameChange = (e) => {
     setUserName(e.target.value);
@@ -148,30 +156,16 @@ const PopularServicePage = () => {
     setIsSubmitting(false);
   };
 
-  const toggleFaq = (idx) => {
-    setOpenFaqIndex((prev) => (prev === idx ? null : idx));
-  };
-
   if (!pageData) {
     return (
       <div className="popular-service-page">
         <Cover coverDescription="Послуга" />
-        <div
-          className={`popular-service-page-wrapper ${isDarkTheme ? "" : "light"}`}
-        >
-          <h1
-            className={`popular-service-page-title ${
-              isDarkTheme ? "" : "light"
-            } arial-r`}
-          >
+        <div className={`popular-service-page-wrapper ${isDarkTheme ? "" : "light"}`}>
+          <h1 className={`popular-service-page-title ${isDarkTheme ? "" : "light"} arial-r`}>
             Сторінку не знайдено
           </h1>
           <div className="popular-service-page-content">
-            <p
-              className={`popular-service-page-text ${
-                isDarkTheme ? "" : "light"
-              } mont-r-21`}
-            >
+            <p className={`popular-service-page-text ${isDarkTheme ? "" : "light"} mont-r-21`}>
               Послуга не знайдена у масиві popularServicesPagesArr (перевір slug).
             </p>
           </div>
@@ -202,6 +196,22 @@ const PopularServicePage = () => {
           {titleH1}
         </h1>
 
+        {/* ✅ ФОТО одразу під H1 */}
+        {Array.isArray(photosArr) && photosArr.length > 0 && (
+          <div className="popular-service-page-photos">
+            {photosArr.map((img, idx) => (
+              <img
+                key={idx}
+                src={img}
+                alt={titleH1}
+                className="popular-service-page-photo"
+                loading="lazy"
+              />
+            ))}
+          </div>
+        )}
+
+        {/* ✅ Далі основний текст (JSX або абзаци) */}
         <div className="popular-service-page-content">
           {isJsxText ? (
             textCandidate
@@ -221,20 +231,7 @@ const PopularServicePage = () => {
           )}
         </div>
 
-        {Array.isArray(photosArr) && photosArr.length > 0 && (
-          <div className="popular-service-page-photos">
-            {photosArr.map((img, idx) => (
-              <img
-                key={idx}
-                src={img}
-                alt={titleH1}
-                className="popular-service-page-photo"
-                loading="lazy"
-              />
-            ))}
-          </div>
-        )}
-
+        {/* ✅ ФОРМА */}
         <div className={`doctor__page-form-wrapper ${isDarkTheme ? "" : "light"}`}>
           <h3 className={`doctor__page-form-title ${isDarkTheme ? "" : "light"} mont-m`}>
             Записатись до лікаря
@@ -286,40 +283,41 @@ const PopularServicePage = () => {
           </form>
         </div>
 
-        {Array.isArray(pageData?.faq) && pageData.faq.length > 0 && (
+        {/* ✅ FAQ */}
+        {faqArr.length > 0 && (
           <div className="popular-service-page-faq">
-            <h2 className={`popular-service-page-subtitle ${isDarkTheme ? "" : "light"} arial-r`}>
-              Часті питання про SMAS-ліфтинг
+            {/* назву блоку НЕ чіпаємо в коді — вона стилізується CSS */}
+            <h2 className={`popular-service-page-faq-title ${isDarkTheme ? "" : "light"} mont-m`}>
+              Часті питання про SMAS ліфтинг
             </h2>
 
             <div className="popular-service-page-faq-list">
-              {pageData.faq.map((item, idx) => {
+              {faqArr.map((item, idx) => {
                 const isOpen = openFaqIndex === idx;
+
                 return (
                   <div
                     key={idx}
-                    className={`popular-service-page-faq-item ${isOpen ? "open" : ""}`}
+                    className={`popular-service-page-faq-item ${isDarkTheme ? "" : "light"}`}
                   >
                     <button
                       type="button"
-                      className={`popular-service-page-faq-question ${isDarkTheme ? "" : "light"} mont-m`}
+                      className={`popular-service-page-faq-question ${
+                        isDarkTheme ? "" : "light"
+                      }`}
                       onClick={() => toggleFaq(idx)}
                       aria-expanded={isOpen}
-                      aria-controls={`faq-panel-${idx}`}
                     >
                       <span>{item.question}</span>
-                      <span className={`popular-service-page-faq-icon ${isOpen ? "open" : ""}`}>
-                        +
+                      <span className="popular-service-page-faq-icon">
+                        {isOpen ? "–" : "+"}
                       </span>
                     </button>
 
                     <div
-                      id={`faq-panel-${idx}`}
                       className={`popular-service-page-faq-panel ${isOpen ? "open" : ""}`}
                     >
-                      <div
-                        className={`popular-service-page-faq-answer ${isDarkTheme ? "" : "light"} mont-r-21`}
-                      >
+                      <div className={`popular-service-page-faq-answer ${isDarkTheme ? "" : "light"}`}>
                         {item.answer}
                       </div>
                     </div>
