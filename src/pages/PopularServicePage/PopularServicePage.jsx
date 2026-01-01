@@ -45,6 +45,12 @@ const PopularServicePage = () => {
         </h1>
 
         <section className="popular-service-page-content">
+          {/* 1) Якщо text — JSX (як SmasLiftingText) */}
+          {!Array.isArray(page.text) && page.text ? (
+            page.text
+          ) : null}
+
+          {/* 2) Якщо text — масив рядків (старий формат) */}
           {Array.isArray(page.text) &&
             page.text.map((p, idx) => (
               <p key={idx} className="popular-service-page-text mont-r">
@@ -72,7 +78,9 @@ const PopularServicePage = () => {
 
           <div className="popular-service-page-appointment-box">
             <p className="mont-r">
-              {page.doctorName ? page.doctorName : "Лікар буде вказаний після фіналізації сторінки."}
+              {page.doctorName
+                ? page.doctorName
+                : "Лікар буде вказаний після фіналізації сторінки."}
             </p>
 
             <div className="popular-service-page-appointment-actions">
@@ -102,12 +110,8 @@ const PopularServicePage = () => {
             <div className="popular-service-page-faq-list">
               {page.faq.map((item, idx) => (
                 <div key={idx} className="popular-service-page-faq-item">
-                  <h3 className="popular-service-page-faq-q mont-m">
-                    {item.question}
-                  </h3>
-                  <p className="popular-service-page-faq-a mont-r">
-                    {item.answer}
-                  </p>
+                  <h3 className="popular-service-page-faq-q mont-m">{item.question}</h3>
+                  <p className="popular-service-page-faq-a mont-r">{item.answer}</p>
                 </div>
               ))}
             </div>
@@ -138,11 +142,5 @@ const PopularServicePage = () => {
 };
 
 export default PopularServicePage;
-
-
-
-
-
-
 
 

@@ -32,7 +32,7 @@ import { blogArr } from "./utils/blog/blog";
 import BlogPageNew from "./pages/BlogPageNew/BlogPageNew";
 import DoctorsHubPage from "./pages/DoctorsHubPage/DoctorsHubPage";
 import PopularServicesHubPage from "./pages/PopularServicesHubPage/PopularServicesHubPage";
-import PopularServiceSeoPage from "./pages/PopularServiceSeoPage/PopularServiceSeoPage";
+import PopularServicePage from "./pages/PopularServicePage/PopularServicePage";
 
 setTimeout(() => {
   let nodeArr = document.querySelectorAll(".bingc-phone-button");
@@ -86,7 +86,7 @@ function App() {
               <Route path={"/doctors/"} element={<DoctorsHubPage doctorsArr={teamArr} />} />
 
               <Route path="/popular-services" element={<PopularServicesHubPage />} />
-              <Route path="/services/:slug" element={<PopularServiceSeoPage />} />
+              <Route path="/services/:slug" element={<PopularServicePage />} />
 
               {servicePageArr.map((page, idx) => {
                 return (

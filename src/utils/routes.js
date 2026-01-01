@@ -17,3 +17,5 @@ export const SERVICE_SURGERY_ROUTE = "/surgery/"
 export const SERVICE_VASCULAR_SURGERY_ROUTE = "/vascular-surgery/"
 export const SERVICE_ORTHOPEDICS_TRAUMATOLOGY_ROUTE = "/orthopedics-traumatology/"
 export const BEFORE_AFTER_BLEPHAROPLASTY_ROUTE = "/before-after/blepharoplasty/"
+export const POPULAR_SERVICES_HUB_ROUTE = "/popular-services/";
+export const POPULAR_SERVICES_ROUTE = "/services/";

@@ -1,4 +1,4 @@
-export const smasLiftingText = (
+export const SmasLiftingText = (
   <div className="seo__blog-page-text-wrapper">
     <h2>SMAS-ліфтинг обличчя в Україні — хірургічна підтяжка з тривалим ефектом</h2>
 

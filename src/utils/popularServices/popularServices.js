@@ -1,7 +1,7 @@
 import smasCover1 from "../../assets/images/popularservices/smas-face1.webp";
 
 // ✅ правильний шлях згідно твого проєкту:
-import { smasLiftingText } from "../popularServicesText/smasLiftingText";
+import { SmasLiftingText } from "../popularServicesText/SmasLiftingText";
 
 const smasLiftingJsonLd = `{
   "@context": "https://schema.org",
@@ -156,7 +156,7 @@ export const popularServicesPagesArr = [
     previewImage: smasCover1,
     imagesArr: [smasCover1],
 
-    text: smasLiftingText,
+    text: SmasLiftingText,
   },
 ];
 
