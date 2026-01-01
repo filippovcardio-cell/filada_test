@@ -1,5 +1,4 @@
 /* PopularServicePage.css */
-/* Зроблено на основі ServicePage.css, але під класи PopularServicePage.jsx */
 
 .popular-service-page {
   width: 100%;
@@ -9,15 +8,14 @@
   overflow: hidden;
 }
 
-/* контейнер сторінки (аналог page__seo-texts) */
+/* контейнер сторінки */
 .popular-service-page-wrapper {
   width: 1200px;
 }
 
-.popular-service-page-wrapper.light {
-}
+.popular-service-page-wrapper.light {}
 
-/* заголовки/тексти */
+/* ===== PAGE TITLE ===== */
 .popular-service-page-title {
   margin-top: 40px;
 }
@@ -26,21 +24,19 @@
   color: black;
 }
 
-/* ✅ Контент (типографіка для JSX-тексту) */
+/* ===== CONTENT TYPOGRAPHY ===== */
 .popular-service-page-content {
   margin-top: 30px;
   display: flex;
   flex-direction: column;
-  gap: 18px; /* ✅ відстань між абзацами */
+  gap: 18px;
 }
 
-/* якщо у вас десь ще рендеряться p з класом */
 .popular-service-page-text {
   margin-top: 0;
   line-height: 26px;
 }
 
-/* ✅ Впливає на JSX-розмітку всередині SmasLiftingText */
 .popular-service-page-content p {
   margin: 0;
   line-height: 26px;
@@ -49,7 +45,7 @@
 .popular-service-page-content h2,
 .popular-service-page-content h3,
 .popular-service-page-content h4 {
-  margin: 34px 0 14px; /* ✅ відступ зверху + між заголовком і текстом */
+  margin: 34px 0 14px;
 }
 
 .popular-service-page-content h2:first-child,
@@ -69,13 +65,7 @@
   line-height: 24px;
 }
 
-/* сабтайтли (якщо десь використовуються окремо) */
-.popular-service-page-subtitle {
-  margin-top: 28px;
-  margin-bottom: 10px;
-}
-
-/* фотоблок */
+/* ===== PHOTOS ===== */
 .popular-service-page-photos {
   margin-top: 35px;
   display: flex;
@@ -85,12 +75,12 @@
 
 .popular-service-page-photo {
   width: calc((1200px - 40px) / 3);
+  height: 260px;
   border-radius: 18px;
   object-fit: cover;
-  height: 260px;
 }
 
-/* блок "Запис на прийом" */
+/* ===== FORM ===== */
 .popular-service-page-appointment {
   width: 100%;
   margin-top: 100px;
@@ -101,11 +91,11 @@
 
 .popular-service-page-appointment-box {
   width: 1200px;
+  margin-top: 25px;
+  padding: 60px 190px;
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.15);
   background: #00030f;
-  margin-top: 25px;
-  padding: 60px 190px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -117,71 +107,91 @@
   background: #ebf3ff;
 }
 
-.popular-service-page-appointment-actions {
-  display: flex;
-  gap: 50px;
-}
-
-.popular-service-page-link {
-  width: 240px;
-  height: 59px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  background: #d7b56d;
-  color: #fff;
-}
-
-.popular-service-page-wrapper.light .popular-service-page-link {
-  background: #000a35;
-  border: none;
-  color: #fff;
-}
-
-/* FAQ */
+/* ===== FAQ ===== */
 .popular-service-page-faq {
   margin-top: 80px;
 }
 
+/* 🔽 ЗМЕНШЕНИЙ ТІЛЬКИ ЗАГОЛОВОК FAQ */
+.popular-service-page-faq-title {
+  margin-bottom: 18px;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+}
+
 .popular-service-page-faq-list {
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
 .popular-service-page-faq-item {
+  padding: 20px;
   border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 20px;
 }
 
 .popular-service-page-wrapper.light .popular-service-page-faq-item {
   border: 1px solid rgba(0, 10, 53, 0.15);
 }
 
-/* Корисні посилання */
-.popular-service-page-links {
-  margin-top: 80px;
-  margin-bottom: 120px;
-}
-
-.popular-service-page-links-list {
-  margin-top: 20px;
+/* ===== FAQ QUESTION ===== */
+.popular-service-page-faq-question {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
   display: flex;
-  flex-wrap: wrap;
-  gap: 15px;
+  justify-content: space-between;
+  align-items: flex-start;
+  text-align: left;
+
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
 }
 
-.popular-service-page-links-list .popular-service-page-link {
-  width: auto;
-  padding: 0 22px;
+.popular-service-page-faq-icon {
+  margin-left: 20px;
+  font-size: 26px;
+  line-height: 1;
+  transition: transform 420ms cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Mobile */
+/* ===== SPRING ACCORDION ===== */
+.popular-service-page-faq-panel {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-10px);
+
+  transition:
+    max-height 520ms cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 280ms ease-out,
+    transform 520ms cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.popular-service-page-faq-panel.open {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.popular-service-page-faq-answer {
+  margin-top: 20px;
+  padding-right: 40px;
+  font-size: 16px;
+  line-height: 24px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.popular-service-page-faq-answer.light {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+/* ===== MOBILE ===== */
 @media (max-width: 1200px) {
   .popular-service-page-wrapper {
     width: 320px;
@@ -195,7 +205,7 @@
 
   .popular-service-page-content {
     margin-top: 20px;
-    gap: 14px; /* ✅ відстані на мобільній */
+    gap: 14px;
   }
 
   .popular-service-page-content p {
@@ -206,37 +216,14 @@
   .popular-service-page-content h2,
   .popular-service-page-content h3,
   .popular-service-page-content h4 {
-    margin: 24px 0 10px; /* ✅ заголовок/текст на мобільній */
+    margin: 24px 0 10px;
     font-size: 18px;
     line-height: 22px;
-  }
-
-  .popular-service-page-content ul,
-  .popular-service-page-content ol {
-    padding-left: 18px;
-  }
-
-  .popular-service-page-content li {
-    margin-top: 8px;
-    line-height: 20px;
-  }
-
-  .popular-service-page-subtitle {
-    margin-top: 22px;
-    margin-bottom: 8px;
-    font-size: 18px;
-    line-height: 22px;
-  }
-
-  .popular-service-page-photos {
-    margin-top: 25px;
-    gap: 12px;
   }
 
   .popular-service-page-photo {
     width: 320px;
     height: 210px;
-    border-radius: 18px;
   }
 
   .popular-service-page-appointment {
@@ -245,43 +232,32 @@
 
   .popular-service-page-appointment-box {
     width: 320px;
-    border-radius: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    background: #00030f;
-    margin-top: 20px;
     padding: 30px 20px;
     align-items: flex-start;
     gap: 18px;
   }
 
-  .popular-service-page-appointment-actions {
-    width: 100%;
-    flex-direction: column;
-    gap: 20px;
+  /* FAQ mobile */
+  .popular-service-page-faq-title {
+    font-size: 16px;
+    line-height: 20px;
   }
 
-  .popular-service-page-link {
-    width: 280px;
-    height: 50px;
-    border-radius: 6px;
+  .popular-service-page-faq-question {
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  .popular-service-page-faq-answer {
+    margin-top: 16px;
     font-size: 14px;
-    line-height: 19px;
-  }
-
-  .popular-service-page-faq {
-    margin-top: 60px;
-  }
-
-  .popular-service-page-links {
-    margin-top: 60px;
-    margin-bottom: 90px;
-  }
-
-  .popular-service-page-links-list .popular-service-page-link {
-    width: 280px;
-    padding: 0;
+    line-height: 20px;
+    padding-right: 0;
   }
 }
+
+
+
 
 
 

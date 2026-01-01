@@ -21,6 +21,8 @@ const PopularServicePage = () => {
   const [phoneError, setPhoneError] = useState(false);
   const [nameError, setNameError] = useState(false);
 
+  const [openFaqIndex, setOpenFaqIndex] = useState(null);
+
   const { sendTelegramMessage } = useTelegramMessage();
 
   const pageData = useMemo(() => {
@@ -94,8 +96,7 @@ const PopularServicePage = () => {
     return [];
   }, [textCandidate]);
 
-  const isJsxText =
-    textCandidate && React.isValidElement(textCandidate);
+  const isJsxText = textCandidate && React.isValidElement(textCandidate);
 
   const handleNameChange = (e) => {
     setUserName(e.target.value);
@@ -147,16 +148,30 @@ const PopularServicePage = () => {
     setIsSubmitting(false);
   };
 
+  const toggleFaq = (idx) => {
+    setOpenFaqIndex((prev) => (prev === idx ? null : idx));
+  };
+
   if (!pageData) {
     return (
       <div className="popular-service-page">
         <Cover coverDescription="Послуга" />
-        <div className={`popular-service-page-wrapper ${isDarkTheme ? "" : "light"}`}>
-          <h1 className={`popular-service-page-title ${isDarkTheme ? "" : "light"} arial-r`}>
+        <div
+          className={`popular-service-page-wrapper ${isDarkTheme ? "" : "light"}`}
+        >
+          <h1
+            className={`popular-service-page-title ${
+              isDarkTheme ? "" : "light"
+            } arial-r`}
+          >
             Сторінку не знайдено
           </h1>
           <div className="popular-service-page-content">
-            <p className={`popular-service-page-text ${isDarkTheme ? "" : "light"} mont-r-21`}>
+            <p
+              className={`popular-service-page-text ${
+                isDarkTheme ? "" : "light"
+              } mont-r-21`}
+            >
               Послуга не знайдена у масиві popularServicesPagesArr (перевір slug).
             </p>
           </div>
@@ -246,8 +261,6 @@ const PopularServicePage = () => {
               onFocus={(e) => {
                 if (e.target.value.length < 5) {
                   e.target.value = "+38 (___) ___-__-__";
-                } else if (e.target.value.length > 5) {
-                  return;
                 }
               }}
               onBlur={(e) => {
@@ -272,17 +285,55 @@ const PopularServicePage = () => {
             </button>
           </form>
         </div>
+
+        {Array.isArray(pageData?.faq) && pageData.faq.length > 0 && (
+          <div className="popular-service-page-faq">
+            <h2 className={`popular-service-page-subtitle ${isDarkTheme ? "" : "light"} arial-r`}>
+              Часті питання про SMAS-ліфтинг
+            </h2>
+
+            <div className="popular-service-page-faq-list">
+              {pageData.faq.map((item, idx) => {
+                const isOpen = openFaqIndex === idx;
+                return (
+                  <div
+                    key={idx}
+                    className={`popular-service-page-faq-item ${isOpen ? "open" : ""}`}
+                  >
+                    <button
+                      type="button"
+                      className={`popular-service-page-faq-question ${isDarkTheme ? "" : "light"} mont-m`}
+                      onClick={() => toggleFaq(idx)}
+                      aria-expanded={isOpen}
+                      aria-controls={`faq-panel-${idx}`}
+                    >
+                      <span>{item.question}</span>
+                      <span className={`popular-service-page-faq-icon ${isOpen ? "open" : ""}`}>
+                        +
+                      </span>
+                    </button>
+
+                    <div
+                      id={`faq-panel-${idx}`}
+                      className={`popular-service-page-faq-panel ${isOpen ? "open" : ""}`}
+                    >
+                      <div
+                        className={`popular-service-page-faq-answer ${isDarkTheme ? "" : "light"} mont-r-21`}
+                      >
+                        {item.answer}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
 export default PopularServicePage;
-
-
-
-
-
-
 
 
