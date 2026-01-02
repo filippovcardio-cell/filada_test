@@ -1028,7 +1028,7 @@ export const servicePageArr = [
         },
         {
           title: "Ендоскопічна підтяжка лоба та брів",
-          price: "1200 євро",
+          price: "2400 євро",
         },
         {
           title:
