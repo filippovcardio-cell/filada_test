@@ -57,7 +57,6 @@ const PopularServicePage = () => {
   const titleH1 =
     pageData?.pageTitle || pageData?.serviceTitle || pageData?.coverDescription;
 
-  // ✅ ФОТО беремо з photos (як у твоєму popularServicesPagesArr)
   const photosArr =
     pageData?.photos ||
     pageData?.servicePhotos ||
@@ -65,7 +64,6 @@ const PopularServicePage = () => {
     pageData?.images ||
     [];
 
-  // ✅ ТЕКСТ: або JSX (SmasLiftingText), або рядок/масив рядків
   const textCandidate =
     pageData?.text ||
     pageData?.serviceTexts ||
@@ -98,13 +96,15 @@ const PopularServicePage = () => {
     return [];
   }, [textCandidate]);
 
-  // ✅ FAQ (якщо є в масиві)
   const faqArr = Array.isArray(pageData?.faq) ? pageData.faq : [];
   const [openFaqIndex, setOpenFaqIndex] = useState(-1);
 
   const toggleFaq = (idx) => {
     setOpenFaqIndex((prev) => (prev === idx ? -1 : idx));
   };
+
+  const faqTitle =
+    pageData?.faqTitle || `Часті питання про ${coverDescription}`;
 
   const handleNameChange = (e) => {
     setUserName(e.target.value);
@@ -183,9 +183,10 @@ const PopularServicePage = () => {
         <meta property="og:url" content={canonicalUrl} />
 
         {pageData?.jsonLd && (
-          <script type="application/ld+json">
-            {JSON.stringify(pageData.jsonLd)}
-          </script>
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(pageData.jsonLd) }}
+          />
         )}
       </Helmet>
 
@@ -196,7 +197,6 @@ const PopularServicePage = () => {
           {titleH1}
         </h1>
 
-        {/* ✅ ФОТО одразу під H1 */}
         {Array.isArray(photosArr) && photosArr.length > 0 && (
           <div className="popular-service-page-photos">
             {photosArr.map((img, idx) => (
@@ -211,7 +211,6 @@ const PopularServicePage = () => {
           </div>
         )}
 
-        {/* ✅ Далі основний текст (JSX або абзаци) */}
         <div className="popular-service-page-content">
           {isJsxText ? (
             textCandidate
@@ -231,7 +230,6 @@ const PopularServicePage = () => {
           )}
         </div>
 
-        {/* ✅ ФОРМА */}
         <div className={`doctor__page-form-wrapper ${isDarkTheme ? "" : "light"}`}>
           <h3 className={`doctor__page-form-title ${isDarkTheme ? "" : "light"} mont-m`}>
             Записатись до лікаря
@@ -283,12 +281,10 @@ const PopularServicePage = () => {
           </form>
         </div>
 
-        {/* ✅ FAQ */}
         {faqArr.length > 0 && (
           <div className="popular-service-page-faq">
-            {/* назву блоку НЕ чіпаємо в коді — вона стилізується CSS */}
             <h2 className={`popular-service-page-faq-title ${isDarkTheme ? "" : "light"} mont-m`}>
-              Часті питання про SMAS ліфтинг
+              {faqTitle}
             </h2>
 
             <div className="popular-service-page-faq-list">
@@ -314,9 +310,7 @@ const PopularServicePage = () => {
                       </span>
                     </button>
 
-                    <div
-                      className={`popular-service-page-faq-panel ${isOpen ? "open" : ""}`}
-                    >
+                    <div className={`popular-service-page-faq-panel ${isOpen ? "open" : ""}`}>
                       <div className={`popular-service-page-faq-answer ${isDarkTheme ? "" : "light"}`}>
                         {item.answer}
                       </div>
@@ -333,5 +327,6 @@ const PopularServicePage = () => {
 };
 
 export default PopularServicePage;
+
 
 

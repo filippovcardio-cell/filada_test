@@ -65,6 +65,17 @@
   line-height: 24px;
 }
 
+/* ===== LINKS INSIDE TEXT (Link + a) ===== */
+.popular-service-page-content a {
+  color: #1e5eff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.popular-service-page-content a:hover {
+  text-decoration: underline;
+}
+
 /* ===== PHOTOS ===== */
 .popular-service-page-photos {
   margin-top: 35px;
@@ -112,7 +123,7 @@
   margin-top: 80px;
 }
 
-/* 🔽 ЗМЕНШЕНИЙ ТІЛЬКИ ЗАГОЛОВОК FAQ */
+/* ===== FAQ TITLE ===== */
 .popular-service-page-faq-title {
   margin-bottom: 18px;
   font-size: 18px;
@@ -255,10 +266,3 @@
     padding-right: 0;
   }
 }
-
-
-
-
-
-
-

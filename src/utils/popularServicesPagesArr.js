@@ -2,13 +2,17 @@ import smasFace1 from "../assets/images/popularservices/smas-face1.webp";
 import smasFace2 from "../assets/images/popularservices/smas-face2.webp";
 import smasFace3 from "../assets/images/popularservices/smas-face3.webp";
 
+import labioplastika1 from "../assets/images/popularservices/labioplastika-1.webp";
+import labioplastika2 from "../assets/images/popularservices/labioplastika-2.webp";
+import labioplastika3 from "../assets/images/popularservices/labioplastika-3.webp";
+
 // тексти (JSX)
 import SmasLiftingText from "./popularServicesText/SmasLiftingText";
+import LabioplastikaText from "./popularServicesText/LabioplastikaText";
 
 export const popularServicesPagesArr = [
   {
     slug: "smas-lifting",
-    // URL сторінки: /services/smas-lifting
     metaTitle: "SMAS-ліфтинг у Чернігові | Filada",
     metaDescription:
       "SMAS-ліфтинг (фейсліфтинг) у медичному центрі Filada: консультація, показання, етапи, реабілітація. Запис: 063-503-04-72",
@@ -16,9 +20,7 @@ export const popularServicesPagesArr = [
     coverDescription: "SMAS-ліфтинг",
     pageTitle: "SMAS-ліфтинг у Чернігові",
 
-    // можна JSX або масив рядків — твій PopularServicePage підтримує обидва варіанти
     text: <SmasLiftingText />,
-
     photos: [smasFace1, smasFace2, smasFace3],
 
     doctorName: "Лікар-пластичний хірург Олександр Косенко",
@@ -48,6 +50,7 @@ export const popularServicesPagesArr = [
       { title: "Блог", to: "/blog/" },
     ],
 
+    // ✅ SMAS лишаємо зі своєю мікророзміткою (як було раніше)
     jsonLd: {
       "@context": "https://schema.org",
       "@type": "MedicalWebPage",
@@ -61,6 +64,187 @@ export const popularServicesPagesArr = [
         name: "Медичний центр Філада",
         url: "https://filada.com.ua",
       },
+    },
+  },
+
+  {
+    slug: "labioplastika",
+    metaTitle: "Лабіопластика у Чернігові | Filada",
+    metaDescription:
+      "Лабіопластика у медичному центрі Filada: показання, перебіг операції, відновлення та запис на консультацію.",
+    metaUrl: "https://filada.com.ua/services/labioplastika/",
+    coverDescription: "Лабіопластика",
+    pageTitle: "Лабіопластика у Чернігові",
+
+    text: <LabioplastikaText />,
+    photos: [labioplastika1, labioplastika2, labioplastika3],
+
+    doctorName: "Лікар-гінеколог Василь Цикал",
+    doctorPath: "/doctors/vasyl-tsikal",
+
+    faq: [
+      {
+        question: "Чи болісна операція лабіопластики?",
+        answer:
+          "Лабіопластика проводиться під анестезією, тому під час операції болю немає. У перші дні можливий помірний дискомфорт, який добре контролюється знеболювальними препаратами.",
+      },
+      {
+        question: "Скільки триває відновлення після лабіопластики?",
+        answer:
+          "Початкове відновлення триває 7–10 днів, повне загоєння тканин — близько 6–8 тижнів. Точні терміни залежать від індивідуальних особливостей організму.",
+      },
+      {
+        question: "Чи впливає лабіопластика на чутливість?",
+        answer:
+          "При правильному виконанні операції чутливість не знижується. У більшості випадків після загоєння зникає дискомфорт і покращується якість інтимного життя.",
+      },
+    ],
+
+    // ✅ ЛАБІОПЛАСТИКА: повний @graph з правильним URL /services/labioplastika/
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": ["MedicalClinic", "LocalBusiness"],
+          "@id": "https://filada.com.ua/#clinic",
+          name: "Медичний Центр Філада",
+          legalName: "Медичний Центр Філада",
+          identifier: [
+            {
+              "@type": "PropertyValue",
+              propertyID: "ЄДРПОУ",
+              value: "45646287",
+            },
+            {
+              "@type": "PropertyValue",
+              propertyID: "Ліцензія МОЗ України",
+              value: "Наказ МОЗ від 29.08.2024 № 1508",
+            },
+          ],
+          url: "https://filada.com.ua/",
+          logo: {
+            "@type": "ImageObject",
+            url: "https://filada.com.ua/static/media/logo.b0f53fe4f4365fc498a9.png",
+          },
+          image: "https://filada.com.ua/static/media/logo.b0f53fe4f4365fc498a9.png",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "вул. Святомиколаївська, 19",
+            addressLocality: "Чернігів",
+            addressRegion: "Чернігівська область",
+            addressCountry: "UA",
+          },
+          telephone: "+380635030472",
+          email: "filada.clinic@gmail.com",
+          openingHoursSpecification: [
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday",
+              ],
+              opens: "08:00",
+              closes: "20:00",
+            },
+          ],
+          areaServed: [
+            { "@type": "AdministrativeArea", name: "Чернігів" },
+            { "@type": "AdministrativeArea", name: "Чернігівська область" },
+          ],
+          sameAs: [
+            "https://www.facebook.com/filada.cernigiv/",
+            "https://www.instagram.com/filada_clinic/",
+          ],
+          knowsLanguage: "uk",
+          inLanguage: "uk",
+          currenciesAccepted: "UAH",
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: "4.9",
+            bestRating: "5",
+            reviewCount: "21",
+          },
+        },
+        {
+          "@type": ["Service", "MedicalProcedure"],
+          "@id": "https://filada.com.ua/services/labioplastika/#service",
+          name: "Лабіопластика",
+          alternateName: "Пластика статевих губ",
+          description:
+            "Лабіопластика — це операція зі зміни форми або розміру статевих губ.",
+          serviceType: "Гінекологія",
+          url: "https://filada.com.ua/services/labioplastika/",
+          provider: {
+            "@id": "https://filada.com.ua/#clinic",
+          },
+          areaServed: {
+            "@type": "AdministrativeArea",
+            name: "Чернігів",
+          },
+          availableLanguage: "uk",
+          inLanguage: "uk",
+          offers: {
+            "@type": "Offer",
+            price: "15000",
+            priceCurrency: "UAH",
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              minPrice: "15000",
+              priceCurrency: "UAH",
+              priceType: "https://schema.org/ListPrice",
+            },
+            availability: "https://schema.org/InStock",
+            seller: {
+              "@id": "https://filada.com.ua/#clinic",
+            },
+            areaServed: {
+              "@type": "AdministrativeArea",
+              name: "Чернігів",
+            },
+          },
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://filada.com.ua/services/labioplastika/#webpage",
+          url: "https://filada.com.ua/services/labioplastika/",
+          name: "Лабіопластика у Чернігові — Медичний центр Філада",
+          about: {
+            "@id": "https://filada.com.ua/services/labioplastika/#service",
+          },
+          primaryImageOfPage: {
+            "@type": "ImageObject",
+            url: "https://filada.com.ua/static/media/logo.b0f53fe4f4365fc498a9.png",
+          },
+          inLanguage: "uk",
+          isPartOf: {
+            "@type": "WebSite",
+            name: "Медичний Центр Філада",
+            url: "https://filada.com.ua/",
+          },
+        },
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Головна",
+              item: "https://filada.com.ua/",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Лабіопластика",
+              item: "https://filada.com.ua/services/labioplastika/",
+            },
+          ],
+        },
+      ],
     },
   },
 ];
