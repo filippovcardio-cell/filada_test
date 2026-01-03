@@ -1,5 +1,6 @@
 import smasPreview from "../../assets/images/popularservices/smas-face1.webp";
 import labioplastikaPreview from "../../assets/images/popularservices/labioplastika-1.webp";
+import abdominoplastykaPreview from "../../assets/images/popularservices/abdominoplastyka-1.webp";
 
 export { popularServicesPagesArr } from "./popularServices";
 
@@ -14,7 +15,13 @@ export const popularServicesArr = [
     previewImage: labioplastikaPreview,
     title: "Лабіопластика",
   },
+  {
+    slug: "abdominoplastyka",
+    previewImage: abdominoplastykaPreview,
+    title: "Абдомінопластика",
+  },
 ];
+
 
 
 

@@ -6,9 +6,14 @@ import labioplastika1 from "../assets/images/popularservices/labioplastika-1.web
 import labioplastika2 from "../assets/images/popularservices/labioplastika-2.webp";
 import labioplastika3 from "../assets/images/popularservices/labioplastika-3.webp";
 
+import abdominoplastyka1 from "../assets/images/popularservices/abdominoplastyka-1.webp";
+import abdominoplastyka2 from "../assets/images/popularservices/abdominoplastyka-2.webp";
+import abdominoplastyka3 from "../assets/images/popularservices/abdominoplastyka-3.webp";
+
 // тексти (JSX)
 import SmasLiftingText from "./popularServicesText/SmasLiftingText";
 import LabioplastikaText from "./popularServicesText/LabioplastikaText";
+import AbdominoplastykaText from "./popularServicesText/AbdominoplastykaText";
 
 export const popularServicesPagesArr = [
   {
@@ -241,6 +246,131 @@ export const popularServicesPagesArr = [
               position: 2,
               name: "Лабіопластика",
               item: "https://filada.com.ua/services/labioplastika/",
+            },
+          ],
+        },
+      ],
+    },
+  },
+
+  {
+    slug: "abdominoplastyka",
+    metaTitle:
+      "Абдомінопластика, пластика та підтяжка живота, ціна I Filada Чернігів",
+    metaDescription:
+      "Абдомінопластика Чернігів ✦ Пластика живота після пологів та схуднення. Повна та мініабдомінопластика від провідних хірургів. Реальні фото, ціна, запис на консультацію.",
+    metaUrl: "https://filada.com.ua/services/abdominoplastyka/",
+    coverDescription: "Абдомінопластика",
+    pageTitle: "Абдомінопластика у Чернігові",
+
+    text: <AbdominoplastykaText />,
+    photos: [abdominoplastyka1, abdominoplastyka2, abdominoplastyka3],
+
+    doctorName: "Лікар-пластичний хірург Олександр Косенко",
+    doctorPath: "/doctors/oleksandr-kosenko",
+
+    faq: [
+      {
+        question: "Чи залишиться шрам після операції?",
+        answer:
+          "Так, абдомінопластика передбачає розрізи. Однак хірург робить горизонтальний розріз дуже низько, в зоні бікіні. З часом косметичний шов світлішає, стає тонкою смужкою і легко ховається під білизною. При схильності до келоїдів лікар може призначити спеціальні пластирі або ін'єкції для покращення вигляду рубця.",
+      },
+      {
+        question: "Чи можна вагітніти після абдомінопластики?",
+        answer:
+          "Фізично операція на живіт не впливає на репродуктивну функцію та можливість виносити дитину. Але лікарі рекомендують робити операцію тоді, коли ви більше не плануєте дітей. Нова вагітність знову розтягне апоневроз та шкіру, і результат (плоский живіт) буде втрачено. Може знадобитися повторна корекція.",
+      },
+      {
+        question: "Чи допомагає операція прибрати розтяжки?",
+        answer:
+          "Так, видалення розтяжок є однією з переваг операції. Але видаляються лише ті стрії, які знаходяться на ділянці шкіри, що висікається (зазвичай від пупка до лобка). Розтяжки, розташовані вище пупка, залишаються, але опускаються нижче і стають менш помітними завдяки натягу шкіри.",
+      },
+    ],
+
+    interlinks: [
+      { title: "Пластична хірургія", to: "/plastic-surgery/" },
+      { title: "Контакти", to: "/contacts/" },
+      { title: "Блог", to: "/blog/" },
+    ],
+
+    // ✅ АБДОМІНОПЛАСТИКА: твій @graph, але з URL /services/abdominoplastyka
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "MedicalClinic",
+          "@id": "https://filada.com.ua/#clinic",
+          name: "Filada",
+          url: "https://filada.com.ua",
+          email: "filada.clinic@gmail.com",
+          telephone: "+380635030472",
+          medicalSpecialty: "PlasticSurgery",
+          image: "https://filada.com.ua/logo.png",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "вул. Святомиколаївська, 19",
+            addressLocality: "Чернігів",
+            addressCountry: "UA",
+          },
+          openingHoursSpecification: [
+            {
+              "@type": "OpeningHoursSpecification",
+              dayOfWeek: [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday",
+              ],
+              opens: "08:00",
+              closes: "20:00",
+            },
+          ],
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: "Послуги пластичної хірургії",
+            itemListElement: [
+              {
+                "@type": "Offer",
+                itemOffered: {
+                  "@type": "MedicalProcedure",
+                  name: "Абдомінопластика",
+                  description:
+                    "Хірургічна корекція живота, видалення надлишків шкіри та ушивання діастазу.",
+                  url: "https://filada.com.ua/services/abdominoplastyka",
+                },
+              },
+            ],
+          },
+        },
+        {
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "Чи залишиться шрам після операції?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Так, абдомінопластика передбачає розрізи. Однак хірург робить горизонтальний розріз дуже низько, в зоні бікіні. З часом косметичний шов світлішає, стає тонкою смужкою і легко ховається під білизною. При схильності до келоїдів лікар може призначити спеціальні пластирі або ін'єкції для покращення вигляду рубця.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Чи можна вагітніти після абдомінопластики?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Фізично операція на живіт не впливає на репродуктивну функцію та можливість виносити дитину. Але лікарі рекомендують робити операцію тоді, коли ви більше не плануєте дітей. Нова вагітність знову розтягне апоневроз та шкіру, і результат (плоский живіт) буде втрачено. Може знадобитися повторна корекція.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Чи допомагає операція прибрати розтяжки?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Так, видалення розтяжок є однією з переваг операції. Але видаляються лише ті стрії, які знаходяться на ділянці шкіри, що висікається (зазвичай від пупка до лобка). Розтяжки, розташовані вище пупка, залишаються, але опускаються нижче і стають менш помітними завдяки натягу шкіри.",
+              },
             },
           ],
         },

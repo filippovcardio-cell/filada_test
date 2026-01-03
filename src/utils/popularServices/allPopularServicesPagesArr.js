@@ -1,5 +1,6 @@
 import smasFace1 from "../../assets/images/popularservices/smas-face1.webp";
 import labioplastika1 from "../../assets/images/popularservices/labioplastika-1.webp";
+import abdominoplastyka1 from "../../assets/images/popularservices/abdominoplastyka-1.webp";
 
 export const popularServicesArr = [
   {
@@ -28,14 +29,33 @@ export const popularServicesArr = [
     title: "Лабіопластика",
     previewImage: labioplastika1,
 
-    metaTitle: "Лабіопластика, корекція зменшення та збільшення статевих губ, ціна | Filada Чернігів",
-    metaDescription: "Професійна медична процедура по зменшенню чи збільшенню статевих губ. Корекція статевих губ в Чернігові у медичному центрі Філада. Дізнайтесь вартість на лабіопластику.",
+    metaTitle:
+      "Лабіопластика, корекція зменшення та збільшення статевих губ, ціна | Filada Чернігів",
+    metaDescription:
+      "Професійна медична процедура по зменшенню чи збільшенню статевих губ. Корекція статевих губ в Чернігові у медичному центрі Філада. Дізнайтесь вартість на лабіопластику.",
     metaUrl: "https://filada.com.ua/services/labioplastika",
 
     h1: "Лабіопластика",
     text: ["__TODO__"],
   },
+
+  {
+    slug: "abdominoplastyka",
+    path: "/services/abdominoplastyka",
+    title: "Абдомінопластика",
+    previewImage: abdominoplastyka1,
+
+    metaTitle:
+      "Абдомінопластика, пластика та підтяжка живота, ціна | Filada Чернігів",
+    metaDescription:
+      "Абдомінопластика Чернігів ✦ Пластика живота після пологів та схуднення. Повна та мініабдомінопластика від провідних хірургів. Реальні фото, ціна, запис на консультацію.",
+    metaUrl: "https://filada.com.ua/services/abdominoplastyka",
+
+    h1: "Абдомінопластика",
+    text: ["__TODO__"],
+  },
 ];
+
 
 
 

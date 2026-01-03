@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "./PopularServicePage.css";
 import Cover from "../../components/Cover/Cover";
 import { Helmet } from "react-helmet-async";
@@ -39,6 +39,13 @@ const PopularServicePage = () => {
     );
   }, [pageData]);
 
+  // ✅ щоб форма/редакс завжди знали обрану послугу/лікаря
+  useEffect(() => {
+    if (!pageData) return;
+    if (!selectedDoctor) return;
+    dispatch(setSelectedDoctor(selectedDoctor));
+  }, [dispatch, pageData, selectedDoctor]);
+
   const metaTitle =
     pageData?.metaTitle ||
     pageData?.pageTitle ||
@@ -48,8 +55,12 @@ const PopularServicePage = () => {
   const metaDescription =
     pageData?.metaDescription || "Детальна інформація про послугу Filada.";
 
-  const canonicalUrl =
+  const canonicalUrlRaw =
     pageData?.metaUrl || `https://filada.com.ua/services/${slug}/`;
+
+  const canonicalUrl = canonicalUrlRaw.endsWith("/")
+    ? canonicalUrlRaw
+    : `${canonicalUrlRaw}/`;
 
   const coverDescription =
     pageData?.coverDescription || pageData?.pageTitle || "Послуга";
@@ -160,12 +171,24 @@ const PopularServicePage = () => {
     return (
       <div className="popular-service-page">
         <Cover coverDescription="Послуга" />
-        <div className={`popular-service-page-wrapper ${isDarkTheme ? "" : "light"}`}>
-          <h1 className={`popular-service-page-title ${isDarkTheme ? "" : "light"} arial-r`}>
+        <div
+          className={`popular-service-page-wrapper ${
+            isDarkTheme ? "" : "light"
+          }`}
+        >
+          <h1
+            className={`popular-service-page-title ${
+              isDarkTheme ? "" : "light"
+            } arial-r`}
+          >
             Сторінку не знайдено
           </h1>
           <div className="popular-service-page-content">
-            <p className={`popular-service-page-text ${isDarkTheme ? "" : "light"} mont-r-21`}>
+            <p
+              className={`popular-service-page-text ${
+                isDarkTheme ? "" : "light"
+              } mont-r-21`}
+            >
               Послуга не знайдена у масиві popularServicesPagesArr (перевір slug).
             </p>
           </div>
@@ -327,6 +350,3 @@ const PopularServicePage = () => {
 };
 
 export default PopularServicePage;
-
-
-
