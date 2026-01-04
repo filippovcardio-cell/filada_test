@@ -116,15 +116,17 @@ const Footer = () => {
         <div className="logo-num-mobile">
           <img className="footer__logo-image" src={logo} alt="filada логотип" />
 
-          <a
-            className={`footer__tel ${isDarkTheme ? "" : "light"} mont-r`}
-            href="tel:+380635030472"
-          >
-            +38 (063) 503-04-72
-          </a>
+          {/* ✅ Mobile: телефон + адреса в одній колонці справа */}
+          <div className="footer__mobile-info">
+            <a
+              className={`footer__tel ${isDarkTheme ? "" : "light"} mont-r`}
+              href="tel:+380635030472"
+            >
+              +38 (063) 503-04-72
+            </a>
 
-          {/* ✅ Адреса (mobile) */}
-          <AddressLink />
+            <AddressLink />
+          </div>
         </div>
 
         <div className="footer__contacts">
@@ -278,3 +280,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

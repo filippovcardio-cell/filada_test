@@ -18,14 +18,15 @@
 
 @media (max-width: 1199px) {
   .footer__address {
-    width: 100%;
-    flex-basis: 100%;
-    order: 3;
-
     font-size: 14px;
     line-height: 18px;
 
+    /* адреса тепер під телефоном у колонці */
     white-space: normal;
     text-align: right;
+
+    /* невеликий відступ від телефону */
+    margin-top: 4px;
   }
 }
+

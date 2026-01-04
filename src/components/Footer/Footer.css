@@ -204,6 +204,18 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    /* ✅ повітря між лого і правою колонкою */
+    gap: 12px;
+  }
+
+  /* ✅ НОВЕ: права колонка (телефон + адреса) */
+  .footer__mobile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex: 1;
+    min-width: 0;
   }
 
   .footer__contacts {
@@ -234,7 +246,3 @@
     gap: 30px;
   }
 }
-
-
-
-
