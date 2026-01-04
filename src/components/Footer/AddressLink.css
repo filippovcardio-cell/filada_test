@@ -18,10 +18,14 @@
 
 @media (max-width: 1199px) {
   .footer__address {
+    width: 100%;
+    flex-basis: 100%;
+    order: 3;
+
     font-size: 14px;
     line-height: 18px;
+
     white-space: normal;
-    max-width: 60%;
     text-align: right;
   }
 }
