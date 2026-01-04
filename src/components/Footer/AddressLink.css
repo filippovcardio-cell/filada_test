@@ -1,0 +1,27 @@
+.footer__address {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21px;
+  text-decoration: underline;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.footer__address.light {
+  color: #000;
+}
+
+.footer__address:hover {
+  opacity: 0.9;
+}
+
+@media (max-width: 1199px) {
+  .footer__address {
+    font-size: 14px;
+    line-height: 18px;
+    white-space: normal;
+    max-width: 60%;
+    text-align: right;
+  }
+}

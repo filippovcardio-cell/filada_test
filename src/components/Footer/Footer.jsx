@@ -14,6 +14,8 @@ import tticondark from "../../assets/icons/tticonlight.png";
 import insticondark from "../../assets/icons/intsiconlight.png";
 import fbicondark from "../../assets/icons/fbicon.png";
 
+import AddressLink from "./AddressLink";
+
 const Footer = () => {
   const isDarkTheme = useSelector((state) => state.theme.isDarkTheme);
 
@@ -52,6 +54,9 @@ const Footer = () => {
       <div className="footer__wrapper">
         <div className="footer__logo">
           <img className="footer__logo-image" src={logo} alt="filada логотип" />
+
+          {/* ✅ Адреса (desktop) */}
+          <AddressLink />
 
           <div className="footer__legal" ref={legalRef}>
             <button
@@ -110,12 +115,16 @@ const Footer = () => {
 
         <div className="logo-num-mobile">
           <img className="footer__logo-image" src={logo} alt="filada логотип" />
+
           <a
             className={`footer__tel ${isDarkTheme ? "" : "light"} mont-r`}
             href="tel:+380635030472"
           >
             +38 (063) 503-04-72
           </a>
+
+          {/* ✅ Адреса (mobile) */}
+          <AddressLink />
         </div>
 
         <div className="footer__contacts">
@@ -269,6 +278,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-
-
