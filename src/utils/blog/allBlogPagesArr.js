@@ -4,6 +4,7 @@ import howToChoosePlasticSurgerPreview from "../../assets/images/blog/howToChoos
 import howtolosebellyfatPreview from "../../assets/images/blog/howtolosebellyfatPreview.webp";
 import zbilshennyaGrudeiPreview from "../../assets/images/blog/zbilshennya-grudei-2.webp";
 import vybirGrudnihImplantivPreview from "../../assets/images/blog/vybir-grudnih-implantiv-1.webp";
+import labioPreview from "../../assets/images/blog/Labio1.webp";
 
 export const allBlogPagesArr = [
   {
@@ -36,5 +37,9 @@ export const allBlogPagesArr = [
     previewImage: vybirGrudnihImplantivPreview,
     title: "Вибір грудних імплантів: круглі vs анатомічні – що підійде саме вам",
   },
+  {
+    path: "/blog/intymna-estetyka-chomu-labioplastyka-staie-vse-populiarnishoiu-v-ukraini",
+    previewImage: labioPreview,
+    title: "Інтимна естетика: чому лабіопластика стає все популярнішою в Україні",
+  },
 ];
-
