@@ -121,13 +121,13 @@ export const blogArr = [
   },
 
   {
-    path: "/10-pytan-pro-mammoplastiku-yaki-vi-boyalisya-postaviti-hirurgu/",
+    path: "/zbilshennia-hrudei-top-10-pytan/",
     metaTitle:
       "10 питань про маммопластику, які ви боялися поставити хірургу | Блог МЦ Filada",
     metaDescription:
       "Чесні відповіді на найделікатніші питання про збільшення грудей: від чутливості та грудного вигодовування до болю й термінів служби імплантів. Все, що ви хотіли знати, але соромилися запитати.",
     metaUrl:
-      "https://filada.com.ua/blog/10-pytan-pro-mammoplastiku-yaki-vi-boyalisya-postaviti-hirurgu/",
+      "https://filada.com.ua/blog/zbilshennia-hrudei-top-10-pytan/",
     coverDescription: "10 питань про маммопластику",
     text: blogBreastAugmentationTop10QuestionsText,
     imagesArr: [

@@ -27,7 +27,7 @@ export const allBlogPagesArr = [
     title: "Як прибрати живіт?",
   },
   {
-    path: "/10-pytan-pro-mammoplastiku-yaki-vi-boyalisya-postaviti-hirurgu/",
+    path: "/1zbilshennia-hrudei-top-10-pytan/",
     previewImage: zbilshennyaGrudeiPreview,
     title: "Збільшення грудей: топ-10 питань, які соромляться задати на консультації",
   },
