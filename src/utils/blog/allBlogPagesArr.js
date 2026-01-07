@@ -5,6 +5,7 @@ import howtolosebellyfatPreview from "../../assets/images/blog/howtolosebellyfat
 import zbilshennyaGrudeiPreview from "../../assets/images/blog/zbilshennya-grudei-2.webp";
 import vybirGrudnihImplantivPreview from "../../assets/images/blog/vybir-grudnih-implantiv-1.webp";
 import labioPreview from "../../assets/images/blog/Labio1.webp";
+import blogSMASPreview from "../../assets/images/blog/blogSMAS-1.webp";
 
 export const allBlogPagesArr = [
   {
@@ -41,5 +42,10 @@ export const allBlogPagesArr = [
     path: "/blog/intymna-estetyka-chomu-labioplastyka-staie-vse-populiarnishoiu-v-ukraini",
     previewImage: labioPreview,
     title: "Інтимна естетика: чому лабіопластика стає все популярнішою в Україні",
+  },
+  {
+    path: "/blog/reabilitatsiia-pislia-feisliftynhu-laifkhaky",
+    previewImage: blogSMASPreview,
+    title: "Реабілітація після фейсліфтингу: лайфхаки для швидкого відновлення",
   },
 ];
