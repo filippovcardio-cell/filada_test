@@ -5,6 +5,8 @@
     <link rel="icon" href="%PUBLIC_URL%/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
+
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="filada.com.ua" />
     <meta property="og:url" content="https://filada.com.ua/" />
@@ -17,52 +19,42 @@
       property="og:description"
       content="Медичний центр в Чернігові ᐉ Filada ⭐ Доступна ціна ✔️ Кращі лікарі ✔️ Професійний підхід ✔️ Комфорт та якість обслуговування Тел.063-503-04-72"
     />
+
     <meta name="format-detection" content="telephone=no" />
     <meta name="format-detection" content="address=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo180.png" />
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-X098G01PZH"
-    ></script>
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-X098G01PZH"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-X098G01PZH");
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-X098G01PZH');
     </script>
+
     <meta
       name="google-site-verification"
       content="eLDt9VziJO8xY2XNCfowMkX9JKRiz41obrkAKRE2Tfc"
     />
 
-    <!-- ✅ JSON-LD мікророзмітка головної сторінки -->
+    <!-- ========================= -->
+    <!-- GLOBAL JSON-LD (ONLY ONCE) -->
+    <!-- ========================= -->
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "Filada: медичний центр Чернігів",
-        "url": "https://filada.com.ua/",
-        "description": "Приватна клініка в Чернігові ᐉ Filada ⭐ Сучасне обладнання ✔️ Кращі лікарі ✔️ Професійний підхід ✔️ Комфорт та якість обслуговування ✔️тел.063-503-04-72",
-        "breadcrumb": {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Головна",
-              "item": "https://filada.com.ua/"
-            }
-          ]
-        },
-        "isPartOf": {
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
           "@type": "WebSite",
+          "@id": "https://filada.com.ua/#website",
+          "url": "https://filada.com.ua/",
           "name": "Медичний центр Filada",
           "alternateName": "filada.com.ua",
-          "url": "https://filada.com.ua/",
+          "publisher": {
+            "@id": "https://filada.com.ua/#organization"
+          },
           "potentialAction": {
             "@type": "SearchAction",
             "target": {
@@ -72,20 +64,12 @@
             "query-input": "required name=search_term_string"
           }
         },
-        "primaryImageOfPage": {
-          "@type": "ImageObject",
-          "url": "https://filada.com.ua/screenshot.png",
-          "width": 1200,
-          "height": 630
-        },
-        "about": {
+        {
           "@type": "MedicalClinic",
           "@id": "https://filada.com.ua/#organization",
           "name": "Медичний центр Filada",
           "alternateName": "Приватна клініка Filada",
           "legalName": "Медичний центр ФІЛАДА",
-          "description": "Медичний центр ФІЛАДА – це колектив однодумців, професіоналів своєї справи, стратегія яких направлена на те, щоб використовуючи новітні технології та сучасні методи лікування, дарувати людям красу, здоров'я, можливість повноцінно відчувати радість життя.",
-          "slogan": "Тут краса зустрічається зі здоров'ям",
           "url": "https://filada.com.ua/",
           "logo": {
             "@type": "ImageObject",
@@ -134,274 +118,50 @@
             }
           ],
           "isAcceptingNewPatients": true,
-          "medicalSpecialty": [
-            {
-              "@type": "MedicalSpecialty",
-              "name": "Пластична хірургія",
-              "url": "https://filada.com.ua/plastic-surgery/"
-            },
-            {
-              "@type": "MedicalSpecialty",
-              "name": "Дерматологія",
-              "url": "https://filada.com.ua/dermatology/"
-            },
-            {
-              "@type": "MedicalSpecialty",
-              "name": "Хірургія",
-              "url": "https://filada.com.ua/surgery/"
-            },
-            {
-              "@type": "MedicalSpecialty",
-              "name": "Косметологія",
-              "url": "https://filada.com.ua/cosmetology/"
-            },
-            {
-              "@type": "MedicalSpecialty",
-              "name": "Проктологія",
-              "url": "https://filada.com.ua/proctology/"
-            },
-            {
-              "@type": "MedicalSpecialty",
-              "name": "Неврологія",
-              "url": "https://filada.com.ua/neurology/"
-            },
-            {
-              "@type": "MedicalSpecialty",
-              "name": "Гінекологія",
-              "url": "https://filada.com.ua/gynecology/"
-            },
-            {
-              "@type": "MedicalSpecialty",
-              "name": "Ендокринологія",
-              "url": "https://filada.com.ua/endocrinology/"
-            },
-            {
-              "@type": "MedicalSpecialty",
-              "name": "ЛОР",
-              "url": "https://filada.com.ua/otolaryngology/"
-            },
-            {
-              "@type": "MedicalSpecialty",
-              "name": "Дієтологія/Нутриціологія",
-              "url": "https://filada.com.ua/dietetics-nutrition/"
-            },
-            {
-              "@type": "MedicalSpecialty",
-              "name": "Ортопедія та травматологія",
-              "url": "https://filada.com.ua/orthopedics-traumatology/"
-            },
-            {
-              "@type": "MedicalSpecialty",
-              "name": "УЗ діагностика",
-              "url": "https://filada.com.ua/ultrasound-diagnostics/"
-            },
-            {
-              "@type": "MedicalSpecialty",
-              "name": "Судинна хірургія",
-              "url": "https://filada.com.ua/vascular-surgery/"
-            }
-          ],
-          "availableService": [
-            {
-              "@type": "MedicalProcedure",
-              "name": "Блефаропластика",
-              "url": "https://filada.com.ua/before-after/blepharoplasty/"
-            },
-            {
-              "@type": "MedicalProcedure",
-              "name": "Ботокс",
-              "description": "Ефект триває від 3 до 6 місяців"
-            },
-            {
-              "@type": "MedicalProcedure",
-              "name": "Ліпосакція",
-              "description": "Можливість комбінування кількох зон"
-            },
-            {
-              "@type": "MedicalProcedure",
-              "name": "Збільшення грудей",
-              "description": "Індивідуальний підбір імплантатів"
-            }
-          ],
-          "amenityFeature": [
-            {
-              "@type": "LocationFeatureSpecification",
-              "name": "Комфортний стаціонар",
-              "value": true,
-              "description": "Багатофункціональне ліжко, кнопка виклику медперсоналу, кондиціонер, WiFi"
-            },
-            {
-              "@type": "LocationFeatureSpecification",
-              "name": "Сучасне обладнання",
-              "value": true
-            },
-            {
-              "@type": "LocationFeatureSpecification",
-              "name": "WiFi",
-              "value": true
-            },
-            {
-              "@type": "LocationFeatureSpecification",
-              "name": "Кондиціонер",
-              "value": true
-            }
-          ],
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+380635030472",
-            "contactType": "Запис на прийом",
-            "areaServed": "UA",
-            "availableLanguage": ["Ukrainian", "Russian"],
-            "contactOption": "TollFree"
-          },
           "sameAs": [
             "https://t.me/filada_clinic",
             "https://www.tiktok.com/@filada_clinic",
             "https://www.instagram.com/filada_clinic",
             "https://www.facebook.com/profile.php?id=61562495653062",
             "https://www.google.com/maps/place/Medychnyy+Tsentr+Filada/@51.490013,31.303919,15z/"
-          ],
-          "review": {
-            "@type": "Review",
-            "reviewRating": {
-              "@type": "Rating",
-              "ratingValue": 5,
-              "bestRating": 5
-            },
-            "author": {
-              "@type": "Organization",
-              "name": "Google Reviews"
-            }
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": 4.8,
-            "reviewCount": 127,
-            "bestRating": 5,
-            "worstRating": 1
-          }
-        },
-        "mainEntity": {
-          "@type": "FAQPage",
-          "name": "Найпоширеніші питання",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "Чи залишаються після пластичних операцій шрами?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "У більшості випадків післяопераційні шрами майже непомітні завдяки сучасним методам і технікам, які використовують наші хірурги."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Як довго триває ефект від ботоксу?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Ефект триває від 3 до 6 місяців, після чого можна проводити повторні процедури для підтримання результату."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Які симптоми вказують на проблеми у проктології?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "До проктолога слід звертатися при болю, кровоточивості або дискомфорті в області ануса, а також при будь-яких змінах у випорожненнях."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Як часто потрібно відвідувати гінеколога для профілактики?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Рекомендується проходити профілактичний огляд у гінеколога щонайменше один раз на рік."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Чи можна проводити декілька косметологічних процедур одночасно?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Так, у багатьох випадках можна комбінувати процедури, але це вирішується індивідуально з косметологом."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Чи можуть чоловіки користуватися косметологічними процедурами?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Так, багато процедур, таких як лазерна епіляція або ботокс, підходять для чоловіків і є популярними серед них."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Який вік є найкращим для пластичної операції?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Найкращий вік залежить від типу операції. Наприклад, ринопластика рекомендована після завершення розвитку носа (приблизно 18 років), тоді як інші процедури залежать від потреб пацієнта."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Чи можливе повторне виникнення геморою після операції?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Так, але правильний післяопераційний догляд і зміни в способі життя можуть значно знизити ризик рецидиву."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Як вибрати відповідний імплантат для збільшення грудей?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Хірург допоможе підібрати імплантат, враховуючи вашу анатомію, бажаний результат і стиль життя."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Чи можна проводити ліпосакцію кількох зон одночасно?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Так, багато пацієнтів комбінують кілька зон для ліпосакції, однак кількість зон визначає лікар, враховуючи загальний стан здоров'я."
-              }
-            }
           ]
-        },
-        "offers": {
-          "@type": "AggregateOffer",
-          "priceCurrency": "UAH",
-          "lowPrice": 300,
-          "highPrice": 200000,
-          "offerCount": 50
         }
-      }
+      ]
+    }
     </script>
   </head>
+
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>Для роботи сайту необхідно увімкнути JavaScript.</noscript>
     <div id="root"></div>
+
+    <!-- Service Worker -->
     <script>
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-          navigator.serviceWorker.register('/sw.js').then(registration => {
-            console.log('ServiceWorker registration successful with scope: ', registration.scope);
-          }, err => {
-            console.log('ServiceWorker registration failed: ', err);
-          });
+          navigator.serviceWorker.register('/sw.js').then(
+            registration => {
+              console.log('ServiceWorker registration successful:', registration.scope);
+            },
+            err => {
+              console.log('ServiceWorker registration failed:', err);
+            }
+          );
         });
       }
     </script>
+
+    <!-- Binotel widget -->
     <script type="text/javascript">
       (function(d, w, s) {
-        var widgetHash = 'qxbh3xm86t3stlnkzt1c', gcw = d.createElement(s); gcw.type = 'text/javascript'; gcw.async = true;
-        gcw.src = '//widgets.binotel.com/getcall/widgets/'+ widgetHash +'.js';
-        var sn = d.getElementsByTagName(s)[0]; sn.parentNode.insertBefore(gcw, sn);
+        var widgetHash = 'qxbh3xm86t3stlnkzt1c';
+        var gcw = d.createElement(s);
+        gcw.type = 'text/javascript';
+        gcw.async = true;
+        gcw.src = '//widgets.binotel.com/getcall/widgets/' + widgetHash + '.js';
+        var sn = d.getElementsByTagName(s)[0];
+        sn.parentNode.insertBefore(gcw, sn);
       })(document, window, 'script');
     </script>
   </body>
 </html>
-
-
-
-
-
