@@ -33,6 +33,7 @@ import {
   SERVICE_SURGERY_ROUTE,
   SERVICE_ULTRASOUND_DIAGNOSTICS_ROUTE,
   SERVICE_VASCULAR_SURGERY_ROUTE,
+  SERVICE_CARDIOLOGY_ROUTE,
   SERVICE_VESSELS_ROUTE,
 } from "../../utils/routes";
 import ToggleThemeButton from "../ToggleThemeButton/ToggleThemeButton";
@@ -225,13 +226,22 @@ const Header = () => {
               >
                 Судинна хірургія
               </Link>
+              <Link
+                onClick={handleScrollToTop}
+                to={SERVICE_CARDIOLOGY_ROUTE}
+                className={`header__menu-link ${
+                  isDarkTheme ? "" : "light"
+                } mont-r`}
+              >
+                Кардіологія
+              </Link>
             </div>
 
             <Link
               onClick={handleScrollToTop}
               to={ALL_SERVICES_ROUTE}
               className={`header__link ${isDarkTheme ? "" : "light"}`}
-            >
+               >
               Напрямки роботи
             </Link>
 

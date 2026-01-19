@@ -13,6 +13,7 @@ import {
     SERVICE_SURGERY_ROUTE,
     SERVICE_ULTRASOUND_DIAGNOSTICS_ROUTE,
     SERVICE_VASCULAR_SURGERY_ROUTE,
+    SERVICE_CARDIOLOGY_ROUTE,
   } from "../utils/routes";
 
 export const navArr = [
@@ -67,6 +68,10 @@ export const navArr = [
     {
         title: "Судинна хірургія",
         path: SERVICE_VASCULAR_SURGERY_ROUTE,
+    },
+    {
+        title: "Кардіологія",
+        path: SERVICE_CARDIOLOGY_ROUTE,
     },
   
 ]

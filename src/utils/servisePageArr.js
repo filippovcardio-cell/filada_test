@@ -12,6 +12,7 @@ import {
   SERVICE_SURGERY_ROUTE,
   SERVICE_ULTRASOUND_DIAGNOSTICS_ROUTE,
   SERVICE_VASCULAR_SURGERY_ROUTE,
+  SERVICE_CARDIOLOGY_ROUTE,
 } from "./routes";
 
 import ginekologiaOne from "../assets/images/ginekologia-one.webp";
@@ -50,6 +51,9 @@ import ortopedTravmatThree from "../assets/images/ortopedTravmatThree.webp";
 import vascularOne from "../assets/images/vascularOne.webp";
 import vascularTwo from "../assets/images/vascularTwo.webp";
 import vascularThree from "../assets/images/vascularThree.webp";
+import cardiologyOne from "../assets/images/cardiologyOne.webp";
+import cardiologyTwo from "../assets/images/cardiologyTwo.webp";
+import cardiologyThree from "../assets/images/cardiologyThree.webp";
 import {
   orthopedicsTraumatologyText,
   textCosmetology,
@@ -64,6 +68,7 @@ import {
   textSurgery,
   ultraSoundDiagnosticsText,
   vascularSurgeryText,
+  textCardiology,
 } from "./texts";
 
 export const servicePageArr = [
@@ -1997,6 +2002,51 @@ export const servicePageArr = [
         {
           title: "Кожна наступна година спинномозкової анестезії",
           price: "1000 грн",
+        },
+      ],
+    },
+  },
+  {
+    path: SERVICE_CARDIOLOGY_ROUTE,
+    metaTitle: "Кардіолог у Чернігові | Filada",
+    metaDescription:
+      "Кардіолог у медичному центрі Filada ⭐ діагностика серцево-судинних захворювань, ЕКГ, УЗД серця. Запис у Чернігові ✔️063-503-04-72",
+    metaUrl: "https://filada.com.ua/cardiology/",
+    coverDescription: "Кардіологія",
+    abouteTitle: "Кардіолог в Чернігові",
+    serviceFormName: "Кардіологія",
+    doctorName: "Лікар-кардіолог Богдан Гришко",
+    abouteTexts: [
+      "Кардіологія займається діагностикою, лікуванням та профілактикою захворювань серцево-судинної системи.",
+      "У медичному центрі Filada пацієнти отримують сучасну кардіологічну допомогу з індивідуальним підходом та точними методами обстеження.",
+    ],
+    seoText: textCardiology,
+    aboutePhotos: [
+      cardiologyOne,
+      cardiologyTwo,
+      cardiologyThree,
+    ],
+    doctorPath: "/doctors/bohdan-hryshko",
+    pricesObj: {
+      isComplicated: false,
+      services: [
+        {
+          title: "Консультація кардіолога",
+          price: "700 грн",
+        },
+        {
+          title:
+            "Повторна консультація кардіолога (протягом 1 місяця)",
+          price: "500 грн",
+        },
+        {
+          title: "Консультація кардіолога + УЗД серця",
+          price: "1200 грн",
+        },
+        {
+          title:
+            "Консультація кардіолога + УЗД серця + ЕКГ",
+          price: "1300 грн",
         },
       ],
     },
