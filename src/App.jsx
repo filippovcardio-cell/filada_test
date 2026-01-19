@@ -39,6 +39,9 @@ import DoctorsHubPage from "./pages/DoctorsHubPage/DoctorsHubPage";
 import PopularServicesHubPage from "./pages/PopularServicesHubPage/PopularServicesHubPage";
 import PopularServicePage from "./pages/PopularServicePage/PopularServicePage";
 
+/* ✅ GA4 SPA page_view */
+import GAPageView from "./utils/gaPageView";
+
 setTimeout(() => {
   let nodeArr = document.querySelectorAll(".bingc-phone-button");
 
@@ -79,6 +82,10 @@ function App() {
     <HelmetProvider>
       <div className={`App ${isDarkTheme ? "" : "light"}`}>
         <Router>
+
+          {/* ✅ GA4 SPA page_view tracker */}
+          <GAPageView />
+
           <Routes>
             <Route path="/" element={<AppRouter />}>
               <Route index element={<MainPage />} />
@@ -203,3 +210,4 @@ function App() {
 }
 
 export default App;
+
