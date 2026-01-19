@@ -13,13 +13,13 @@ const CallButton = () => {
   const dispatch = useDispatch();
 
   const handleModalOpen = () => {
-    // ✅ GA4 — телефонний контакт
-    if (window.gtag) {
-      window.gtag("event", "click_tel", {
-        phone_number: "380635030472",
-        page_path: window.location.pathname,
-      });
-    }
+    // ✅ GA4 — стабільне відстеження кліку по телефону
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: "click_tel",
+      phone_number: "380635030472",
+      page_path: window.location.pathname,
+    });
 
     dispatch(setIsActive());
     dispatch(setBurgerIsClose());
@@ -34,7 +34,7 @@ const CallButton = () => {
       <div className="btn-call__ico">
         <img
           src={isDarkTheme ? phoneIcon : phoneIconLight}
-          alt="іконка при натискненні на яку відкриється форма зворотнього зв'язку"
+          alt="іконка виклику"
           className="fas fa-phone-alt"
         />
       </div>
@@ -43,4 +43,3 @@ const CallButton = () => {
 };
 
 export default CallButton;
-
