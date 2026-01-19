@@ -3,23 +3,38 @@ import phoneIcon from "../../assets/icons/phone-icon.png";
 import phoneIconLight from "../../assets/icons/phone-icon-light.png";
 import { useDispatch, useSelector } from "react-redux";
 import { setBurgerIsClose } from "../../redux/BurgerSlice/BurgerSlice";
-import { setClearIsFormSended, setIsActive } from "../../redux/ModalSlice/ModalSlice";
+import {
+  setClearIsFormSended,
+  setIsActive,
+} from "../../redux/ModalSlice/ModalSlice";
 
 const CallButton = () => {
   const isDarkTheme = useSelector((state) => state.theme.isDarkTheme);
   const dispatch = useDispatch();
+
   const handleModalOpen = () => {
+    // ✅ GA4 — телефонний контакт
+    if (window.gtag) {
+      window.gtag("event", "click_tel", {
+        phone_number: "380635030472",
+        page_path: window.location.pathname,
+      });
+    }
+
     dispatch(setIsActive());
     dispatch(setBurgerIsClose());
     dispatch(setClearIsFormSended());
   };
 
   return (
-    <div onClick={handleModalOpen} className={`btn-call ${isDarkTheme ? "" : "light"}`}>
-      <div className={`btn-call__ico`}>
+    <div
+      onClick={handleModalOpen}
+      className={`btn-call ${isDarkTheme ? "" : "light"}`}
+    >
+      <div className="btn-call__ico">
         <img
           src={isDarkTheme ? phoneIcon : phoneIconLight}
-          alt="іконка при натискнні на яку відкриється форма зворотнього зв'язку"
+          alt="іконка при натискненні на яку відкриється форма зворотнього зв'язку"
           className="fas fa-phone-alt"
         />
       </div>
@@ -28,3 +43,4 @@ const CallButton = () => {
 };
 
 export default CallButton;
+
