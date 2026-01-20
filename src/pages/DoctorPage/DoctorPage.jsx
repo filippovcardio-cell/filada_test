@@ -71,12 +71,6 @@ const DoctorPage = ({ doctor }) => {
 Лікар: ${selectedDoctor ? selectedDoctor : "Не обрано"}`;
 
       try {
-        await sendTelegramMessage({
-          userName,
-          userPhone,
-          message,
-        });
-
         /* ===============================
            ✅ GA4 + Google Ads conversion
         =============================== */
@@ -87,7 +81,11 @@ const DoctorPage = ({ doctor }) => {
           doctor_name: selectedDoctor,
           page_path: window.location.pathname,
         });
-
+        await sendTelegramMessage({
+          userName,
+          userPhone,
+          message,
+        });
         setUserName("");
         setUserPhone("");
         dispatch(setSelectedDoctor(null));

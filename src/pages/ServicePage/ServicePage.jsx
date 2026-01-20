@@ -463,8 +463,6 @@ const ServicePage = ({
     }`;
 
     try {
-      await sendTelegramMessage({ userName, userPhone, message });
-
       /* ================================
          ✅ GA4 + Google Ads conversion
       ================================ */
@@ -475,7 +473,7 @@ const ServicePage = ({
         doctor_name: selectedDoctor || serviceTitle || coverDescription || "",
         page_path: window.location.pathname,
       });
-
+      await sendTelegramMessage({ userName, userPhone, message });
       setUserName("");
       setUserPhone("");
       dispatch(setSelectedDoctor(null));

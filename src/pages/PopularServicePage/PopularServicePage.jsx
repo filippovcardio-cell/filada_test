@@ -167,8 +167,6 @@ const PopularServicePage = () => {
     }`;
 
     try {
-      await sendTelegramMessage({ userName, userPhone, message });
-
       /* ===============================
          ✅ GA4 + Google Ads conversion
       =============================== */
@@ -179,7 +177,7 @@ const PopularServicePage = () => {
         doctor_name: selectedDoctor,
         page_path: window.location.pathname,
       });
-
+      await sendTelegramMessage({ userName, userPhone, message });
       setUserName("");
       setUserPhone("");
       dispatch(setSelectedDoctor(null));
