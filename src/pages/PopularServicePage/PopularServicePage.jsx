@@ -66,7 +66,9 @@ const PopularServicePage = () => {
     pageData?.coverDescription || pageData?.pageTitle || "Послуга";
 
   const titleH1 =
-    pageData?.pageTitle || pageData?.serviceTitle || pageData?.coverDescription;
+    pageData?.pageTitle ||
+    pageData?.serviceTitle ||
+    pageData?.coverDescription;
 
   const photosArr =
     pageData?.photos ||
@@ -93,7 +95,9 @@ const PopularServicePage = () => {
     if (Array.isArray(textCandidate)) {
       return textCandidate
         .filter(Boolean)
-        .map((x) => (typeof x === "string" ? x : x?.text || x?.value || ""))
+        .map((x) =>
+          typeof x === "string" ? x : x?.text || x?.value || ""
+        )
         .filter(Boolean);
     }
 
@@ -155,16 +159,34 @@ const PopularServicePage = () => {
       return;
     }
 
-    const message = `\u{1F3D8}Заявка з сайту\u{1F3D8}\nІм'я: ${userName}\nНомер телефону: ${userPhone}\nОбрана послуга: ${
+    const message = `🏥 Заявка з сайту Filada
+Ім'я: ${userName}
+Телефон: ${userPhone}
+Обрана послуга: ${
       selectedDoctor ? selectedDoctor : "Не обрано"
     }`;
 
-    await sendTelegramMessage({ userName, userPhone, message });
+    try {
+      await sendTelegramMessage({ userName, userPhone, message });
 
-    setUserName("");
-    setUserPhone("");
-    dispatch(setSelectedDoctor(null));
-    setIsSubmitting(false);
+      /* ===============================
+         ✅ GA4 + Google Ads conversion
+      =============================== */
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "appointment_submit",
+        form_type: "popular_service_page",
+        doctor_name: selectedDoctor,
+        page_path: window.location.pathname,
+      });
+
+      setUserName("");
+      setUserPhone("");
+      dispatch(setSelectedDoctor(null));
+      setIsSubmitting(false);
+    } catch (error) {
+      setIsSubmitting(false);
+    }
   };
 
   if (!pageData) {
@@ -183,15 +205,6 @@ const PopularServicePage = () => {
           >
             Сторінку не знайдено
           </h1>
-          <div className="popular-service-page-content">
-            <p
-              className={`popular-service-page-text ${
-                isDarkTheme ? "" : "light"
-              } mont-r-21`}
-            >
-              Послуга не знайдена у масиві popularServicesPagesArr (перевір slug).
-            </p>
-          </div>
         </div>
       </div>
     );
@@ -208,15 +221,25 @@ const PopularServicePage = () => {
         {pageData?.jsonLd && (
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(pageData.jsonLd) }}
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify(pageData.jsonLd),
+            }}
           />
         )}
       </Helmet>
 
       <Cover coverDescription={coverDescription} />
 
-      <div className={`popular-service-page-wrapper ${isDarkTheme ? "" : "light"}`}>
-        <h1 className={`popular-service-page-title ${isDarkTheme ? "" : "light"} arial-r`}>
+      <div
+        className={`popular-service-page-wrapper ${
+          isDarkTheme ? "" : "light"
+        }`}
+      >
+        <h1
+          className={`popular-service-page-title ${
+            isDarkTheme ? "" : "light"
+          } arial-r`}
+        >
           {titleH1}
         </h1>
 
@@ -235,40 +258,53 @@ const PopularServicePage = () => {
         )}
 
         <div className="popular-service-page-content">
-          {isJsxText ? (
-            textCandidate
-          ) : textParagraphs.length > 0 ? (
-            textParagraphs.map((t, idx) => (
-              <p
-                key={idx}
-                className={`popular-service-page-text ${isDarkTheme ? "" : "light"} mont-r-21`}
-              >
-                {t}
-              </p>
-            ))
-          ) : (
-            <p className={`popular-service-page-text ${isDarkTheme ? "" : "light"} mont-r-21`}>
-              Текст для цієї сторінки не знайдено у popularServicesPagesArr (перевір ключі поля).
-            </p>
-          )}
+          {isJsxText
+            ? textCandidate
+            : textParagraphs.map((t, idx) => (
+                <p
+                  key={idx}
+                  className={`popular-service-page-text ${
+                    isDarkTheme ? "" : "light"
+                  } mont-r-21`}
+                >
+                  {t}
+                </p>
+              ))}
         </div>
 
-        <div className={`doctor__page-form-wrapper ${isDarkTheme ? "" : "light"}`}>
-          <h3 className={`doctor__page-form-title ${isDarkTheme ? "" : "light"} mont-m`}>
+        {/* ======= FORM ======= */}
+        <div
+          className={`doctor__page-form-wrapper ${
+            isDarkTheme ? "" : "light"
+          }`}
+        >
+          <h3
+            className={`doctor__page-form-title ${
+              isDarkTheme ? "" : "light"
+            } mont-m`}
+          >
             Записатись до лікаря
           </h3>
-          <p className={`doctor__page-form-text ${isDarkTheme ? "" : "light"} mont-r-21`}>
+
+          <p
+            className={`doctor__page-form-text ${
+              isDarkTheme ? "" : "light"
+            } mont-r-21`}
+          >
             Заповніть форму і ми зв’яжемось з Вами найближчим часом
           </p>
 
-          <form onSubmit={handleSubmit} className="doctor__page-form-form">
+          <form
+            onSubmit={handleSubmit}
+            className="doctor__page-form-form"
+          >
             <input
               placeholder="Ім’я"
               value={userName}
               onChange={handleNameChange}
-              className={`doctor__page-input ${isDarkTheme ? "" : "light"} ${
-                nameError ? "error" : ""
-              } mont-r-21`}
+              className={`doctor__page-input ${
+                isDarkTheme ? "" : "light"
+              } ${nameError ? "error" : ""} mont-r-21`}
               type="text"
             />
 
@@ -276,74 +312,25 @@ const PopularServicePage = () => {
               mask="+38 (___) ___-__-__"
               replacement={{ _: /\d/ }}
               showMask={true}
-              onFocus={(e) => {
-                if (e.target.value.length < 5) {
-                  e.target.value = "+38 (___) ___-__-__";
-                }
-              }}
-              onBlur={(e) => {
-                if (e.target.value === "+38 (___) ___-__-__") {
-                  setUserPhone("");
-                }
-              }}
               value={userPhone}
               onChange={handlePhoneNumberChange}
               placeholder="Номер телефону"
-              className={`doctor__page-input ${isDarkTheme ? "" : "light"} ${
-                phoneError ? "error" : ""
-              } mont-r-21`}
+              className={`doctor__page-input ${
+                isDarkTheme ? "" : "light"
+              } ${phoneError ? "error" : ""} mont-r-21`}
               type="phone"
             />
 
             <button
-              className={`doctor__page-button ${isDarkTheme ? "" : "light"} mont-r`}
+              className={`doctor__page-button ${
+                isDarkTheme ? "" : "light"
+              } mont-r`}
               type="submit"
             >
               {isSubmitting ? "Відправка..." : "Відправити"}
             </button>
           </form>
         </div>
-
-        {faqArr.length > 0 && (
-          <div className="popular-service-page-faq">
-            <h2 className={`popular-service-page-faq-title ${isDarkTheme ? "" : "light"} mont-m`}>
-              {faqTitle}
-            </h2>
-
-            <div className="popular-service-page-faq-list">
-              {faqArr.map((item, idx) => {
-                const isOpen = openFaqIndex === idx;
-
-                return (
-                  <div
-                    key={idx}
-                    className={`popular-service-page-faq-item ${isDarkTheme ? "" : "light"}`}
-                  >
-                    <button
-                      type="button"
-                      className={`popular-service-page-faq-question ${
-                        isDarkTheme ? "" : "light"
-                      }`}
-                      onClick={() => toggleFaq(idx)}
-                      aria-expanded={isOpen}
-                    >
-                      <span>{item.question}</span>
-                      <span className="popular-service-page-faq-icon">
-                        {isOpen ? "–" : "+"}
-                      </span>
-                    </button>
-
-                    <div className={`popular-service-page-faq-panel ${isOpen ? "open" : ""}`}>
-                      <div className={`popular-service-page-faq-answer ${isDarkTheme ? "" : "light"}`}>
-                        {item.answer}
-                      </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );

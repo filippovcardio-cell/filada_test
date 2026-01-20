@@ -457,13 +457,32 @@ const ServicePage = ({
     if (hasError) return;
 
     setIsSubmitting(true);
-    const message = `🏘️Заявка з сайту🏘️\nІм'я: ${userName}\nНомер телефону: ${userPhone}\nОбраний напрямок: ${selectedDoctor || "Не обрано"}`;
-    await sendTelegramMessage({ userName, userPhone, message });
 
-    setUserName("");
-    setUserPhone("");
-    dispatch(setSelectedDoctor(null));
-    setIsSubmitting(false);
+    const message = `🏘️Заявка з сайту🏘️\nІм'я: ${userName}\nНомер телефону: ${userPhone}\nОбраний напрямок: ${
+      selectedDoctor || "Не обрано"
+    }`;
+
+    try {
+      await sendTelegramMessage({ userName, userPhone, message });
+
+      /* ================================
+         ✅ GA4 + Google Ads conversion
+      ================================ */
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: "appointment_submit",
+        form_type: "service_page",
+        doctor_name: selectedDoctor || serviceTitle || coverDescription || "",
+        page_path: window.location.pathname,
+      });
+
+      setUserName("");
+      setUserPhone("");
+      dispatch(setSelectedDoctor(null));
+      setIsSubmitting(false);
+    } catch (err) {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -473,7 +492,9 @@ const ServicePage = ({
         <meta name="description" content={metaDescription} />
         <meta property="og:url" content={metaUrl} />
         <link rel="canonical" href={metaUrl} />
-        {currentSchema && <script type="application/ld+json">{JSON.stringify(currentSchema)}</script>}
+        {currentSchema && (
+          <script type="application/ld+json">{JSON.stringify(currentSchema)}</script>
+        )}
         <script>{`
 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
 var f=d.getElementsByTagName(s)[0], j=d.createElement(s), dl=l!='dataLayer'?'&l='+l:'';
@@ -494,10 +515,15 @@ j.async=true; j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl; f.parent
           secondDoctorName={secondDoctorName}
           secondPath={secondPath}
         />
-        <ServicePrices services={pricesObj.services} isComplicated={pricesObj.isComplicated} />
+        <ServicePrices
+          services={pricesObj.services}
+          isComplicated={pricesObj.isComplicated}
+        />
 
         <div className={`doctor__page-form-wrapper ${isDarkTheme ? "" : "light"}`}>
-          <h3 className={`doctor__page-form-title ${isDarkTheme ? "" : "light"} mont-m`}>Записатись до лікаря</h3>
+          <h3 className={`doctor__page-form-title ${isDarkTheme ? "" : "light"} mont-m`}>
+            Записатись до лікаря
+          </h3>
           <p className={`doctor__page-form-text ${isDarkTheme ? "" : "light"} mont-r-21`}>
             Заповніть форму і ми зв’яжемось з Вами найближчим часом
           </p>
@@ -525,10 +551,16 @@ j.async=true; j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl; f.parent
       </div>
 
       <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PXTCPNZW" height="0" width="0" style={{display:"none",visibility:"hidden"}} />
+        <iframe
+          src="https://www.googletagmanager.com/ns.html?id=GTM-PXTCPNZW"
+          height="0"
+          width="0"
+          style={{display:"none",visibility:"hidden"}}
+        />
       </noscript>
     </>
   );
 };
 
 export default ServicePage;
+
