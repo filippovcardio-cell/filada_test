@@ -41,6 +41,14 @@ const PopularServicePage = () => {
 
   // ✅ щоб форма/редакс завжди знали обрану послугу/лікаря
   useEffect(() => {
+
+      // if(pageData){
+      //   console.log("pageData.metaTitle:", pageData.metaTitle);
+      //   console.log("pageData.metaDescription:", pageData.metaDescription);
+      //   console.log("pageData.jsonLd:", pageData.jsonLd);
+      // }
+
+
     if (!pageData) return;
     if (!selectedDoctor) return;
     dispatch(setSelectedDoctor(selectedDoctor));
@@ -203,6 +211,15 @@ const PopularServicePage = () => {
           >
             Сторінку не знайдено
           </h1>
+          <div className="popular-service-page-content">
+            <p
+              className={`popular-service-page-text ${
+                isDarkTheme ? "" : "light"
+              } mont-r-21`}
+            >
+              Послуга не знайдена у масиві popularServicesPagesArr (перевір slug).
+            </p>
+          </div>
         </div>
       </div>
     );
@@ -216,13 +233,11 @@ const PopularServicePage = () => {
         <link rel="canonical" href={canonicalUrl} />
         <meta property="og:url" content={canonicalUrl} />
 
+         {/* JSON-LD для всіх сторінок */}
         {pageData?.jsonLd && (
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify(pageData.jsonLd),
-            }}
-          />
+            <script type="application/ld+json">
+              {JSON.stringify(pageData.jsonLd)}
+            </script>
         )}
       </Helmet>
 
@@ -256,9 +271,10 @@ const PopularServicePage = () => {
         )}
 
         <div className="popular-service-page-content">
-          {isJsxText
-            ? textCandidate
-            : textParagraphs.map((t, idx) => (
+          {isJsxText ? (
+            textCandidate
+          ) : textParagraphs.length > 0 ? (
+            textParagraphs.map((t, idx) => (
                 <p
                   key={idx}
                   className={`popular-service-page-text ${
@@ -267,7 +283,12 @@ const PopularServicePage = () => {
                 >
                   {t}
                 </p>
-              ))}
+            ))
+          ) : (
+            <p className={`popular-service-page-text ${isDarkTheme ? "" : "light"} mont-r-21`}>
+              Текст для цієї сторінки не знайдено у popularServicesPagesArr (перевір ключі поля).
+            </p>
+          )}
         </div>
 
         {/* ======= FORM ======= */}
@@ -329,9 +350,52 @@ const PopularServicePage = () => {
             </button>
           </form>
         </div>
+
+        {faqArr.length > 0 && (
+          <div className="popular-service-page-faq">
+            <h2 className={`popular-service-page-faq-title ${isDarkTheme ? "" : "light"} mont-m`}>
+              {faqTitle}
+            </h2>
+
+            <div className="popular-service-page-faq-list">
+              {faqArr.map((item, idx) => {
+                const isOpen = openFaqIndex === idx;
+
+                return (
+                  <div
+                    key={idx}
+                    className={`popular-service-page-faq-item ${isDarkTheme ? "" : "light"}`}
+                  >
+                    <button
+                      type="button"
+                      className={`popular-service-page-faq-question ${
+                        isDarkTheme ? "" : "light"
+                      }`}
+                      onClick={() => toggleFaq(idx)}
+                      aria-expanded={isOpen}
+                    >
+                      <span>{item.question}</span>
+                      <span className="popular-service-page-faq-icon">
+                        {isOpen ? "–" : "+"}
+                      </span>
+                    </button>
+
+                    <div className={`popular-service-page-faq-panel ${isOpen ? "open" : ""}`}>
+                      <div className={`popular-service-page-faq-answer ${isDarkTheme ? "" : "light"}`}>
+                        {item.answer}
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
 };
 
 export default PopularServicePage;
+
+

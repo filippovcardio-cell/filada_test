@@ -18,9 +18,9 @@ import AbdominoplastykaText from "./popularServicesText/AbdominoplastykaText";
 export const popularServicesPagesArr = [
   {
     slug: "smas-lifting",
-    metaTitle: "SMAS-ліфтинг у Чернігові | Filada",
+    metaTitle: "SMAS ліфтинг та підтяжка обличчя, ціна в Чернігові на фейсліфтінг",
     metaDescription:
-      "SMAS-ліфтинг (фейсліфтинг) у медичному центрі Filada: консультація, показання, етапи, реабілітація. Запис: 063-503-04-72",
+      "SMAS-ліфтинг та підтяжка обличчя в Чернігові. Ціна фейсліфтингу в клініці Filada. Довготривалий результат. Телефонуйте або записуйтесь на консультацію.",
     metaUrl: "https://filada.com.ua/services/smas-lifting/",
     coverDescription: "SMAS-ліфтинг",
     pageTitle: "SMAS-ліфтинг у Чернігові",
@@ -74,9 +74,9 @@ export const popularServicesPagesArr = [
 
   {
     slug: "labioplastika",
-    metaTitle: "Лабіопластика у Чернігові | Filada",
+    metaTitle: "Лабіопластика, корекція зменшення та збільшення статевих губ, ціна I Filada Чернігів",
     metaDescription:
-      "Лабіопластика у медичному центрі Filada: показання, перебіг операції, відновлення та запис на консультацію.",
+      "Професійна медична процедура по зменшенню чи збільшенню статевих губ. Корекція статевих губ в Чернігові у медичному центрі Філада. Дізнайтесь вартість на лабіопластику.",
     metaUrl: "https://filada.com.ua/services/labioplastika/",
     coverDescription: "Лабіопластика",
     pageTitle: "Лабіопластика у Чернігові",
