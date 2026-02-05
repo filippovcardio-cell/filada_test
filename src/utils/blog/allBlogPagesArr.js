@@ -6,6 +6,7 @@ import zbilshennyaGrudeiPreview from "../../assets/images/blog/zbilshennya-grude
 import vybirGrudnihImplantivPreview from "../../assets/images/blog/vybir-grudnih-implantiv-1.webp";
 import labioPreview from "../../assets/images/blog/Labio1.webp";
 import blogSMASPreview from "../../assets/images/blog/blogSMAS-1.webp";
+import blogSMASvsnytkyPreview from "../../assets/images/popularservices/smas-face3.webp";
 
 export const allBlogPagesArr = [
   {
@@ -47,5 +48,10 @@ export const allBlogPagesArr = [
     path: "/blog/reabilitatsiia-pislia-feisliftynhu-laifkhaky",
     previewImage: blogSMASPreview,
     title: "Реабілітація після фейсліфтингу: лайфхаки для швидкого відновлення",
+  },
+  {
+    path: "/blog/smas-vs-nytkovyi-liftynh-shcho-obraty-dlia-pryrodnoho-omolodzhennia",
+    previewImage: blogSMASvsnytkyPreview,
+    title: "SMAS vs нитковий ліфтинг: що обрати для природного омолодження",
   },
 ];

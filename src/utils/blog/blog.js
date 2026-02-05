@@ -32,6 +32,12 @@ import blogSMASPhoto1 from "../../assets/images/blog/blogSMAS-1.webp";
 import blogSMASPhoto2 from "../../assets/images/blog/blogSMAS-2.webp";
 import blogSMASPhoto3 from "../../assets/images/blog/blogSMAS-3.webp";
 
+// 🔹 SMAS vs nytky
+import { blogSMASvsNytkyText } from "./blogSMASvsNytkyText";
+import smasVsNytkyPhoto1 from "../../assets/images/popularservices/smas-face1.webp";
+import smasVsNytkyPhoto2 from "../../assets/images/popularservices/smas-face2.webp";
+import smasVsNytkyPhoto3 from "../../assets/images/popularservices/smas-face3.webp";
+
 export const blogArr = [
   {
     path: "/plastika-povik-blefaroplastika-koli-potribna-i-yak-prohodit/",
@@ -195,6 +201,30 @@ export const blogArr = [
       { src: blogSMASPhoto1, alt: "Реабілітація після фейсліфтингу" },
       { src: blogSMASPhoto2, alt: "Відновлення після підтяжки обличчя" },
       { src: blogSMASPhoto3, alt: "Фейсліфтинг реабілітація" },
+    ],
+    author: {
+      name: "Олександр Косенко",
+      job: "Пластичний хірург",
+      image: oKosenkoAvatar,
+      link: "/doctors/oleksandr-kosenko",
+    },
+    hrefDetails: "/plastic-surgery/",
+  },
+  
+  {
+    path: "/blog/smas-vs-nytkovyi-liftynh-shcho-obraty-dlia-pryrodnoho-omolodzhennia",
+    metaTitle:
+      "Нитки чи SMAS-ліфтинг: який метод омолодження обрати",
+    metaDescription:
+      "ЯДетально порівнюємо два популярні методи підтяжки обличчя: ефективність, тривалість результату, реабілітацію та вартість. Допомагаємо визначити, який варіант підійде для ваших цілей та віку.",
+    metaUrl:
+      "https://filada.com.ua/blog/smas-vs-nytkovyi-liftynh-shcho-obraty-dlia-pryrodnoho-omolodzhennia",
+    coverDescription: "Нитки чи SMAS-ліфтинг",
+    text: blogSMASvsNytkyText,
+    imagesArr: [
+      { src: smasVsNytkyPhoto1, alt: "Який метод підтяжки обличчя обрати" },
+      { src: smasVsNytkyPhoto2, alt: "Відновлення після підтяжки обличчя" },
+      { src: smasVsNytkyPhoto3, alt: "SMAS або нитки" },
     ],
     author: {
       name: "Олександр Косенко",
