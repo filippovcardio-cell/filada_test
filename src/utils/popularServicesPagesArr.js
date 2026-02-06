@@ -10,10 +10,18 @@ import abdominoplastyka1 from "../assets/images/popularservices/abdominoplastyka
 import abdominoplastyka2 from "../assets/images/popularservices/abdominoplastyka-2.webp";
 import abdominoplastyka3 from "../assets/images/popularservices/abdominoplastyka-3.webp";
 
+// ✅ Ліпосакція живота (фото)
+import liposaktsiiaZhyvota1 from "../assets/images/popularservices/Liposuction-1.webp";
+import liposaktsiiaZhyvota2 from "../assets/images/popularservices/Liposuction-2.webp";
+import liposaktsiiaZhyvota3 from "../assets/images/popularservices/Liposuction-3.webp";
+
 // тексти (JSX)
 import SmasLiftingText from "./popularServicesText/SmasLiftingText";
 import LabioplastikaText from "./popularServicesText/LabioplastikaText";
 import AbdominoplastykaText from "./popularServicesText/AbdominoplastykaText";
+
+// ✅ Текст для Ліпосакція живота
+import LiposakciaText from "./popularServicesText/LiposakciaText";
 
 export const popularServicesPagesArr = [
   {
@@ -74,7 +82,8 @@ export const popularServicesPagesArr = [
 
   {
     slug: "labioplastika",
-    metaTitle: "Лабіопластика, корекція зменшення та збільшення статевих губ, ціна I Filada Чернігів",
+    metaTitle:
+      "Лабіопластика, корекція зменшення та збільшення статевих губ, ціна I Filada Чернігів",
     metaDescription:
       "Професійна медична процедура по зменшенню чи збільшенню статевих губ. Корекція статевих губ в Чернігові у медичному центрі Філада. Дізнайтесь вартість на лабіопластику.",
     metaUrl: "https://filada.com.ua/services/labioplastika/",
@@ -115,11 +124,7 @@ export const popularServicesPagesArr = [
           name: "Медичний Центр Філада",
           legalName: "Медичний Центр Філада",
           identifier: [
-            {
-              "@type": "PropertyValue",
-              propertyID: "ЄДРПОУ",
-              value: "45646287",
-            },
+            { "@type": "PropertyValue", propertyID: "ЄДРПОУ", value: "45646287" },
             {
               "@type": "PropertyValue",
               propertyID: "Ліцензія МОЗ України",
@@ -180,17 +185,11 @@ export const popularServicesPagesArr = [
           "@id": "https://filada.com.ua/services/labioplastika/#service",
           name: "Лабіопластика",
           alternateName: "Пластика статевих губ",
-          description:
-            "Лабіопластика — це операція зі зміни форми або розміру статевих губ.",
+          description: "Лабіопластика — це операція зі зміни форми або розміру статевих губ.",
           serviceType: "Гінекологія",
           url: "https://filada.com.ua/services/labioplastika/",
-          provider: {
-            "@id": "https://filada.com.ua/#clinic",
-          },
-          areaServed: {
-            "@type": "AdministrativeArea",
-            name: "Чернігів",
-          },
+          provider: { "@id": "https://filada.com.ua/#clinic" },
+          areaServed: { "@type": "AdministrativeArea", name: "Чернігів" },
           availableLanguage: "uk",
           inLanguage: "uk",
           offers: {
@@ -204,13 +203,8 @@ export const popularServicesPagesArr = [
               priceType: "https://schema.org/ListPrice",
             },
             availability: "https://schema.org/InStock",
-            seller: {
-              "@id": "https://filada.com.ua/#clinic",
-            },
-            areaServed: {
-              "@type": "AdministrativeArea",
-              name: "Чернігів",
-            },
+            seller: { "@id": "https://filada.com.ua/#clinic" },
+            areaServed: { "@type": "AdministrativeArea", name: "Чернігів" },
           },
         },
         {
@@ -218,35 +212,19 @@ export const popularServicesPagesArr = [
           "@id": "https://filada.com.ua/services/labioplastika/#webpage",
           url: "https://filada.com.ua/services/labioplastika/",
           name: "Лабіопластика у Чернігові — Медичний центр Філада",
-          about: {
-            "@id": "https://filada.com.ua/services/labioplastika/#service",
-          },
+          about: { "@id": "https://filada.com.ua/services/labioplastika/#service" },
           primaryImageOfPage: {
             "@type": "ImageObject",
             url: "https://filada.com.ua/static/media/logo.b0f53fe4f4365fc498a9.png",
           },
           inLanguage: "uk",
-          isPartOf: {
-            "@type": "WebSite",
-            name: "Медичний Центр Філада",
-            url: "https://filada.com.ua/",
-          },
+          isPartOf: { "@type": "WebSite", name: "Медичний Центр Філада", url: "https://filada.com.ua/" },
         },
         {
           "@type": "BreadcrumbList",
           itemListElement: [
-            {
-              "@type": "ListItem",
-              position: 1,
-              name: "Головна",
-              item: "https://filada.com.ua/",
-            },
-            {
-              "@type": "ListItem",
-              position: 2,
-              name: "Лабіопластика",
-              item: "https://filada.com.ua/services/labioplastika/",
-            },
+            { "@type": "ListItem", position: 1, name: "Головна", item: "https://filada.com.ua/" },
+            { "@type": "ListItem", position: 2, name: "Лабіопластика", item: "https://filada.com.ua/services/labioplastika/" },
           ],
         },
       ],
@@ -255,8 +233,7 @@ export const popularServicesPagesArr = [
 
   {
     slug: "abdominoplastyka",
-    metaTitle:
-      "Абдомінопластика, пластика та підтяжка живота, ціна I Filada Чернігів",
+    metaTitle: "Абдомінопластика, пластика та підтяжка живота, ціна I Filada Чернігів",
     metaDescription:
       "Абдомінопластика Чернігів ✦ Пластика живота після пологів та схуднення. Повна та мініабдомінопластика від провідних хірургів. Реальні фото, ціна, запис на консультацію.",
     metaUrl: "https://filada.com.ua/services/abdominoplastyka/",
@@ -377,4 +354,136 @@ export const popularServicesPagesArr = [
       ],
     },
   },
+
+  // ✅ НОВА ПОПУЛЯРНА ПОСЛУГА: Ліпосакція живота
+  {
+    slug: "liposakciya-zhivota",
+    metaTitle: "Ліпосакція живота та видалення жиру в Чернігів, ціна, хірурги",
+    metaDescription:
+      "Клініка Filada пропонує ліпосакцію живота в Чернігові ➤ Вартість операції ➤ Досвідчені хірурги ➤ Сучасні методики ✓ Онлайн-запис на безкоштовну консультацію",
+    metaUrl: "https://filada.com.ua/services/liposakciya-zhivota/",
+    coverDescription: "Ліпосакція живота",
+    pageTitle: "Ліпосакція живота у Чернігові",
+
+    text: <LiposakciaText />,
+    photos: [liposaktsiiaZhyvota1, liposaktsiiaZhyvota2, liposaktsiiaZhyvota3],
+
+    doctorName: "Лікар-пластичний хірург Олександр Косенко",
+    doctorPath: "/doctors/oleksandr-kosenko",
+
+    faq: [
+      {
+        question: "Чи болюча процедура ліпосакції живота?",
+        answer:
+          "Завдяки сучасній анестезії операція проходить безболісно, а післяопераційний дискомфорт ефективно контролюється медикаментами.",
+      },
+      {
+        question: "Скільки часу триває реабілітація після ліпосакції живота?",
+        answer:
+          "Повернення до звичного життя можливе через 2-3 тижні, а остаточний результат формується протягом 3-6 місяців.",
+      },
+      {
+        question: "Чи можна поєднувати ліпосакцію з іншими процедурами?",
+        answer:
+          "Так, клініка Filada пропонує комплексні програми корекції фігури.",
+      },
+    ],
+
+    interlinks: [
+      { title: "Пластична хірургія", to: "/plastic-surgery/" },
+      { title: "Контакти", to: "/contacts/" },
+      { title: "Блог", to: "/blog/" },
+    ],
+
+    // ✅ Мікророзмітка — як ти дав (вбудована у jsonLd)
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "MedicalClinic",
+      name: "Клініка Filada",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "вул. Святомиколаївська, 19",
+        addressLocality: "Чернігів",
+        addressCountry: "UA",
+      },
+      telephone: "+38(063)503-04-72",
+      email: "filada.clinic@gmail.com",
+      openingHours: "Mo-Su 08:00-20:00",
+      priceRange: "$$",
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Медичні послуги",
+        itemListElement: [
+          {
+            "@type": "Offer",
+            itemOffered: {
+              "@type": "MedicalProcedure",
+              name: "Ліпосакція живота",
+              description:
+                "Хірургічна процедура видалення надлишкових жирових відкладень з області живота",
+            },
+          },
+        ],
+      },
+      medicalSpecialty: "PlasticSurgery",
+      mainContentOfPage: {
+        "@type": "WebPageElement",
+        headline:
+          "Ліпосакція живота в клініці Filada Чернігів: ціна, консультація досвідчених хірургів",
+        description:
+          "Професійна ліпосакція живота в Чернігові. Досвідчені пластичні хірурги, сучасне обладнання, безкоштовна консультація.",
+      },
+      faqPage: {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: "Чи болюча процедура ліпосакції живота?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Завдяки сучасній анестезії операція проходить безболісно, а післяопераційний дискомфорт ефективно контролюється медикаментами.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Скільки часу триває реабілітація після ліпосакції живота?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Повернення до звичного життя можливе через 2-3 тижні, а остаточний результат формується протягом 3-6 місяців.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "Чи можна поєднувати ліпосакцію з іншими процедурами?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Так, клініка Filada пропонує комплексні програми корекції фігури.",
+            },
+          },
+        ],
+      },
+      howTo: {
+        "@type": "HowTo",
+        name: "Як записатися на консультацію в клініку Filada",
+        step: [
+          {
+            "@type": "HowToStep",
+            name: "Оберіть спосіб зв'язку",
+            text: "Зателефонуйте за номером +38(063)503-04-72, заповніть онлайн-форму на сайті або напишіть на email filada.clinic@gmail.com",
+          },
+          {
+            "@type": "HowToStep",
+            name: "Узгодьте час візиту",
+            text: "Адміністратор допоможе підібрати оптимальний час консультації",
+          },
+          {
+            "@type": "HowToStep",
+            name: "Відвідайте клініку",
+            text: "Приїдьте за адресою: м. Чернігів, вул. Святомиколаївська, 19",
+          },
+        ],
+      },
+    },
+  },
 ];
+
