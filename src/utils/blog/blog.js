@@ -38,6 +38,12 @@ import smasVsNytkyPhoto1 from "../../assets/images/popularservices/smas-face1.we
 import smasVsNytkyPhoto2 from "../../assets/images/popularservices/smas-face2.webp";
 import smasVsNytkyPhoto3 from "../../assets/images/popularservices/smas-face3.webp";
 
+// 🔹 SMAS / revolution
+import { blogSmasRevolutionText } from "./blogSmasRevolutionText";
+import blogSMASrevolution1 from "../../assets/images/blog/SMAS-lift2.webp";
+import blogSMASrevolution2 from "../../assets/images/blog/SMAS-lift1.webp";
+import blogSMASrevolution3 from "../../assets/images/blog/SMAS-lift3.webp";
+
 export const blogArr = [
   {
     path: "/plastika-povik-blefaroplastika-koli-potribna-i-yak-prohodit/",
@@ -225,6 +231,30 @@ export const blogArr = [
       { src: smasVsNytkyPhoto1, alt: "Який метод підтяжки обличчя обрати" },
       { src: smasVsNytkyPhoto2, alt: "Відновлення після підтяжки обличчя" },
       { src: smasVsNytkyPhoto3, alt: "SMAS або нитки" },
+    ],
+    author: {
+      name: "Олександр Косенко",
+      job: "Пластичний хірург",
+      image: oKosenkoAvatar,
+      link: "/doctors/oleksandr-kosenko",
+    },
+    hrefDetails: "/plastic-surgery/",
+  },
+
+  {
+    path: "/blog/smas-liftynh-revoliutsiina-metodyka-omolodzhennia",
+    metaTitle:
+      "SMAS-ліфтинг: як скинути 10 років без шрамів і тривалої реабілітації",
+    metaDescription:
+      "Розповідаємо, як працює SMAS-ліфтинг, чому він вважається золотим стандартом омолодження та кому підходить ця процедура. Дізнайтеся про переваги методики, терміни відновлення та результати, які зберігаються на роки.",
+    metaUrl:
+      "https://filada.com.ua/blog/smas-liftynh-revoliutsiina-metodyka-omolodzhennia",
+    coverDescription: "SMAS-ліфтинг: революційна методика омолодження",
+    text: blogSmasRevolutionText,
+    imagesArr: [
+      { src: blogSMASrevolution1, alt: "Який метод підтяжки обличчя обрати" },
+      { src: blogSMASrevolution2, alt: "Відновлення після підтяжки обличчя" },
+      { src: blogSMASrevolution3, alt: "ендоскопія в SMAS" },
     ],
     author: {
       name: "Олександр Косенко",
