@@ -340,7 +340,7 @@ export const teamArr = [
   {
     path: "/doctors/bohdan-hryshko",
     title: "Богдан Гришко - Кардіолог в Чернігові",
-    name: "Богдан Гишко",
+    name: "Богдан Гришко",
     jobTitle: "Кардіолог",
     description: (
       <>
