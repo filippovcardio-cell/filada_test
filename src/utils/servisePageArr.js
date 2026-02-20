@@ -274,7 +274,7 @@ export const servicePageArr = [
           subCategoryServices: [
             {
               title: "Ботулінотерапія одна зона",
-              price: "2000 грн",
+              price: "2200 грн",
             },
             {
               title: "Ботулінотерапія Лоб+міжбрів’я",
@@ -328,7 +328,7 @@ export const servicePageArr = [
             },
             {
               title: "Зона губ Saypha 1ml",
-              price: "4000 грн",
+              price: "4500 грн",
             },
             {
               title:
@@ -1777,6 +1777,15 @@ export const servicePageArr = [
           title: "УЗД серця (ЕХО КС)",
           price: "650 грн",
         },
+        {
+          title: "Дуплексне (триплексне) сканування артерій нижніх кінцівок",
+          price: "650 грн",
+        },
+        {
+          title: "Дуплексне (триплексне) сканування вен нижніх кінцівок",
+          price: "650 грн",
+        },
+        
       ],
     },
   },
@@ -1988,7 +1997,7 @@ export const servicePageArr = [
         },
         {
           title: "РЧА двох нижніх кінцівок (система ClosureFast (Medtronic) + мініфлебектомія за Мюллер",
-          price: "27000 грн",
+          price: "34000 грн",
         },
         {
           title: "Кросектомія та стрипінг з мінідоступів (флебектомія) 1 категорія",
